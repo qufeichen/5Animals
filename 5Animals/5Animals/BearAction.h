@@ -11,6 +11,7 @@
 #include "ActionCard.h"
 #include <string>
 #include<iostream>
+using namespace std;
 
 
 class BearAction : public ActionCard {
@@ -18,12 +19,7 @@ class BearAction : public ActionCard {
 public:
     string animal = "bear";
     string action = "bear action";
-    QueryResult query(){
-        Quer
-    }
-    void perform( Table&, Player*, QyeryResult ){
-        cout<<"this action is "<<action;
-    }
+
     
 };
 

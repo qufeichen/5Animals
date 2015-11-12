@@ -12,11 +12,11 @@
 #include <iostream>
 
 
-class ActionCard: public StartCard {
+class ActionCard:public StartCard{
     
 public:
-    virtual QueryResult query();
-    virtual void perform( Table&, Player*, QueryResult);
+    //virtual QueryResult query() = 0;
+    //virtual void perform( Table&, Player*, QueryResult)=0;
     //ActionCard(string action, string animal);
 };
 
