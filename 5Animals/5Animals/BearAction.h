@@ -18,6 +18,7 @@ class BearAction : public ActionCard {
 public:
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
+};
 
 };
 #endif /* BearAction_h */dsflkdsf

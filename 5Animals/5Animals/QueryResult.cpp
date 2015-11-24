@@ -3,3 +3,11 @@
 //
 
 #include "QueryResult.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+QueryResult::QueryResult(string result): d_result(result) {
+}
+

@@ -12,7 +12,7 @@
 #include <iostream>
 
 
-class ActionCard: public StartCard {
+class ActionCard:public StartCard{
     
 public:
     virtual QueryResult query();
