@@ -16,7 +16,7 @@ public:
 	Hand& operator+=(std::shared_ptr<AnimalCard>);
 	Hand& operator-=(std::shared_ptr<AnimalCard>);
 	std::shared_ptr<AnimalCard> operator[](int);
-	int noCards()
+	int noCards();
 		//virtual friend Idiom<<(obj const& lhs, obj const& rhs);
 
 };
