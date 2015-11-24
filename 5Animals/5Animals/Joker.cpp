@@ -3,15 +3,12 @@
 #include <cstdlib>
 #include <iostream>
 
-
-
+using namespace std;
+//
+//
 //void Joker::setOrientation(Orientation o){
-//	if(o == DOWN){
-//		orientation = DOWN;
-//	}
-//	else{
-//		orientation = UP;
-//	}
+//
+//	orientation = o;
 //}
 //void Joker::setRow(EvenOdd eo){
 //	evenOdd = eo;
@@ -23,4 +20,10 @@
 //EvenOdd Joker::getRow(){
 //}
 //void Joker::printRow( EvenOdd eo){
+//	if(eo == EVEN){
+//	}
+//	else{
+//		cout << " " << endl;
+//	}
+//	
 //}

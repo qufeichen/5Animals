@@ -7,9 +7,12 @@
 #include <cstdlib>
 #include <iostream>
 
-class ThreeSpilt:public AnimalCard{
+class ThreeSplit:public AnimalCard{
 private:
-
+	Orientation orientation;
+	EvenOdd evenOdd;
+	EvenOdd next;
+	char cardMatrix[2][2];
 public:
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);

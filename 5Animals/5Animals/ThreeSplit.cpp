@@ -1,14 +1,14 @@
-#include "FourSplit.h"
+#include "ThreeSplit.h"
 #include <string>
 #include <cstdlib>
 #include <iostream>
 
 using namespace std;
 
-void FourSplit::setOrientation(Orientation o){
+void ThreeSplit::setOrientation(Orientation o){
 	orientation = o;
 }
-void FourSplit::setRow(EvenOdd eo){
+void ThreeSplit::setRow(EvenOdd eo){
 	evenOdd = eo;
 	if(eo == EVEN){
 		next = ODD;
@@ -17,10 +17,10 @@ void FourSplit::setRow(EvenOdd eo){
 	}
 }
 
-EvenOdd FourSplit::getRow(){
+EvenOdd ThreeSplit::getRow(){
 	return next;
 }
-void FourSplit::printRow(EvenOdd eo){
+void ThreeSplit::printRow(EvenOdd eo){
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){
 

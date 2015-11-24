@@ -6,6 +6,8 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
+#include <memory>
+#include "AnimalCard.h"
 
 
 
