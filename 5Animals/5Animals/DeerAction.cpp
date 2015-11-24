@@ -12,11 +12,11 @@
 
 using namespace std;
 
-QueryResult DeerAction::query(){
-
-}
-
-
-void DeerAction::perform(Table &, Player* , QueryResult){
-
-}
+//QueryResult DeerAction::query(){
+//
+//}
+//
+//
+//void DeerAction::perform(Table &, Player* , QueryResult){
+//
+//}

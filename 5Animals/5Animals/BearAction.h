@@ -22,5 +22,5 @@ public:
     void perform(Table &, Player* , QueryResult);
 };
 
-};
+
 #endif /* BearAction_h */

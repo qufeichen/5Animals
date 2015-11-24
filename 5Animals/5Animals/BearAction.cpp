@@ -12,11 +12,11 @@
 
 using namespace std;
 
-QueryResult BearAction::query(){
-
-}
-
-
-void BearAction::perform(Table &, Player* , QueryResult){
-
-}
+//QueryResult BearAction::query(){
+//
+//
+//
+//
+//void BearAction::perform(Table &, Player* , QueryResult){
+//
+//}

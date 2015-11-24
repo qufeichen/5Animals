@@ -12,11 +12,11 @@
 
 using namespace std;
 
-QueryResult WolfAction::query(){
-
-}
-
-
-void WolfAction::perform(Table &, Player* , QueryResult){
-
-}
+//QueryResult WolfAction::query(){
+//
+//}
+//
+//
+//void WolfAction::perform(Table &, Player* , QueryResult){
+//
+//}

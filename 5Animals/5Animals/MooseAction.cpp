@@ -12,11 +12,11 @@
 
 using namespace std;
 
-QueryResult MooseAction::query(){
-
-}
-
-
-void MooseAction::perform(Table &, Player* , QueryResult){
-
-}
+//QueryResult MooseAction::query(){
+//
+//}
+//
+//
+//void MooseAction::perform(Table &, Player* , QueryResult){
+//
+//}

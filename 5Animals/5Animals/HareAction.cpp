@@ -12,11 +12,11 @@
 
 using namespace std;
 
-QueryResult HareAction::query(){
-
-}
-
-
-void HareAction::perform(Table &, Player* , QueryResult){
-
-}
+//QueryResult HareAction::query(){
+//
+//}
+//
+//
+//void HareAction::perform(Table &, Player* , QueryResult){
+//
+//}
