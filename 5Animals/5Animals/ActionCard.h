@@ -16,9 +16,12 @@ class ActionCard: public StartCard {
     
 public:
     virtual QueryResult query();
-    virtual void perform( Table&, Player*, QueryResult);
-    //ActionCard(string action, string animal);
+    virtual void perform( Table&, Player* , QueryResult);
 };
 
 
 #endif /* ActionCard_h */
+wfawef
+
+
+dsafea

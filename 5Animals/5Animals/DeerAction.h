@@ -9,5 +9,16 @@
 #ifndef DeerAction_h
 #define DeerAction_h
 
+#include "ActionCard.h"
+#include <string>
+#include <iostream>
 
+using namespace std;
+
+class DeerAction : public ActionCard {
+public:
+    QueryResult query();
+    void perform(Table &, Player* , QueryResult);
+
+};
 #endif /* DeerAction_h */

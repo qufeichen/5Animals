@@ -8,6 +8,16 @@
 
 #ifndef MooseAction_h
 #define MooseAction_h
+#include "ActionCard.h"
+#include <string>
+#include <iostream>
 
+using namespace std;
 
+class MooseAction : public ActionCard {
+public:
+    QueryResult query();
+    void perform(Table &, Player* , QueryResult);
+
+};
 #endif /* MooseAction_h */

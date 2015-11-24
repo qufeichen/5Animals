@@ -10,21 +10,14 @@
 #define BearAction_h
 #include "ActionCard.h"
 #include <string>
-#include<iostream>
+#include <iostream>
 
+using namespace std;
 
 class BearAction : public ActionCard {
-    
 public:
-    string animal = "bear";
-    string action = "bear action";
-    QueryResult query(){
-        Quer
-    }
-    void perform( Table&, Player*, QyeryResult ){
-        cout<<"this action is "<<action;
-    }
-    
-};
+    QueryResult query();
+    void perform(Table &, Player* , QueryResult);
 
-#endif /* BearAction_h */
+};
+#endif /* BearAction_h */dsflkdsf
