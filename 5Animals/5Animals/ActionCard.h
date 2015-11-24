@@ -5,15 +5,14 @@
 //  Created by Qufei Chen on 2015-11-12.
 //  Copyright © 2015 Qufei Chen. All rights reserved.
 //
-
-#ifndef ActionCard_h
-#define ActionCard_h
 #include "StartCard.h"
 #include "Table.h"
 #include "Player.h"
 #include "QueryResult.h"
 #include <iostream>
 
+#ifndef ActionCard_h
+#define ActionCard_h
 
 class ActionCard:public StartCard{
     

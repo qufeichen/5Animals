@@ -5,14 +5,14 @@
 //  Created by Qufei Chen on 2015-11-12.
 //  Copyright © 2015 Qufei Chen. All rights reserved.
 //
-
-#ifndef BearAction_h
-#define BearAction_h
 #include "ActionCard.h"
 #include "Table.h"
 #include "Player.h"
 #include <string>
 #include <iostream>
+
+#ifndef BearAction_h
+#define BearAction_h
 
 using namespace std;
 

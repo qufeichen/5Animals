@@ -1,11 +1,11 @@
 // prime header file
 //
 #include <string>
-#ifndef ANIMALCARD_H
-#define ANIMALCARD_H
 #include <string>
 #include <cstdlib>
 #include <iostream>
+#ifndef ANIMALCARD_H
+#define ANIMALCARD_H
 
 	enum EvenOdd
 	{EVEN, ODD, DEFAULT

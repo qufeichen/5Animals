@@ -1,12 +1,13 @@
 // prime header file
 //
 #include <string>
-#ifndef STARTCARD_H
-#define STARTCARD_H
 #include <string>
 #include <cstdlib>
 #include <iostream>
 #include "AnimalCard.h"
+
+#ifndef STARTCARD_H
+#define STARTCARD_H
 
 
 class StartCard:public AnimalCard{

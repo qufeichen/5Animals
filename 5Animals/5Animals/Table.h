@@ -8,5 +8,5 @@
 #endif //INC_5ANIMALS_TABLE_H
 
 class Table{
-    
+
 };
