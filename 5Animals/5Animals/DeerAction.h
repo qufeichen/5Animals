@@ -10,6 +10,9 @@
 #define DeerAction_h
 
 #include "ActionCard.h"
+#include "Table.h"
+#include "Player.h"
+#include "QueryResult.h"
 #include <string>
 #include <iostream>
 

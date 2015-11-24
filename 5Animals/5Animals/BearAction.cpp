@@ -5,6 +5,8 @@
 #include "ActionCard.h"
 #include "BearAction.h"
 #include "QueryResult.h"
+#include "Table.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 

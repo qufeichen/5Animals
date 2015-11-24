@@ -9,6 +9,9 @@
 #ifndef ActionCard_h
 #define ActionCard_h
 #include "StartCard.h"
+#include "Table.h"
+#include "Player.h"
+#include "QueryResult.h"
 #include <iostream>
 
 
@@ -21,7 +24,3 @@ public:
 
 
 #endif /* ActionCard_h */
-wfawef
-
-
-dsafea

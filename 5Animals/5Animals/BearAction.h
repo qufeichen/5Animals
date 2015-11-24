@@ -9,6 +9,8 @@
 #ifndef BearAction_h
 #define BearAction_h
 #include "ActionCard.h"
+#include "Table.h"
+#include "Player.h"
 #include <string>
 #include <iostream>
 
@@ -21,4 +23,4 @@ public:
 };
 
 };
-#endif /* BearAction_h */dsflkdsf
+#endif /* BearAction_h */
