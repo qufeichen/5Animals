@@ -2,34 +2,39 @@
 #include <memory>
 #include <ostream>
 #include "Hand.h"
-//#include "AnimalCard.h"
 
 using namespace std;
+//
+//Hand::Hand(){
+//	numOfCards = 0;
+//}
+//
+//Hand& Hand::operator+=(std::shared_ptr<AnimalCard>){
+//
+//	++numOfCards;
+//	
+//
+//}
+//
+//
+//Hand& Hand::operator-=(std::shared_ptr<AnimalCard>){
+//	--numOfCards;
+//}
+//
+//std::shared_ptr<AnimalCard> operator[](int){
+//
+//}
 
-
-/*
-Hand& Hand::operator+=(std::shared_ptr<AnimalCard>){
-
+int Hand::noCards(){
+	return numOfCards;
 }
 
+//virtual friend Idiom<<(obj const& lhs, obj const& rhs){
+//}
 
-Hand& Hand::operator-=(std::shared_ptr<AnimalCard>){
 
-}
 
-std::shared_ptr<AnimalCard> operator[](int){
-
-}
-
-int noCards(){
-
-}
-
-virtual friend Idiom<<(obj const& lhs, obj const& rhs);
-
-*/
-
-void print(){
+void Hand::print(){
 
 }
 

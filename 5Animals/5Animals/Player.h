@@ -15,7 +15,7 @@ private:
 	string d_name;
 	string d_secretAnimal;
 public:
-	Player(string name); //does constructor assign secret animal to player?
+	Player(string, string); //does constructor assign secret animal to player?
 	string swapSecretAnimal(string&);
 	string getSecretAnimal();
 	void print();
