@@ -1,6 +1,7 @@
 // prime header file
 //
 #include <string>
+#include <string>
 #include <cstdlib>
 #include <iostream>
 #ifndef ANIMALCARD_H

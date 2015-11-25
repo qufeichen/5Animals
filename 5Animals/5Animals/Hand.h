@@ -1,13 +1,13 @@
 // prime header file
 //
 #include <string>
+#ifndef HAND_H
+#define HAND_H
+#include <string>
 #include <cstdlib>
 #include <iostream>
 #include <memory>
 #include "AnimalCard.h"
-
-#ifndef HAND_H
-#define HAND_H
 
 
 
@@ -20,7 +20,6 @@ public:
 	std::shared_ptr<AnimalCard> operator[](int);
 	int noCards();
 		//virtual friend Idiom<<(obj const& lhs, obj const& rhs);
-	void print();
 
 };
 

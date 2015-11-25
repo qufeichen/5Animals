@@ -3,25 +3,3 @@
 //
 
 #include "Player.h"
-#include <string>
-
-using namespace std;
-
-Player::Player(string name): d_name(name){
-//do we assign secret animal here?
-}
-
-string Player:: swapSecretAnimal(string& newAnimal){
-	string oldAnimal = d_secretAnimal;
-	d_secretAnimal = newAnimal;
-	return oldAnimal;
-}
-
-string Player::getSecretAnimal(){
-	return d_secretAnimal;
-}
-
-void Player::print(){
-	//call print function of hand
-	cout<<"The secret animal is: " << d_secretAnimal << endl;
-}

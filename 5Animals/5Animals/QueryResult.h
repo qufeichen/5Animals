@@ -4,12 +4,14 @@
 #include <string>
 #include <iostream>
 
+using namespace std;
+
 #ifndef INC_5ANIMALS_QUERYRESULT_H
 #define INC_5ANIMALS_QUERYRESULT_H
 
-using namespace std;
 
-class QueryResult{
+
+class QueryResult {
 
 private:
     //variable:
@@ -19,5 +21,4 @@ public:
     QueryResult(string result);
 };
 
-#endif 
-//INC_5ANIMALS_QUERYRESULT_H
+#endif //INC_5ANIMALS_QUERYRESULT_H
