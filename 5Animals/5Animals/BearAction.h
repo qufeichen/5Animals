@@ -20,7 +20,7 @@ class BearAction : public ActionCard {
 public:
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
+    std::string action = "select another player to switch hands";
+
 };
-
-
 #endif /* BearAction_h */
