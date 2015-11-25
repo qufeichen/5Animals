@@ -1,16 +1,18 @@
 // prime header file
 //
-#include "AnimalCard.h"
+#include "NoSplit.h"
 #ifndef JOKER_H
 #define JOKER_H
 #include <string>
 #include <cstdlib>
 #include <iostream>
 
-class Joker:public AnimalCard{
+class Joker:public NoSplit{
 private:
 	Orientation orientation;
 	EvenOdd evenOdd;
+	EvenOdd next;
+	char cardMatrix[2][2];
 public:
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);

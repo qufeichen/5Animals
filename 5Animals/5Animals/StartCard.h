@@ -4,15 +4,18 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
-#include "AnimalCard.h"
+#include "NoSplit.h"
 
 #ifndef STARTCARD_H
 #define STARTCARD_H
 
 
-class StartCard:public AnimalCard{
+class StartCard:public NoSplit{
 private:
-
+	Orientation orientation;
+	EvenOdd evenOdd;
+	EvenOdd next;
+	char cardMatrix[2][2];
 public:
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);

@@ -15,6 +15,8 @@ void NoSplit::setRow(EvenOdd eo){
 		next = ODD;
 	}else if(eo == ODD){
 		next = EVEN;
+	}else{
+		next = DEFAULT;
 	}
 }
 
