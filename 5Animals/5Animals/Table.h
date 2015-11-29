@@ -8,6 +8,7 @@
 #include <memory>
 class AnimalCard;
 class ActionCard;
+#include "StartCard.h"
 //#include "AnimalCard.h"
 //#include "ActionCard.h"
 
