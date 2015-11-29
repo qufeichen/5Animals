@@ -1,5 +1,6 @@
 // prime header file
 //
+#pragma once
 #include <string>
 #include <string>
 #include <cstdlib>
