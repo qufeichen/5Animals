@@ -6,12 +6,13 @@
 #include <vector>
 #include "AnimalCard.h"
 #include <memory>
-using namespace std;
 
-class Deck:public vector<shared_ptr<AnimalCard>>{
+template <typename T>
+
+class Deck:public std::vector<std::shared_ptr<T>>{
 	
 public:
-	std::shared_ptr<AnimalCard> draw();
+	std::shared_ptr<T> draw();
 
 
 	//hard code cards in deck

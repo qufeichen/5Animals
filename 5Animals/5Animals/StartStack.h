@@ -15,8 +15,8 @@ public:
 
 private:
 	StartStack();
-	StartStack& operator +=(std::shared_ptr<ActionCard>);
-	StartStack& operator -=(std::shared_ptr<ActionCard>);
+	StartStack& operator+=(std::shared_ptr<ActionCard>);
+	StartStack& operator-=(std::shared_ptr<ActionCard>);
 	std::shared_ptr<ActionCard> getStartCard();
 };
 

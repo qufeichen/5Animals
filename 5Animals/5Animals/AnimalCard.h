@@ -25,8 +25,8 @@ public:
 	virtual void setRow(EvenOdd) = 0;
 	virtual int show() = 0;
 	virtual EvenOdd getRow() = 0;
-	virtual void printRow( EvenOdd );
-	//virtual friend Idiom<<(obj const& lhs, obj const& rhs);
+	virtual void printRow( EvenOdd ) = 0;
+	//virtual friend Idiom<<(obj const& lhs, obj const& rhs) = 0;
 
 };
 
