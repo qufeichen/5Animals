@@ -14,12 +14,12 @@ private:
 	EvenOdd next;
 	char cardMatrix[2][2];
 public:
+	NoSplit();
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
-	int show();
 	EvenOdd getRow();
 	void printRow( EvenOdd );
-	//virtual friend Idiom<<(obj const& lhs, obj const& rhs);
+	friend ostream & operator <<(ostream &out, const NoSplit&);
 
 };
 

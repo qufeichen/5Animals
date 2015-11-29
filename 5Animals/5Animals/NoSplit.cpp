@@ -5,6 +5,16 @@
 
 using namespace std;
 
+NoSplit::NoSplit(){
+	//instantiate card
+	for(int i = 0; i < 2; i++){
+		for(int j = 0; j<2; j++){
+			cardMatrix[i][j] = 'c';
+		}
+
+	}
+
+}
 void NoSplit::setOrientation(Orientation o){
 	orientation = o;
 }
@@ -40,4 +50,15 @@ void NoSplit::printRow(EvenOdd eo){
 
 		}
 	}
+}
+
+ostream &operator <<(ostream &out, const NoSplit& noSplitCard){
+	for(int i = 0; i < 2; i++){
+		for(int j = 0; j<2; j++){
+			out << noSplitCard.cardMatrix[i][j];
+			cout << "test!!";
+		}
+		cout << "\n";
+	}
+	return out;
 }

@@ -7,6 +7,11 @@ using namespace std;
 
 void StartCard::setOrientation(Orientation o){
 	orientation = o;
+		for(int i = 0; i < 2; i++){
+		for(int j = 0; j<2; j++){
+			cardMatrix[i][j] = 'c';
+		}
+	}
 }
 
 void StartCard::setRow(EvenOdd eo){

@@ -6,6 +6,7 @@
 #include <iostream>
 #ifndef ANIMALCARD_H
 #define ANIMALCARD_H
+using namespace std;
 
 	enum EvenOdd
 	{EVEN, ODD, DEFAULT
@@ -23,10 +24,9 @@ private:
 public:
 	virtual void setOrientation(Orientation) = 0;
 	virtual void setRow(EvenOdd) = 0;
-	virtual int show() = 0;
 	virtual EvenOdd getRow() = 0;
 	virtual void printRow( EvenOdd ) = 0;
-	//virtual friend Idiom<<(obj const& lhs, obj const& rhs) = 0;
+	//virtual friend ostream & operator <<(ostream &out, const AnimalCard&) = 0;
 
 };
 

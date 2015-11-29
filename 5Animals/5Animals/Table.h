@@ -29,9 +29,6 @@ public:
 	std::shared_ptr<AnimalCard>pickAt(int row, int col);
 	bool win(std::string& animal);
 
-
-
-
 };
 
 #endif //INC_5ANIMALS_TABLE_H
