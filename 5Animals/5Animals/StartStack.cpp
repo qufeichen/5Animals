@@ -7,13 +7,12 @@
 StartStack::StartStack(){
 }
 
+StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> ptr){
 
-//StartStack& operator+=(std::shared_ptr<ActionCard> ptr){
-//
-//}
-//StartStack& operator-=(std::shared_ptr<ActionCard> ptr){
-//
-//}
-//std::shared_ptr<ActionCard> getStartCard(){
+}
+StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> ptr){
 
-//}
+}
+std::shared_ptr<ActionCard> getStartCard(){
+
+}

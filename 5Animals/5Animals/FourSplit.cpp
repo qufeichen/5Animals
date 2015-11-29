@@ -40,3 +40,14 @@ void FourSplit::printRow(EvenOdd eo){
 		}
 	}
 }
+
+ostream &operator <<(ostream &out, const FourSplit& splitCard){
+	for(int i = 0; i < 2; i++){
+		for(int j = 0; j<2; j++){
+			out << splitCard.cardMatrix[i][j];
+			cout << "test!!";
+		}
+		cout << "\n";
+	}
+	return out;
+}

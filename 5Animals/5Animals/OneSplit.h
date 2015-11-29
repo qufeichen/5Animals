@@ -16,7 +16,6 @@ private:
 public:
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
-	int show();
 	EvenOdd getRow();
 	void printRow( EvenOdd );
 	friend ostream & operator <<(ostream &out, const OneSplit&);

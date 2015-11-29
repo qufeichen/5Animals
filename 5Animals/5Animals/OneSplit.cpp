@@ -1,14 +1,14 @@
-#include "ThreeSplit.h"
+#include "OneSplit.h"
 #include <string>
 #include <cstdlib>
 #include <iostream>
 
 using namespace std;
 
-void ThreeSplit::setOrientation(Orientation o){
+void OneSplit::setOrientation(Orientation o){
 	orientation = o;
 }
-void ThreeSplit::setRow(EvenOdd eo){
+void OneSplit::setRow(EvenOdd eo){
 	evenOdd = eo;
 	if(eo == EVEN){
 		next = ODD;
@@ -19,10 +19,10 @@ void ThreeSplit::setRow(EvenOdd eo){
 	}
 }
 
-EvenOdd ThreeSplit::getRow(){
+EvenOdd OneSplit::getRow(){
 	return next;
 }
-void ThreeSplit::printRow(EvenOdd eo){
+void OneSplit::printRow(EvenOdd eo){
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){
 
@@ -41,11 +41,10 @@ void ThreeSplit::printRow(EvenOdd eo){
 	}
 }
 
-
-ostream &operator <<(ostream &out, const ThreeSplit& splitCard){
+ostream &operator <<(ostream &out, const NoSplit& noSplitCard){
 	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
-			out << splitCard.cardMatrix[i][j];
+			out << noSplitCard.cardMatrix[i][j];
 			cout << "test!!";
 		}
 		cout << "\n";

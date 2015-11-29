@@ -16,10 +16,9 @@ private:
 public:
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
-	int show();
 	EvenOdd getRow();
 	void printRow( EvenOdd );
-	//virtual friend Idiom<<(obj const& lhs, obj const& rhs);
+	friend ostream & operator <<(ostream &out, const TwoSplit&);
 
 };
 
