@@ -1,8 +1,8 @@
 // prime header file
 //
 #include "AnimalCard.h"
-#ifndef NOSPLIT_H
-#define NOSPLIT_H
+#ifndef TWOSPLIT_H
+#define TWOSPLIT_H
 #include <string>
 #include <cstdlib>
 #include <iostream>

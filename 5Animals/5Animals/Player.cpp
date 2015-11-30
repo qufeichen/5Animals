@@ -29,4 +29,7 @@ string Player::getSecretAnimal(){
 //
 //}
 
-//ostream &operator <<(ostream &out, const NoSplit& noSplitCard)
+ostream &operator <<(ostream &out, const Player& player){
+	//cout << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
+	return out;
+}

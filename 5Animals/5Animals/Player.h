@@ -14,6 +14,7 @@ class Player {
 private:
 	string d_name;
 	string d_secretAnimal;
+	Hand playerHand;
 public:
 	Player(string, string); //does constructor assign secret animal to player?
 	string swapSecretAnimal(string&);
