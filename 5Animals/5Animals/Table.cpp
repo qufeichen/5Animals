@@ -1,12 +1,10 @@
-//
-// Created by Qufei Chen on 2015-11-24.
-//
 
 #include "Table.h"
-//Table::Table(){
+Table::Table(){
 	//add pointer to the center
-	//tableArray[52][52] = stack;
-//}
+	//only containss start card
+	tableArray[52][52] = stack;
+}
 int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 	int value = 0;
 	//check if able to put in card

@@ -11,7 +11,7 @@
 #include "ActionCard.h"
 #ifndef STARTSTACK_H
 #define STARTSTACK_H
-class StartStack:AnimalCard{
+class StartStack:public AnimalCard{
 public:
 	std::deque<shared_ptr<StartCard>> stack;
 	std::shared_ptr<StartCard> start;

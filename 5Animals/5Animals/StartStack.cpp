@@ -7,6 +7,7 @@
 #include <deque>
 
 StartStack::StartStack(){
+	//Add only startcard
 	stack.push_back(start);
 }
 
@@ -15,11 +16,15 @@ StartStack::StartStack(){
 //	stack.push_back(card);
 //	//change animal behaviour
 //
+//
+//	return *this;
 //}
 //StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
 //	//bottom is front
 //	stack.push_front(card);
 //	//change animal behaviours
+//
+//	return *this;
 //}
 //std::shared_ptr<ActionCard> getStartCard(){
 //	//which is start card

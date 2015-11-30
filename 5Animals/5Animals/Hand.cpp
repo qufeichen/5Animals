@@ -10,59 +10,59 @@ Hand::Hand(){
 	numOfCards = 0;
 }
 
-//Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
-//
-//	++numOfCards;
-//	cardsInHand.push_back(newCard);
-//
-//}
-//
-//
-//Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
-//	try{
-//			--numOfCards;
-//			//remove if equal to newCard
-//			cardsInHand.remove(newCard);
-//	}
-//	catch (shared_ptr<AnimalCard>){
-//		cout << "card does not exist" << "\n";
-//	}
-//}
+Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
+
+	++numOfCards;
+	cardsInHand.push_back(newCard);
+	return *this;
+}
+
+
+Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
+	try{
+			--numOfCards;
+			//remove if equal to newCard
+			cardsInHand.remove(newCard);
+	}
+	catch (exception){
+		cout << "card does not exist" << "\n";
+	}
+	return *this;
+}
 //
 //std::shared_ptr<AnimalCard> Hand::operator[](int index){
+//	std::shared_ptr<AnimalCard> temp;
 //		try{
 //			--numOfCards;
-//			//remove if equal to index
+//			//get card if equal to index
 //			std::list<std::shared_ptr<AnimalCard>>::iterator it;
-//			for(int i = 0; i<index; i++){
-//				it++;
-//			}
-//			
-//			cardsInHand.erase(it);
+//			std::advance(it, index);
+//
 //	}
-//	catch (shared_ptr<AnimalCard>){
+//	catch (exception){
 //		cout << "card does not exist in index" << "\n";
 //	}
+//	
 //}
 
 int Hand::noCards(){
 	return numOfCards;
 }
 
-//ostream& operator <<(ostream &out, const Hand& handGiven){
-//		
-//	for( int i = 0; i<handGiven.numOfCards; i++){
-//		cout<<
-//	}
-//
-//
-//	std::for_each(handGiven.cardsInHand.begin(),handGiven.cardsInHand.end());
-//		//number
-//
-//		
-//	}
-//
-//
-//
-//}
+ostream& operator <<(ostream &out, const Hand& handGiven){
+		
+	for( int i = 0; i<handGiven.numOfCards; i++){
+		//cout<<
+	}
+
+
+	//std::for_each(handGiven.cardsInHand.begin(),handGiven.cardsInHand.end());
+		//number
+
+		
+	
+
+	return out;
+
+}
 

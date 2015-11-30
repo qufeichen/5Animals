@@ -22,7 +22,7 @@ private:
 	std::shared_ptr<AnimalCard> tableArray[103][103];
 	
 	//stack in middle of graph
-	StartStack stack;
+	std::shared_ptr<StartStack> stack;
 
 public:
 	Table();
