@@ -31,7 +31,7 @@ public:
 	Table& operator-=(std::shared_ptr<ActionCard>);
 	std::shared_ptr<AnimalCard>pickAt(int row, int col);
 	bool win(std::string& animal);
-
+	friend ostream & operator <<(ostream& , const Table&);
 };
 
 #endif //INC_5ANIMALS_TABLE_H
