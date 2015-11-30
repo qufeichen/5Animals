@@ -12,7 +12,7 @@
 #ifndef STARTSTACK_H
 #define STARTSTACK_H
 class StartStack:public AnimalCard{
-public:
+private:
 	std::deque<shared_ptr<StartCard>> stack;
 	std::shared_ptr<StartCard> start;
 
@@ -21,11 +21,12 @@ public:
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
-private:
+
+public:
 	StartStack();
 	StartStack& operator+=(std::shared_ptr<ActionCard>);
 	StartStack& operator-=(std::shared_ptr<ActionCard>);
-	std::shared_ptr<ActionCard> getStartCard();
+	std::shared_ptr<StartCard> getStartCard();
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
 	EvenOdd getRow();

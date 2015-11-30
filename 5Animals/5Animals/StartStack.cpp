@@ -11,24 +11,31 @@ StartStack::StartStack(){
 	stack.push_back(start);
 }
 
-//StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
-//	//top is back
-//	stack.push_back(card);
-//	//change animal behaviour
-//
-//
-//	return *this;
-//}
-//StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
-//	//bottom is front
-//	stack.push_front(card);
-//	//change animal behaviours
-//
-//	return *this;
-//}
-//std::shared_ptr<ActionCard> getStartCard(){
-//	//which is start card
-//}
+StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
+	//top is back
+	stack.push_back(card);
+	//No action exectuted
+	//animals on table change
+	//NEED TO IMPLEMENT
+
+
+
+
+	return *this;
+}
+StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
+	//bottom is front
+	stack.push_front(card);
+	//action exectuted
+	//top of startstack does not change
+	//NEED TO IMPLEMENT
+
+	return *this;
+}
+std::shared_ptr<StartCard> StartStack::getStartCard(){
+	//which is start card
+	return start;
+}
 
 void StartStack::setOrientation(Orientation o){
 	orientation = o;
