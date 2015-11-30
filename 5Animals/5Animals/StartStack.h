@@ -12,7 +12,7 @@
 #define STARTSTACK_H
 class StartStack:AnimalCard{
 public:
-
+	std::shared_ptr<StartCard> start;
 private:
 	StartStack();
 	StartStack& operator+=(std::shared_ptr<ActionCard>);

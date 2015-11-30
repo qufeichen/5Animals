@@ -18,8 +18,8 @@ public:
 	Player(string, string); //does constructor assign secret animal to player?
 	string swapSecretAnimal(string&);
 	string getSecretAnimal();
-	void print();
-	static Hand hand;
+	friend ostream & operator <<(ostream &out, const Player&);
+
 };
 
 

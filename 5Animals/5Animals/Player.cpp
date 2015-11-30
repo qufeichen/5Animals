@@ -21,10 +21,12 @@ string Player:: swapSecretAnimal(string& newAnimal){
 string Player::getSecretAnimal(){
 	return d_secretAnimal;
 }
+//
+//void Player::print(){
+//	//call print function of hand
+//	cout<<"The secret animal is: " << d_secretAnimal << endl;
+//	//insertion operator HERE
+//
+//}
 
-void Player::print(){
-	//call print function of hand
-	cout<<"The secret animal is: " << d_secretAnimal << endl;
-	//insertion operator HERE
-
-}
+//ostream &operator <<(ostream &out, const NoSplit& noSplitCard)
