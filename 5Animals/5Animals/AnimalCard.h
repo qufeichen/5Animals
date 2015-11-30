@@ -22,10 +22,12 @@ class AnimalCard{
 private:
 
 public:
-	virtual void setOrientation(Orientation) = 0;
-	virtual void setRow(EvenOdd) = 0;
-	virtual EvenOdd getRow() = 0;
-	virtual void printRow( EvenOdd ) = 0;
+
+	//should functions be optional?
+	virtual void setOrientation(Orientation)=0;
+	virtual void setRow(EvenOdd)=0;
+	virtual EvenOdd getRow()=0;
+	virtual void printRow( EvenOdd )=0;
 	//virtual friend ostream & operator <<(ostream &out, const AnimalCard&) = 0;
 
 };

@@ -9,6 +9,7 @@
 class AnimalCard;
 class ActionCard;
 #include "StartCard.h"
+#include "StartStack.h"
 //#include "AnimalCard.h"
 //#include "ActionCard.h"
 
@@ -17,9 +18,11 @@ class ActionCard;
 
 class Table{
 private:
-	std::shared_ptr<AnimalCard> tableArray[103][103];
 	//4 pointed graph
-	StartCard firstCard;
+	std::shared_ptr<AnimalCard> tableArray[103][103];
+	
+	//stack in middle of graph
+	StartStack stack;
 
 public:
 	Table();

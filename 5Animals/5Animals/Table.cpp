@@ -5,11 +5,17 @@
 #include "Table.h"
 //Table::Table(){
 	//add pointer to the center
-	//tableArray[51][51] = firstCard;
+	//tableArray[52][52] = stack;
 //}
-//int Table::addAt(std::shared_ptr<AnimalCard>, int row, int col){
-//
-//}
+int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
+	int value = 0;
+	//check if able to put in card
+	//if(){}
+	tableArray[row][col] = newCard; 
+	//check neighbours
+
+	return value;
+}
 //Table& Table::operator+=(std::shared_ptr<ActionCard>){
 //
 //}

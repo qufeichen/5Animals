@@ -7,14 +7,14 @@
 //
 
 #include "StartCard.h"
-#include "Table.h"
+
 #include "Player.h"
 #include "QueryResult.h"
 #include <iostream>
 
 #ifndef ActionCard_h
 #define ActionCard_h
-
+class Table;
 class ActionCard:public StartCard{
     
 public:

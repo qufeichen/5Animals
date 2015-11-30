@@ -23,6 +23,7 @@ int main()
 	MooseAction moose;
 	Joker joker;
 	Deck<MooseAction> deck;
+	StartCard start;
 
 	
 	std::cin.get();
