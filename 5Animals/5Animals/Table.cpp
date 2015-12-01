@@ -52,8 +52,10 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 	try{
 		if(row == 52 && col == 52)
 		{
-			throw exception("Illegal Pick"); //ERROR HERE: "No matching conversion for functional-style cast from 'const char[13] to 'std::exception'
-		}else{
+			throw runtime_error("Illegal Pick");
+		}
+        else
+        {
 			pickedCard = tableArray[row][col];
 
 			//delete element in table
