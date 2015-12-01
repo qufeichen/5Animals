@@ -14,13 +14,15 @@ class Player {
 private:
 	string d_name;
 	string d_secretAnimal;
-	
-public:
 	Hand playerHand;
+public:
 	Player(string, string); //does constructor assign secret animal to player?
 	string swapSecretAnimal(string&);
 	string getSecretAnimal();
+	string getName();
 	friend ostream & operator <<(ostream &out, const Player&);
+
+	void swapHands(Player*);
 
 };
 

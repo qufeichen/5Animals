@@ -24,16 +24,21 @@ private:
 	//stack in middle of graph
 	std::shared_ptr<StartStack> stack;
 
-	//Create 4 players
-
+	//players
+	int d_numPlayers;
+	Player *players;
+	static int currentNumPlayers;
+	int *secretCardIndex;
 public:
-	Table();
+	Table(int);
 	int addAt(std::shared_ptr<AnimalCard>, int row, int col);
 	Table& operator+=(std::shared_ptr<ActionCard>);
 	Table& operator-=(std::shared_ptr<ActionCard>);
 	std::shared_ptr<AnimalCard>pickAt(int row, int col);
 	bool win(std::string& animal);
 	friend ostream & operator <<(ostream& , const Table&);
+	Player getPlayer(string); //gets player by name
+	string createPlayer(string); //creates player
 };
 
 #endif //INC_5ANIMALS_TABLE_H

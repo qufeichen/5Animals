@@ -24,7 +24,7 @@ QueryResult DeerAction::query(){
     cin>>userIn;
 
     //create and return new Query Result
-    QueryResult qr = QueryResult(userIn);
+    QueryResult qr = QueryResult(userIn, NULL);
     return qr;
 }
 
