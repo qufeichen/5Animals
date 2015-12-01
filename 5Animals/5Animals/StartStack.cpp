@@ -15,7 +15,7 @@ StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
 	//top is back
 	stack.push_back(card);
 	//No action exectuted
-	//animals on table change
+	//animal on table change
 	//NEED TO IMPLEMENT
 
 
@@ -26,8 +26,9 @@ StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
 StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
 	//bottom is front
 	stack.push_front(card);
-	//action exectuted
-	//top of startstack does not change
+
+	//animal action exectuted
+	//animal on top of startstack does not change
 	//NEED TO IMPLEMENT
 
 	return *this;
