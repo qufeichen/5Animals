@@ -9,7 +9,6 @@
 #include "Player.h"
 #include <iostream>
 #include <string>
-#include "stdafx.h"
 
 using namespace std;
 
@@ -25,7 +24,7 @@ QueryResult WolfAction::query(){
 	cin >> userIn;
 
 	//create and return new Query Result
-	QueryResult qr = QueryResult(userIn, NULL);
+	QueryResult qr = QueryResult(userIn);
 	return qr;
 }
 

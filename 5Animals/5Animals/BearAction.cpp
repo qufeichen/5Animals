@@ -23,7 +23,7 @@ QueryResult BearAction::query(){
     cin>>userIn;
 
     //create and return new Query Result
-    QueryResult qr = QueryResult(userIn, NULL);
+    QueryResult qr = QueryResult(userIn);
     return qr;
 }
 
@@ -31,7 +31,5 @@ QueryResult BearAction::query(){
 void BearAction::perform(Table &, Player* , QueryResult){
     //perform the action with the user input stored in QueryResult
     //The bear action card allows a player to select another player to switch hands.
-
-
 
 }

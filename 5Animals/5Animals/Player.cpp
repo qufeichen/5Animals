@@ -3,7 +3,6 @@
 //
 
 #include "Player.h"
-#include "Hand.h"
 #include <string>
 
 using namespace std;
@@ -23,25 +22,7 @@ string Player::getSecretAnimal(){
 	return d_secretAnimal;
 }
 
-string Player::getName(){
-	return d_name;
-}
-
-//
-//void Player::print(){
-//	//call print function of hand
-//	cout<<"The secret animal is: " << d_secretAnimal << endl;
-//	//insertion operator HERE
-//
-//}
-
 ostream &operator <<(ostream &out, const Player& player){
-	//cout << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
+	out << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
 	return out;
-}
-
-string Player::swapHands(Player &player){
- Hand temp = player.playerHand;
- player.playerHand = playerHand;
- playerHand = temp;
 }
