@@ -17,6 +17,7 @@ NoSplit::NoSplit(){
 }
 void NoSplit::setOrientation(Orientation o){
 	orientation = o;
+	//flip does not matter
 }
 
 void NoSplit::setRow(EvenOdd eo){

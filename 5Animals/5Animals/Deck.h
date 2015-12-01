@@ -14,7 +14,6 @@ class Deck:public std::vector<std::shared_ptr<T>>{
 public:
 	std::shared_ptr<T> draw();
 
-
 	//hard code cards in deck
 
 };

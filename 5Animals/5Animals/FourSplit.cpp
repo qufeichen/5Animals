@@ -7,6 +7,17 @@ using namespace std;
 
 void FourSplit::setOrientation(Orientation o){
 	orientation = o;
+	//Temp variables
+	char topLeft, topRight, bottomLeft, bottomRight;
+	topLeft = cardMatrix[0][0];
+	topRight = cardMatrix[0][1];
+	bottomLeft = cardMatrix[1][0];
+	bottomRight = cardMatrix[1][1];
+	//Flip orientation
+	cardMatrix[0][0] = bottomRight;
+	cardMatrix[0][1] = bottomLeft;
+	cardMatrix[1][0] = topRight;
+	cardMatrix[1][1] = topLeft;
 }
 void FourSplit::setRow(EvenOdd eo){
 	evenOdd = eo;
