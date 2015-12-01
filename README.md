@@ -1,6 +1,8 @@
 # 5Animals
 Animal version of 7Dragons
 Created for CSI2372 final project
+Created by Robert Luo and Qufei Chen
+
 ------------------------------------------------------------------------------------------------------
 GAME REQUIREMENTS
 
