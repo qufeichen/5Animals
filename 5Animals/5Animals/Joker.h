@@ -9,11 +9,13 @@
 
 class Joker:public NoSplit{
 private:
+	
 	Orientation orientation;
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
 public:
+	Joker();
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
 	int show();

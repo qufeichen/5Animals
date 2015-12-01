@@ -5,13 +5,20 @@
 
 using namespace std;
 
+Joker::Joker(){
+	for(int i = 0 ; i < 2; i++){
+		for(int j = 0; j < 2; j++){
 
+			cardMatrix[i][j] = 'c';
+		}
+	}
+}
 void Joker::setOrientation(Orientation o){
 
 	orientation = o;
 }
 void Joker::setRow(EvenOdd eo){
-		evenOdd = eo;
+	evenOdd = eo;
 	if(eo == EVEN){
 		next = ODD;
 	}else if(eo == ODD){

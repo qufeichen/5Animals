@@ -4,10 +4,17 @@
 #include <iostream>
 
 using namespace std;
+StartCard::StartCard(){
+	for(int i = 0 ; i < 2; i++){
+		for(int j = 0; j < 2; j++){
 
+			cardMatrix[i][j] = 'c';
+		}
+	}
+}
 void StartCard::setOrientation(Orientation o){
 	orientation = o;
-		for(int i = 0; i < 2; i++){
+	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
 			cardMatrix[i][j] = 'c';
 		}

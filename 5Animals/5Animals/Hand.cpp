@@ -33,13 +33,16 @@ Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
 std::shared_ptr<AnimalCard> Hand::operator[](int index){
 	std::shared_ptr<AnimalCard> temp;
 	try{
+		if(index > numOfCards){
+			throw std::exception("MissingCard");
+		}
 			--numOfCards;
 			//get card if equal to index
 			std::list<std::shared_ptr<AnimalCard>>::iterator it;
 			std::advance(it, index);
 			temp = *it;
 	}
-	catch (exception){
+	catch (exception& e){
 		cout << "card does not exist in index" << "\n";
 	}
 	return temp;

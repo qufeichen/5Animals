@@ -32,7 +32,7 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 	try{
 		if(row == 52 && col == 52)
 		{
-			throw "Illegal Pick";
+			throw std::exception("Illegal Pick");
 		}else{
 			pickedCard = tableArray[row][col];
 
@@ -40,7 +40,7 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 			tableArray[row][col] = NULL;
 		}
 	}
-	catch(string e){
+	catch(exception& e){
 		cout << "Illegal Pick";
 	}
 	return pickedCard;
