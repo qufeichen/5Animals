@@ -21,15 +21,8 @@ string Player:: swapSecretAnimal(string& newAnimal){
 string Player::getSecretAnimal(){
 	return d_secretAnimal;
 }
-//
-//void Player::print(){
-//	//call print function of hand
-//	cout<<"The secret animal is: " << d_secretAnimal << endl;
-//	//insertion operator HERE
-//
-//}
 
 ostream &operator <<(ostream &out, const Player& player){
-	//cout << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
+	out << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
 	return out;
 }
