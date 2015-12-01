@@ -14,10 +14,17 @@ class QueryResult{
 
 private:
     //variable:
-    string d_result;
+    string d_playerName;
+	int *d_cardLocation;
+	int d_arrayLength;
+	static int index;
+
 public:
     //constructor
-    QueryResult(string result);
+    QueryResult(string, int);
+	void addToArray(int);
+	string getPlayerName();
+	int getPosition(int);
 };
 
 #endif //INC_5ANIMALS_QUERYRESULT_H
