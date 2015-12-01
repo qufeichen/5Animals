@@ -70,6 +70,10 @@ bool Table::win(std::string& animal){
 	//check of animal in string has won
 	//wins as soon as there are 7 matching cards
 	//Need logic
+	//Project simplification. 
+	//To ease checking if a player has won, you now only have to count the number of cards on the table with the player's secret animal. 
+	//The animals do not have to be connected in order to be included in the count. Because the counts will go up, a player will now need 12 cards. 
+	//The rules for placing cards (or anything else) are not affected by this change.
 
 
 	return win;

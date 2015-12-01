@@ -24,6 +24,7 @@ private:
 	//stack in middle of graph
 	std::shared_ptr<StartStack> stack;
 
+	//Create 4 players (or however many are playing)
 	//players
 	int d_numPlayers;
 	Player *players;
