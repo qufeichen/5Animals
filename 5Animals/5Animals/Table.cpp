@@ -37,7 +37,7 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 			pickedCard = tableArray[row][col];
 
 			//delete element in table
-			tableArray[row][col] = NULL;
+			tableArray[row][col] = 0;
 		}
 	}
 	catch(exception& e){
