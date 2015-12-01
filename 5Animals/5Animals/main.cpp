@@ -13,11 +13,11 @@
 #include "Deck.h"
 int main()
 {
-	NoSplit test;
-	cout << test;
-	TwoSplit two;
-	ThreeSplit three;
-	FourSplit four;
+	NoSplit no('c');
+	cout << no;
+	TwoSplit two(2);
+	ThreeSplit three(25);
+	FourSplit four(51);
 	BearAction bear;
 	DeerAction deer;
 	MooseAction moose;

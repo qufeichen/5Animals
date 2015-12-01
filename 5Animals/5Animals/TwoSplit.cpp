@@ -5,6 +5,64 @@
 
 using namespace std;
 
+TwoSplit::TwoSplit(int model){
+	//10
+	//b d h m w
+	if(model == 6){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'd';
+	}else if(model == 7){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'd';
+	}else if(model == 8){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'h';
+	}else if(model== 9){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 10){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'w';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 11){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 12){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'h';
+	}else if(model == 13){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 14){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'w';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 15){
+		cardMatrix[0][0] = 'm';
+		cardMatrix[0][1] = 'm';
+		cardMatrix[1][0] = 'w';
+		cardMatrix[1][1] = 'w';
+	}
+
+
+}
+
 void TwoSplit::setOrientation(Orientation o){
 	orientation = o;
 	//Temp variables

@@ -5,11 +5,11 @@
 
 using namespace std;
 
-NoSplit::NoSplit(){
+NoSplit::NoSplit(char animal){
 	//instantiate card
 	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
-			cardMatrix[i][j] = 'c';
+			cardMatrix[i][j] = animal;
 		}
 
 	}

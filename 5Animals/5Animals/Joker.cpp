@@ -4,7 +4,9 @@
 #include <iostream>
 
 using namespace std;
+NoSplit::NoSplit(){
 
+}
 Joker::Joker(){
 	for(int i = 0 ; i < 2; i++){
 		for(int j = 0; j < 2; j++){

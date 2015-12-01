@@ -4,7 +4,115 @@
 #include <iostream>
 
 using namespace std;
+ThreeSplit::ThreeSplit(int model){
+	//20	
+	//b d h m w
+	if(model == 16){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'h';
+	}else if(model == 17){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 18){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'w';
+	}else if(model== 19){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 20){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 21){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'h';
+	}else if(model == 22){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 23){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'n';
+	}else if(model == 24){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 25){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'm';
+	}	if(model == 26){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'd';
+	}else if(model == 27){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 28){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'd';
+	}else if(model== 29){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 30){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 31){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 32){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 33){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 34){
+		cardMatrix[0][0] = 'm';
+		cardMatrix[0][1] = 'm';
+		cardMatrix[1][0] = 'b';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 35){
+		cardMatrix[0][0] = 'm';
+		cardMatrix[0][1] = 'm';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'w';
+	}
 
+
+			
+		
+}
 void ThreeSplit::setOrientation(Orientation o){
 	orientation = o;
 	//Temp variables

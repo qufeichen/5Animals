@@ -14,6 +14,7 @@ private:
 	EvenOdd next;
 	char cardMatrix[2][2];
 public:
+	TwoSplit(int);
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
 	EvenOdd getRow();

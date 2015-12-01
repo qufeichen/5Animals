@@ -5,6 +5,88 @@
 
 using namespace std;
 
+FourSplit::FourSplit(int model){
+	//15
+if(model == 136){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 37){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 38){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'w';
+	}else if(model== 39){
+		cardMatrix[0][0] = 'b';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 40){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 41){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'h';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 42){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 43){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 44){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 45){
+		cardMatrix[0][0] = 'd';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'h';
+		cardMatrix[1][1] = 'm';
+	}	if(model == 46){
+		//b d h m w
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'm';
+	}else if(model == 47){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'w';
+	}else if(model == 48){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+	}else if(model== 49){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'd';
+		cardMatrix[1][0] = 'm';
+		cardMatrix[1][1] = 'w';
+		//b d h m w
+	}else if(model == 50){
+		cardMatrix[0][0] = 'h';
+		cardMatrix[0][1] = 'b';
+		cardMatrix[1][0] = 'd';
+		cardMatrix[1][1] = 'w';
+	}
+		
+}
 void FourSplit::setOrientation(Orientation o){
 	orientation = o;
 	//Temp variables
