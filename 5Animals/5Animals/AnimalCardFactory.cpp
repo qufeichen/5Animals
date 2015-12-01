@@ -13,11 +13,7 @@ AnimalCardFactory::AnimalCardFactory(){
 
 }
 
-// AnimalCardFactory* AnimalCardFactory::getFactory(){
-//	 if (!s_factory)
-//		 s_factory = new AnimalCardFactory();
-//	 return s_factory;
-//}
+//
 //Deck<std::shared_ptr<AnimalCard>> AnimalCardFactory::getDeck(){
 ////Create Deck
 ////use std::shuffle

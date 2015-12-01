@@ -24,6 +24,8 @@ private:
 	//stack in middle of graph
 	std::shared_ptr<StartStack> stack;
 
+	//Create 4 players
+
 public:
 	Table();
 	int addAt(std::shared_ptr<AnimalCard>, int row, int col);

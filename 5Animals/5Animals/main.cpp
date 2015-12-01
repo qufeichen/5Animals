@@ -14,7 +14,8 @@
 int main()
 {
 	NoSplit no('c');
-	cout << no;
+	EvenOdd even = EVEN;
+	no.printRow(cout, even);
 	TwoSplit two(2);
 	ThreeSplit three(25);
 	FourSplit four(51);
@@ -25,7 +26,7 @@ int main()
 	Deck<MooseAction> deck;
 	StartCard start;
 
-	
+
 	std::cin.get();
 	return 0;
 }

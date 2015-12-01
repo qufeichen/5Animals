@@ -92,33 +92,51 @@ void TwoSplit::setRow(EvenOdd eo){
 EvenOdd TwoSplit::getRow(){
 	return next;
 }
-void TwoSplit::printRow(EvenOdd eo){
-	if(eo == EVEN){
-		for(int i=0; i< 2; i++){
+//void TwoSplit::printRow(EvenOdd eo){
+//	if(eo == EVEN){
+//		for(int i=0; i< 2; i++){
+//
+//			cout << cardMatrix[0][i] << "first row" << endl;	
+//		}
+//	}
+//	else if(eo == ODD){
+//		for(int i=0; i< 2; i++){
+//			cout<< cardMatrix[1][i] << "second row"  << endl;	
+//		}
+//	}else{
+//		for(int i=0; i< 2; i++){
+//			cout<< cardMatrix[0][i] << "default" << endl;	
+//
+//		}
+//	}
+//}
+//
+//
+//ostream &operator <<(ostream &out, const TwoSplit& splitCard){
+//	for(int i = 0; i < 2; i++){
+//		for(int j = 0; j<2; j++){
+//			out << splitCard.cardMatrix[i][j];
+//			cout << "test!!";
+//		}
+//		cout << "\n";
+//	}
+//	return out;
+//}
 
-			cout << cardMatrix[0][i] << "first row" << endl;	
+void TwoSplit::printRow(ostream& out, EvenOdd eo){
+	if(eo == EVEN){
+		for(int i=0; i< 2; i++){	
+			out << cardMatrix[0][i] << "first row";	
 		}
 	}
 	else if(eo == ODD){
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[1][i] << "second row"  << endl;	
+		for(int i=0; i< 2; i++){	
+			out << cardMatrix[1][i] << "second row";	
 		}
 	}else{
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[0][i] << "default" << endl;	
-
+		for(int i=0; i< 2; i++){	
+			out<< cardMatrix[0][i] << "default";
 		}
 	}
-}
-
-
-ostream &operator <<(ostream &out, const TwoSplit& splitCard){
-	for(int i = 0; i < 2; i++){
-		for(int j = 0; j<2; j++){
-			out << splitCard.cardMatrix[i][j];
-			cout << "test!!";
-		}
-		cout << "\n";
-	}
-	return out;
+	cout <<"\n";
 }

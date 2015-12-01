@@ -20,8 +20,8 @@ public:
 	void setRow(EvenOdd);
 
 	EvenOdd getRow();
-	void printRow( EvenOdd );
-	friend ostream & operator <<(ostream &out, const FourSplit&);
+	void printRow(ostream&, EvenOdd );
+	//friend ostream & operator <<(ostream &out, const FourSplit&);
 
 };
 

@@ -33,7 +33,6 @@ StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
 	return *this;
 }
 std::shared_ptr<StartCard> StartStack::getStartCard(){
-	//which is start card
 	return start;
 }
 

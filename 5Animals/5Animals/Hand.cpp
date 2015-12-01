@@ -57,6 +57,7 @@ ostream& operator <<(ostream &out, const Hand& handGiven){
 		
 	for( int i = 0; i<handGiven.numOfCards; i++){
 		//cout<<
+		//Need to change
 	}
 
 
