@@ -20,6 +20,10 @@ public:
 	string swapSecretAnimal(string&);
 	string getSecretAnimal();
 	string getName();
+	Hand getHand();
+	void setHand(Hand);
+    void swapHands(Player&);
+	void print();
 	friend ostream & operator <<(ostream &out, const Player&);
 
 	void swapHands(Player*);

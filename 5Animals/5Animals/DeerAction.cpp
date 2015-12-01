@@ -24,11 +24,18 @@ QueryResult DeerAction::query(){
     cin>>userIn;
 
     //create and return new Query Result
-    QueryResult qr = QueryResult(userIn, NULL);
+    QueryResult qr = QueryResult(userIn, 0);
     return qr;
 }
 
 
-void DeerAction::perform(Table &, Player* , QueryResult){
+void DeerAction::perform(Table & table, Player* player, QueryResult qr){
 //The deer action card allows a player to select another player to trade goals with
+	
+    string animal1 = table.getPlayer( qr.getPlayerName() ).getSecretAnimal();
+    string animal2 = player->getSecretAnimal();
+
+    player->swapSecretAnimal(animal1);
+    table.getPlayer(qr.getPlayerName()).swapSecretAnimal(animal2);
+    //swap methods return old method. should we print this? 
 }

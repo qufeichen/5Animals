@@ -34,7 +34,7 @@ std::shared_ptr<AnimalCard> Hand::operator[](int index){
 	std::shared_ptr<AnimalCard> temp;
 	try{
 		if(index > numOfCards){
-			throw std::exception("MissingCard");
+			throw std::exception("MissingCard"); //ERROR HERE: "No matching conversion for functional-style cast from 'const char[13] to 'std::exception'
 		}
 			--numOfCards;
 			//get card if equal to index

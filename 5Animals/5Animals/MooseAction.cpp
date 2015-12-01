@@ -22,12 +22,20 @@ QueryResult MooseAction::query(){
 	string userIn = "";
 
 	//create and return new Query Result
-	QueryResult qr = QueryResult(userIn);
+	QueryResult qr = QueryResult(userIn,0);
 	return qr;
 }
 
 
 
-void MooseAction::perform(Table &, Player* , QueryResult){
-
+void MooseAction::perform(Table & table, Player* player, QueryResult qr){
+	
+	string tempAni = table.getPlayer(table.getNumPlayers()).getSecretAnimal();
+	for(int i = table.getNumPlayers(); i>0; i--)
+	{
+        string b = table.getPlayer(i-1).getSecretAnimal();
+        table.getPlayer(i).swapSecretAnimal(b);
+    
+    }
+	table.getPlayer(0).swapSecretAnimal( tempAni );
 }

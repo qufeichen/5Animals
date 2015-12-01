@@ -1,33 +1,35 @@
 #include <iostream>
 #include "Table.h"
 #include "Player.h"
-#include "stdafx.h"
 
 Table::Table(int numPlayers) : d_numPlayers(numPlayers){
-	//add pointer to the center
 	//only contains start card
 	currentNumPlayers = 0;
-	tableArray[52][52] = stack;
-	//player array
-	players = new Player[numPlayers];
-	//index for selecting secret cards
-	secretCardIndex = new int[numPlayers];
-	for(int i = 0; i<numPlayers; ++i){
+	tableArray[52][52] = stack; //pointer to startstack
+
+	players = new Player[numPlayers]; //player array //ERROR HERE: No matching constructor for initialization of 'Player'
+	secretCardIndex = new int[numPlayers]; //index for selecting secret cards
+	for(int i = 0; i<numPlayers; ++i)
+	{ 
 		secretCardIndex[i] = i+1;
 	}
-	//shuffle index
-	random_shuffle(&secretCardIndex[0], &secretCardIndex[numPlayers-1]);
+	random_shuffle(&secretCardIndex[0], &secretCardIndex[numPlayers-1]); //shuffle index
 
 }
 
 int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 	int value = 0;
 	//check if able to put in card
-	//if(){}
+	if(tableArray[row][col] != 0)
+	{
+		cout<<"error: this index is already occupied"<<endl;
+		return 1; 
+	}
 
 
 	tableArray[row][col] = newCard; 
 	//check neighbours
+	//Q: check for what? 
 
 	return value;
 }
@@ -50,7 +52,7 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 	try{
 		if(row == 52 && col == 52)
 		{
-			throw std::exception("Illegal Pick");
+			throw exception("Illegal Pick"); //ERROR HERE: "No matching conversion for functional-style cast from 'const char[13] to 'std::exception'
 		}else{
 			pickedCard = tableArray[row][col];
 
@@ -75,6 +77,9 @@ bool Table::win(std::string& animal){
 	//The animals do not have to be connected in order to be included in the count. Because the counts will go up, a player will now need 12 cards. 
 	//The rules for placing cards (or anything else) are not affected by this change.
 
+	//-> do we want to keep 5 variables, that each counts the number of occurance of each animal? 
+	// if any of them = 12, they win
+
 
 	return win;
 }
@@ -82,8 +87,10 @@ bool Table::win(std::string& animal){
 ostream & operator <<(ostream& out , const Table& table){
 
 	//Print whole table
-	for(int i = 0 ; i < 103; i++){
-		for(int j = 0; j < 103; j++){
+	for(int i = 0 ; i < 103; i++)
+	{
+		for(int j = 0; j < 103; j++)
+		{
 			cout << table.tableArray[i][j];
 		}
 		cout <<"\n";
@@ -91,13 +98,22 @@ ostream & operator <<(ostream& out , const Table& table){
 return out;
 }
 
+int Table::getNumPlayers(){
+	return d_numPlayers;
+}
 
 Player Table::getPlayer(string playerName){
-	for(int i = 0; i<d_numPlayers;i++){
-		if(players[i].getName() == playerName){
+	for(int i = 0; i<d_numPlayers;i++)
+	{
+		if(players[i].getName() == playerName)
+		{
 			return players[i];
 		}
 	}
+}
+
+Player Table::getPlayer(int i){
+	return players[i];
 }
 	
 string Table::createPlayer(string name){
@@ -105,25 +121,25 @@ string Table::createPlayer(string name){
 		return "max number of players already reached";
 
 	string secretAnimal;
-switch(secretCardIndex[currentNumPlayers])
-   {
-   case '1' :
-    	secretAnimal = "Bear";
-      	break;
-   case '2' :
-   		secretAnimal = "Wolf";
-   		break;
-   case '3' :
-     	secretAnimal = "Hare";
-     	break;
-   case '4' :
-      	secretAnimal = "Moose";
-      	break;
-   case '5' :
-      	secretAnimal = "Deer";
-     	 break;
-   }
-players[currentNumPlayers] = Player(name, secretAnimal);
-++currentNumPlayers;
+	switch(secretCardIndex[currentNumPlayers]) //assign secret animal
+	{
+	   	case '1' :
+	    	secretAnimal = "Bear";
+	      	break;
+	   	case '2' :
+	   		secretAnimal = "Wolf";
+	   		break;
+	   	case '3' :
+	     	secretAnimal = "Hare";
+	     	break;
+	   	case '4' :
+	      	secretAnimal = "Moose";
+	      	break;
+	  	 case '5' :
+	      	secretAnimal = "Deer";
+	     	 break;
+	   }
+	players[currentNumPlayers] = Player(name, secretAnimal);
+	++currentNumPlayers;
 	return "player created successfully";
 }

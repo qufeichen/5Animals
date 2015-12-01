@@ -19,11 +19,11 @@ class ActionCard;
 class Table{
 private:
 	//4 pointed graph
-	std::shared_ptr<AnimalCard> tableArray[103][103];
+	std::shared_ptr<AnimalCard> tableArray[103][103] = {0};
 	
 	//stack in middle of graph
 	std::shared_ptr<StartStack> stack;
-
+	
 	//Create 4 players (or however many are playing)
 	//players
 	int d_numPlayers;
@@ -38,7 +38,9 @@ public:
 	std::shared_ptr<AnimalCard>pickAt(int row, int col);
 	bool win(std::string& animal);
 	friend ostream & operator <<(ostream& , const Table&);
+	int getNumPlayers();
 	Player getPlayer(string); //gets player by name
+	Player getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
 };
 

@@ -9,7 +9,6 @@
 #include "Player.h"
 #include <iostream>
 #include <string>
-#include "stdafx.h"
 
 using namespace std;
 
@@ -20,17 +19,23 @@ QueryResult WolfAction::query(){
 	cout << " The Wolf action allows you to pick up a card from a table and place it in your hand" << endl;
 
 	//if input is needed, get input
-	cout << "Choose a card to pick up" << endl;
-	std::string userIn;
-	cin >> userIn;
+	cout << "Choose a the index of the card you want to pick up" << endl;
+	string row;
+	string col;
+	cout<< "enter the row of the card you want to pick up"<<endl;
+	cin>>row;
+	cout<< "enter the column of the card you want to pick up"<<endl;
+	cin>>col;
 
 	//create and return new Query Result
-	QueryResult qr = QueryResult(userIn, NULL);
+	QueryResult qr = QueryResult("", 2);
 	return qr;
 }
 
 
 
-void WolfAction::perform(Table &, Player* , QueryResult){
+void WolfAction::perform(Table &table, Player *player , QueryResult qr){
+
+	player->getHand()+= table.pickAt(qr.getPosition(0),qr.getPosition(1));
 
 }
