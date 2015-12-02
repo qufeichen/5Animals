@@ -7,7 +7,7 @@ Table::Table(int numPlayers) : d_numPlayers(numPlayers){
 	currentNumPlayers = 0;
 	tableArray[52][52] = stack; //pointer to startstack
 
-	players = new Player[numPlayers]; //player array //ERROR HERE: No matching constructor for initialization of 'Player'
+	//players = new Player[numPlayers]; //player array //ERROR HERE: No matching constructor for initialization of 'Player'
 	secretCardIndex = new int[numPlayers]; //index for selecting secret cards
 	for(int i = 0; i<numPlayers; ++i)
 	{ 
@@ -54,8 +54,8 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 		{
 			throw runtime_error("Illegal Pick");
 		}
-        else
-        {
+		else
+		{
 			pickedCard = tableArray[row][col];
 
 			//delete element in table
@@ -97,7 +97,7 @@ ostream & operator <<(ostream& out , const Table& table){
 		}
 		cout <<"\n";
 	}
-return out;
+	return out;
 }
 
 int Table::getNumPlayers(){
@@ -107,17 +107,23 @@ int Table::getNumPlayers(){
 Player Table::getPlayer(string playerName){
 	for(int i = 0; i<d_numPlayers;i++)
 	{
-		if(players[i].getName() == playerName)
-		{
-			return players[i];
+
+
+		if(players[i].getName() == playerName){
+			return getPlayer(i);
 		}
+
 	}
+
 }
 
 Player Table::getPlayer(int i){
+	if(i == -1){
+
+	}
 	return players[i];
 }
-	
+
 string Table::createPlayer(string name){
 	if(currentNumPlayers >= d_numPlayers)
 		return "max number of players already reached";
@@ -125,22 +131,22 @@ string Table::createPlayer(string name){
 	string secretAnimal;
 	switch(secretCardIndex[currentNumPlayers]) //assign secret animal
 	{
-	   	case '1' :
-	    	secretAnimal = "Bear";
-	      	break;
-	   	case '2' :
-	   		secretAnimal = "Wolf";
-	   		break;
-	   	case '3' :
-	     	secretAnimal = "Hare";
-	     	break;
-	   	case '4' :
-	      	secretAnimal = "Moose";
-	      	break;
-	  	 case '5' :
-	      	secretAnimal = "Deer";
-	     	 break;
-	   }
+	case '1' :
+		secretAnimal = "Bear";
+		break;
+	case '2' :
+		secretAnimal = "Wolf";
+		break;
+	case '3' :
+		secretAnimal = "Hare";
+		break;
+	case '4' :
+		secretAnimal = "Moose";
+		break;
+	case '5' :
+		secretAnimal = "Deer";
+		break;
+	}
 	players[currentNumPlayers] = Player(name, secretAnimal);
 	++currentNumPlayers;
 	return "player created successfully";
