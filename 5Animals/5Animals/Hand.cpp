@@ -14,6 +14,8 @@ Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
 
 	++numOfCards;
 	cardsInHand.push_back(newCard);
+
+	//call add
 	return *this;
 }
 

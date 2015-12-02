@@ -7,6 +7,13 @@ Table::Table(int numPlayers) : d_numPlayers(numPlayers){
 	currentNumPlayers = 0;
 	tableArray[52][52] = stack; //pointer to startstack
 
+	//initialize counter
+	bearCount = 0;
+	deerCount = 0;
+	hareCount = 0;
+	mooseCount = 0;
+	wolfCount = 0;
+
 	//players = new Player[numPlayers]; //player array //ERROR HERE: No matching constructor for initialization of 'Player'
 	secretCardIndex = new int[numPlayers]; //index for selecting secret cards
 	for(int i = 0; i<numPlayers; ++i)
@@ -37,6 +44,8 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){
 	*stack+=newCard;
 
+	//get type for newCard see what kind of animal it is
+
 	return *this;
 }
 
@@ -48,7 +57,7 @@ Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
 
 std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 	std::shared_ptr<AnimalCard> pickedCard;
-	//remove fthe table
+	//remove from the table
 	try{
 		if(row == 52 && col == 52)
 		{
@@ -57,6 +66,7 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 		else
 		{
 			pickedCard = tableArray[row][col];
+
 
 			//delete element in table
 			tableArray[row][col] = NULL;
@@ -68,11 +78,28 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 	return pickedCard;
 }
 
+void Table::animalCount(std::shared_ptr<AnimalCard> card){
+	// check what type it is
+	std::string animalType =typeid(card).name();
+	//check no split, two split etc
+
+	//need to test
+	//if(animalType == "NoSplit"){
+	//	//print each row to check
+
+	//}else if(animalType == "TwoSplit"){
+	//	//print each row to check
+	//}else if(animalType == "ThreeSplit"){
+	//	//print each row to check
+	//}else if(animalType == "FoursSplit"){
+	//	//print each row to check
+	//}
+
+}
+
 bool Table::win(std::string& animal){
 	bool win = true;
 
-	//check of animal in string has won
-	//wins as soon as there are 7 matching cards
 	//Need logic
 	//Project simplification. 
 	//To ease checking if a player has won, you now only have to count the number of cards on the table with the player's secret animal. 
@@ -80,7 +107,7 @@ bool Table::win(std::string& animal){
 	//The rules for placing cards (or anything else) are not affected by this change.
 
 	//-> do we want to keep 5 variables, that each counts the number of occurance of each animal? 
-	// if any of them = 12, they win
+	// if any of them = 7, they win
 
 
 	return win;
@@ -105,6 +132,7 @@ int Table::getNumPlayers(){
 }
 
 Player Table::getPlayer(string playerName){
+
 	for(int i = 0; i<d_numPlayers;i++)
 	{
 
@@ -118,9 +146,7 @@ Player Table::getPlayer(string playerName){
 }
 
 Player Table::getPlayer(int i){
-	if(i == -1){
 
-	}
 	return players[i];
 }
 
