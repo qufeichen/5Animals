@@ -19,7 +19,7 @@ class ActionCard;
 class Table{
 private:
 	//4 pointed graph
-	std::shared_ptr<AnimalCard> tableArray[103][103] = {0};
+	std::shared_ptr<AnimalCard> tableArray[103][103] ;
 	
 	//stack in middle of graph
 	std::shared_ptr<StartStack> stack;
@@ -28,7 +28,7 @@ private:
 	//players
 	int d_numPlayers;
 	Player *players;
-	static int currentNumPlayers;
+	int currentNumPlayers;
 	int *secretCardIndex;
 public:
 	Table(int);

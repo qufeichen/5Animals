@@ -17,7 +17,7 @@ private:
     string d_playerName;
 	int *d_cardLocation;
 	int d_arrayLength;
-	static int index;
+	int index;
 
 public:
     //constructor
