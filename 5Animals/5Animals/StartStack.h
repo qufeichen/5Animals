@@ -15,7 +15,7 @@ class StartStack:public AnimalCard{
     
 private:
 	std::deque<shared_ptr<StartCard>> stack;
-	std::shared_ptr<StartCard> start;
+    std::shared_ptr<StartCard> start;
 
 	//values for the card on top
 	Orientation orientation;

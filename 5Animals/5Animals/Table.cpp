@@ -2,20 +2,15 @@
 #include "Table.h"
 #include "Player.h"
 
-Table::Table (int const numPlayers) : d_numPlayers(numPlayers){
+Table::Table (int const numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0){
 	//only contains start card
 	currentNumPlayers = 0;
-	tableArray[52][52] = stack; //pointer to startstack
+	tableArray[52][52] = stack; //pointer to startstack TODO: check this?
 
-	//initialize counter
-	bearCount = 0;
-	deerCount = 0;
-	hareCount = 0;
-	mooseCount = 0;
-	wolfCount = 0;
-
-	players = new Player[numPlayers]; //player array //ERROR HERE: No matching constructor for initialization of 'Player'
-	secretCardIndex = new int[numPlayers]; //index for selecting secret cards
+	players = new Player[numPlayers]; //player array //TODO: ERROR HERE: No matching constructor for initialization of 'Player'
+	
+    //index for selecting secret cards
+    secretCardIndex = new int[numPlayers];
 	for(int i = 0; i<numPlayers; ++i)
 	{ 
 		secretCardIndex[i] = i+1;

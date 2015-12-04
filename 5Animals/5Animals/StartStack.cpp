@@ -4,35 +4,30 @@
 #include <iostream>
 #include <memory>
 #include "StartStack.h"
+#include "StartCard.h"
 #include <deque>
 
 StartStack::StartStack(){
-	//Add only startcard
-	stack.push_back(start);
+    
+    std::shared_ptr<StartCard> newStart( new StartCard() );
+    this->start = newStart;
+    stack.push_back(start);
+
 }
 
 StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
-	//top is back
-	stack.push_back(card);
-	//No action exectuted
-	//animal on table change
-	//NEED TO IMPLEMENT
-
-
-
-
+    stack.push_back(card);
 	return *this;
+    //execute action elsewhere
+    //no access to table
 }
 
 StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
 	//bottom is front
 	stack.push_front(card);
-
-	//animal action exectuted
-	//animal on top of startstack does not change
-	//NEED TO IMPLEMENT
-
 	return *this;
+    //execute action elsewhere
+    //no access to table
 }
 
 std::shared_ptr<StartCard> StartStack::getStartCard(){
