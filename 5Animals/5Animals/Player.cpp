@@ -8,8 +8,7 @@
 
 using namespace std;
 
-Player::Player(string name, string s_Animal): d_name(name){
-//do we assign secret animal here?
+Player::Player(string name, string s_Animal): d_name(name), playerHand(){
 	d_secretAnimal = s_Animal;
 }
 

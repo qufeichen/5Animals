@@ -2,7 +2,7 @@
 #include "Table.h"
 #include "Player.h"
 
-Table::Table(int numPlayers) : d_numPlayers(numPlayers){
+Table::Table (int const numPlayers) : d_numPlayers(numPlayers){
 	//only contains start card
 	currentNumPlayers = 0;
 	tableArray[52][52] = stack; //pointer to startstack

@@ -27,11 +27,11 @@ private:
 	//Create 4 players (or however many are playing)
 	//players
 	int d_numPlayers;
-	Player *players;
+	Player* players;
 	static int currentNumPlayers;
 	int *secretCardIndex;
 public:
-	Table(int);
+	Table(const int);
 	int addAt(std::shared_ptr<AnimalCard>, int row, int col);
 	Table& operator+=(std::shared_ptr<ActionCard>);
 	Table& operator-=(std::shared_ptr<ActionCard>);

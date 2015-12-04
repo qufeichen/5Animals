@@ -16,10 +16,10 @@ using namespace std;
 class Game {
 private:
 	int d_numPlayers;
-	Table *table;
 
 public:
 	Game(int);
+    Table *table;
 	Player getPlayer(string);
 };
 

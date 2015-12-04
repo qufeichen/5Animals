@@ -16,8 +16,8 @@ private:
 	string d_secretAnimal;
 	Hand playerHand;
 public:
-	Player(string, string); //does constructor assign secret animal to player?
-	string swapSecretAnimal(string&);
+	Player(string, string);
+    string swapSecretAnimal(string&);
 	string getSecretAnimal();
 	string getName();
 	Hand getHand();
