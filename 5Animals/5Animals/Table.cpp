@@ -85,6 +85,7 @@ void Table::animalCount(std::shared_ptr<AnimalCard> card){
 	//	//print each row to check
 	//}
 
+
 }
 
 bool Table::win(std::string& animal){
