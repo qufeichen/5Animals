@@ -15,7 +15,8 @@
 class AnimalCardFactory{
 private:
 	//Create Deck
-	Deck <std::shared_ptr<AnimalCard>> deck;
+	Deck <std::shared_ptr<AnimalCard>> deck[51];
+    
 	// create deck of 50 animal cards plus joker all have to be different
 	////5 no split
 	//std::shared_ptr<NoSplit> card1;

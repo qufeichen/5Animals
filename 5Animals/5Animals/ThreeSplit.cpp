@@ -4,6 +4,9 @@
 #include <iostream>
 
 using namespace std;
+
+//creation of classes supposed to be done in AnimalFactory
+/*
 ThreeSplit::ThreeSplit(int model){
 	//20	
 	//b d h m w
@@ -108,11 +111,19 @@ ThreeSplit::ThreeSplit(int model){
 		cardMatrix[1][0] = 'd';
 		cardMatrix[1][1] = 'w';
 	}
-
-
-			
 		
 }
+ */
+
+ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e){
+    for (int i=0; i<2; i++){
+        for(int j=0; j<2; j++){
+            cardMatrix[i][j] = a[i][j];
+        }
+    }
+}
+
+
 void ThreeSplit::setOrientation(Orientation o){
 	orientation = o;
 	//Temp variables

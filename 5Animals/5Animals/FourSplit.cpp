@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//creation of cards is supposed to be done in AnimalFactory
+/*
 FourSplit::FourSplit(int model){
 	//15
 if(model == 136){
@@ -87,6 +89,21 @@ if(model == 136){
 	}
 		
 }
+ */
+
+
+FourSplit::FourSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e) {
+    
+    for (int i=0; i<2; i++){
+        for(int j=0; j<2; j++){
+            cardMatrix[i][j] = a[i][j];
+        }
+    }
+    
+}
+
+
+
 void FourSplit::setOrientation(Orientation o){
 	orientation = o;
 	//Temp variables
@@ -101,6 +118,7 @@ void FourSplit::setOrientation(Orientation o){
 	cardMatrix[1][0] = topRight;
 	cardMatrix[1][1] = topLeft;
 }
+
 void FourSplit::setRow(EvenOdd eo){
 	evenOdd = eo;
 	if(eo == EVEN){

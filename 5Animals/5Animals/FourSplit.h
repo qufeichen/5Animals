@@ -16,14 +16,16 @@ private:
 	char cardMatrix[2][2];
 
 public:
-	FourSplit(int);
+	//FourSplit(int);
+    FourSplit( char[2][2], Orientation, EvenOdd);
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
-
 	EvenOdd getRow();
 	void printRow(ostream&, EvenOdd );
 	//friend ostream & operator <<(ostream &out, const FourSplit&);
 
+    
+    
 };
 
 #endif

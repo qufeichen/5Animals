@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//creation of cards supposed to be done in AnimalFactor
+/*
 TwoSplit::TwoSplit(int model){
 	//10
 	//b d h m w
@@ -60,8 +62,19 @@ TwoSplit::TwoSplit(int model){
 		cardMatrix[1][1] = 'w';
 	}
 
-
 }
+ */
+
+TwoSplit::TwoSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e){
+    
+    for (int i=0; i<2; i++){
+        for(int j=0; j<2; j++){
+            cardMatrix[i][j] = a[i][j];
+        }
+    }
+}
+
+
 
 void TwoSplit::setOrientation(Orientation o){
 	orientation = o;
