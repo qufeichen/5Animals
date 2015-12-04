@@ -7,14 +7,12 @@
 #include "AnimalCard.h"
 #include <memory>
 
-template <typename T>
+template <class T>
 
-class Deck:public std::vector<std::shared_ptr<T>>{
+class Deck : public std::vector<std::shared_ptr<T>>{
 	
 public:
 	std::shared_ptr<T> draw();
-
-	//hard code cards in deck
 
 };
 

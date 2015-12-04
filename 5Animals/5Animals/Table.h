@@ -32,11 +32,11 @@ private:
 	int mooseCount;
 	int wolfCount;
 
-	//Create 4 players (or however many are playing)
-	//players
-	int d_numPlayers;
-	Player *players;
-	static int currentNumPlayers;
+    //Create 4 players (or however many are playing)
+    //players
+    int d_numPlayers;
+    Player *players;
+    static int currentNumPlayers;
     int *secretCardIndex;
 
 public:

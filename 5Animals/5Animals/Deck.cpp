@@ -5,10 +5,13 @@
 #include <iostream>
 #include <memory>
 
-std::shared_ptr<AnimalCard> Deck<AnimalCard>::draw(){
-	 shared_ptr<AnimalCard> temp;
-	 //pop last element and return it
-		temp = this->back();
-		return temp;
+template<class T> std::shared_ptr<T> Deck<T>::draw(){
+    
+    shared_ptr<T> temp;
+    //pop last element and return it
+    temp = this->back();
+    //remove last element from deck
+    this->pop_back();
+    return temp;
 
 }
