@@ -15,7 +15,7 @@
 
 AnimalCardFactory::AnimalCardFactory(){
 
-    //create cards here
+    //create cards
     
     //no splits
     std::shared_ptr<AnimalCard> nos1( new NoSplit('b', Orientation::UP, EvenOdd::EVEN) );
@@ -170,15 +170,29 @@ AnimalCardFactory::AnimalCardFactory(){
     std::shared_ptr<AnimalCard>joker(new Joker());
     deck.push_back(joker);
     
-    //TODO: add to deck
-    
-
-//
-//Deck<std::shared_ptr<AnimalCard>> AnimalCardFactory::getDeck(){
-////Create Deck
-////use std::shuffle
-//deck.push_back(card1);
-
-//}
+    //TODO: shuffle cards here? or in Table? 
     
 }
+
+Deck<AnimalCard> &AnimalCardFactory::getDeck(){
+    return deck;
+    
+}
+
+AnimalCardFactory::~AnimalCardFactory(){
+    delete animalFactory;
+}
+
+AnimalCardFactory* AnimalCardFactory::getFactory(){
+    static AnimalCardFactory animalFactory;
+    return &animalFactory;
+    
+}
+
+
+//
+//Deck<std::shared_ptr<AnimalCard> > AnimalCardFactory::getDeck(){
+//
+//}
+
+

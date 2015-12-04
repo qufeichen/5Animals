@@ -19,9 +19,13 @@ private:
 
 public:
 	AnimalCardFactory();
+    ~AnimalCardFactory();
+    Deck<AnimalCard> createDeck();
+    static AnimalCardFactory* animalFactory;
 	static AnimalCardFactory* getFactory();
-	Deck<std::shared_ptr<AnimalCard>> getDeck();
-	static AnimalCardFactory* s_factory;
+	Deck<AnimalCard> &getDeck();
+    //Deck<std::shared_ptr<AnimalCard> > getDeck();
+    
 };
 
 #endif
