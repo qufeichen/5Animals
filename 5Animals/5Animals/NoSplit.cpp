@@ -7,7 +7,6 @@ using namespace std;
 
 
 NoSplit::NoSplit(char animal, Orientation o, EvenOdd e): orientation(o), evenOdd(e){
-	//instantiate card
 	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
 			cardMatrix[i][j] = animal;

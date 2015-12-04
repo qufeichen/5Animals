@@ -16,7 +16,6 @@ private:
 	char cardMatrix[2][2];
 
 public:
-	//FourSplit(int);
     FourSplit( char[2][2], Orientation, EvenOdd);
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
