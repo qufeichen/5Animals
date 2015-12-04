@@ -36,7 +36,7 @@ private:
     //players
     int d_numPlayers;
     Player *players;
-    static int currentNumPlayers;
+    int currentNumPlayers;
     int *secretCardIndex;
 
 public:

@@ -21,7 +21,7 @@ public:
 	AnimalCardFactory();
     ~AnimalCardFactory();
     Deck<AnimalCard> createDeck();
-    static AnimalCardFactory* animalFactory;
+    AnimalCardFactory* animalFactory;
 	static AnimalCardFactory* getFactory();
 	Deck<AnimalCard> &getDeck();
     //Deck<std::shared_ptr<AnimalCard> > getDeck();

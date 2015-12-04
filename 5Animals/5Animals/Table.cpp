@@ -7,7 +7,7 @@ Table::Table (int const numPlayers) : d_numPlayers(numPlayers),  bearCount(0), d
 	currentNumPlayers = 0;
 	tableArray[52][52] = stack; //pointer to startstack TODO: check this?
 
-	players = new Player[numPlayers]; //player array //TODO: ERROR HERE: No matching constructor for initialization of 'Player'
+	//players = new Player[numPlayers]; //player array //TODO: ERROR HERE: No matching constructor for initialization of 'Player'
 	
     //index for selecting secret cards
     secretCardIndex = new int[numPlayers];
@@ -86,6 +86,7 @@ void Table::animalCount(std::shared_ptr<AnimalCard> card){
 	//}else if(animalType == "FoursSplit"){
 	//	//print each row to check
 	//}
+
 
 }
 

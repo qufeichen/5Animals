@@ -12,6 +12,7 @@
 #include "Joker.h"
 #include "Deck.h"
 #include "Game.h"
+#include "AnimalCardFactory.h"
 
 using namespace std;
 
@@ -42,7 +43,11 @@ int main( int narg, char *args[] ) {
         cin>>name;
         game.table->createPlayer(name);
     }
-    
+
+	//testing animal card factory
+	AnimalCardFactory factory;
+	factory.getFactory();
+
     //OR
     //LOAD FROM FILE
     //TODO: implement load from file
