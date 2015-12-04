@@ -9,8 +9,10 @@
 #include "StartCard.h"
 #include "Player.h"
 #include "QueryResult.h"
-#include "Table.h"
 #include <iostream>
+
+//NEED class Table or else there is conflict
+class Table;
 
 #ifndef ActionCard_h
 #define ActionCard_h
