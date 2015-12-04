@@ -7,8 +7,6 @@ Table::Table (int const numPlayers) : d_numPlayers(numPlayers),  bearCount(0), d
 	currentNumPlayers = 0;
 	tableArray[52][52] = stack; //pointer to startstack TODO: check this?
 
-	players = new Player[numPlayers]; //player array //TODO: ERROR HERE: No matching constructor for initialization of 'Player'
-	
     //index for selecting secret cards
     secretCardIndex = new int[numPlayers];
 	for(int i = 0; i<numPlayers; ++i)
@@ -123,26 +121,25 @@ int Table::getNumPlayers(){
 	return d_numPlayers;
 }
 
-Player Table::getPlayer(string playerName){
-
-	for(int i = 0; i<d_numPlayers;i++)
-	{
-
-		if(players[i].getName() == playerName)
-        {
-			return getPlayer(i);
-        } else {
-            //TODO: call exception
-            
-        }
-
-	}
+Player* Table::getPlayer(string playerName) {
+    
+    Player* player = 0;
+        for(int i = 0; i<d_numPlayers;i++)
+            {
+                if(players[i].getName() == playerName){
+                    player = getPlayer(i);
+                }
+            }
+    
+    return player;
 
 }
 
-Player Table::getPlayer(int i){
-
-	return players[i];
+Player* Table::getPlayer(int i){
+    
+    Player* player = 0;
+	player = &players[i];
+    return player;
 }
 
 string Table::createPlayer(string name){

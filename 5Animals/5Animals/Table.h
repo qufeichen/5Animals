@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <memory>
+#include <vector>
 class AnimalCard;
 class ActionCard;
 #include "StartCard.h"
@@ -35,7 +36,7 @@ private:
     //Create 4 players (or however many are playing)
     //players
     int d_numPlayers;
-    Player *players;
+    vector<Player> players;
     static int currentNumPlayers;
     int *secretCardIndex;
 
@@ -48,8 +49,8 @@ public:
 	bool win(std::string& animal);
 	friend ostream & operator <<(ostream& , const Table&);
 	int getNumPlayers();
-	Player getPlayer(string); //gets player by name
-	Player getPlayer(int); //gets player by index (in array)
+	Player *getPlayer(string); //gets player by name
+	Player *getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
 	void animalCount(std::shared_ptr<AnimalCard>); //count number of animal and incremenents
     
