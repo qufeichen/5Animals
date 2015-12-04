@@ -71,7 +71,7 @@ int main( int narg, char *args[] ) {
     /*
      TODO: FIX THIS:
      Full of errors
-     will not compile 
+     will not build/compile
     
      
   if (narg > 1) {

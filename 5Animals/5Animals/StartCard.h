@@ -12,11 +12,13 @@
 
 
 class StartCard:public NoSplit{
+    
 private:
 	Orientation orientation;
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
+    
 public:
 	StartCard();
 	void setOrientation(Orientation);

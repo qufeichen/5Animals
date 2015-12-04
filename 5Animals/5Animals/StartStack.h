@@ -12,6 +12,7 @@
 #ifndef STARTSTACK_H
 #define STARTSTACK_H
 class StartStack:public AnimalCard{
+    
 private:
 	std::deque<shared_ptr<StartCard>> stack;
 	std::shared_ptr<StartCard> start;
@@ -33,6 +34,7 @@ public:
 	void printRow( EvenOdd );
 
 	//Need to print object???
+    
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "OneSplit.h"
+#include "NoSplit.h"
 #include <string>
 #include <cstdlib>
 #include <iostream>
@@ -8,6 +9,7 @@ using namespace std;
 void OneSplit::setOrientation(Orientation o){
 	orientation = o;
 }
+
 void OneSplit::setRow(EvenOdd eo){
 	evenOdd = eo;
 	if(eo == EVEN){
@@ -22,6 +24,7 @@ void OneSplit::setRow(EvenOdd eo){
 EvenOdd OneSplit::getRow(){
 	return next;
 }
+
 void OneSplit::printRow(EvenOdd eo){
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){
@@ -44,7 +47,7 @@ void OneSplit::printRow(EvenOdd eo){
 ostream &operator <<(ostream &out, const NoSplit& noSplitCard){
 	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
-			out << noSplitCard.cardMatrix[i][j];
+			out << noSplitCard.cardMatrix[i][j]; //cardMatrix is private -> implement public getter?
 			cout << "test!!";
 		}
 		cout << "\n";

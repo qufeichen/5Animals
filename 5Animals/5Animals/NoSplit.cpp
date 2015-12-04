@@ -11,10 +11,9 @@ NoSplit::NoSplit(char animal){
 		for(int j = 0; j<2; j++){
 			cardMatrix[i][j] = animal;
 		}
-
 	}
-
 }
+
 void NoSplit::setOrientation(Orientation o){
 	orientation = o;
 	//flip does not matter
@@ -52,6 +51,7 @@ EvenOdd NoSplit::getRow(){
 //		}
 //	}
 //}
+
 void NoSplit::printRow(ostream& out, EvenOdd eo){
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){	

@@ -14,7 +14,7 @@ Table::Table (int const numPlayers) : d_numPlayers(numPlayers){
 	mooseCount = 0;
 	wolfCount = 0;
 
-	//players = new Player[numPlayers]; //player array //ERROR HERE: No matching constructor for initialization of 'Player'
+	players = new Player[numPlayers]; //player array //ERROR HERE: No matching constructor for initialization of 'Player'
 	secretCardIndex = new int[numPlayers]; //index for selecting secret cards
 	for(int i = 0; i<numPlayers; ++i)
 	{ 
@@ -33,12 +33,9 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 		return 1; 
 	}
 
-
-	tableArray[row][col] = newCard; 
-	//check neighbours
-	//Q: check for what? 
-
-	return value;
+	tableArray[row][col] = newCard;
+	
+    return value;
 }
 
 Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){

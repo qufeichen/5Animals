@@ -25,6 +25,7 @@ public:
 	void addToArray(int);
 	string getPlayerName();
 	int getPosition(int);
+    
 };
 
 #endif //INC_5ANIMALS_QUERYRESULT_H

@@ -15,9 +15,11 @@
 
 
 class Hand{
+    
 private:
 	int numOfCards;
 	std::list<std::shared_ptr<AnimalCard>> cardsInHand;
+    
 public:
 	Hand();
 	Hand& operator+=(std::shared_ptr<AnimalCard>);
@@ -25,7 +27,6 @@ public:
 	std::shared_ptr<AnimalCard> operator[](int);
 	int noCards();
 	friend ostream & operator <<(ostream &out, const Hand&);
-
 
 };
 

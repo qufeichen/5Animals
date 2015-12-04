@@ -11,10 +11,12 @@ using namespace std;
 #define INC_5ANIMALS_PLAYER_H
 
 class Player {
+    
 private:
 	string d_name;
 	string d_secretAnimal;
 	Hand playerHand;
+    
 public:
 	Player(string, string);
     string swapSecretAnimal(string&);
@@ -25,7 +27,6 @@ public:
     void swapHands(Player&);
 	void print();
 	friend ostream & operator <<(ostream &out, const Player&);
-
 	void swapHands(Player*);
 
 };

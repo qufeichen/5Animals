@@ -12,6 +12,7 @@ StartCard::StartCard(){
 		}
 	}
 }
+
 void StartCard::setOrientation(Orientation o){
 	orientation = o;
 	for(int i = 0; i < 2; i++){
@@ -35,6 +36,7 @@ void StartCard::setRow(EvenOdd eo){
 EvenOdd StartCard::getRow(){
 	return next;
 }
+
 void StartCard::printRow(EvenOdd eo){
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){

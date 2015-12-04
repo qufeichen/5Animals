@@ -18,6 +18,7 @@
 using namespace std;
 
 class MooseAction : public ActionCard {
+    
 public:
     QueryResult query();
     void perform(Table &, Player* , QueryResult);

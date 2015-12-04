@@ -8,6 +8,7 @@
 #include <iostream>
 
 class FourSplit:public AnimalCard{
+    
 private:
 	Orientation orientation;
 	EvenOdd evenOdd;

@@ -19,6 +19,7 @@
 using namespace std;
 
 class DeerAction : public ActionCard {
+    
 public:
     QueryResult query();
     void perform(Table &, Player* , QueryResult);

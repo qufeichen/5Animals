@@ -23,6 +23,7 @@ StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
 
 	return *this;
 }
+
 StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
 	//bottom is front
 	stack.push_front(card);
@@ -33,6 +34,7 @@ StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
 
 	return *this;
 }
+
 std::shared_ptr<StartCard> StartStack::getStartCard(){
 	return start;
 }

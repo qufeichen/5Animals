@@ -14,13 +14,14 @@ using namespace std;
 #define INC_5ANIMALS_GAME_H
 
 class Game {
+    
 private:
 	int d_numPlayers;
 
 public:
 	Game(int);
     Table *table;
-	Player getPlayer(string);
+    
 };
 
 

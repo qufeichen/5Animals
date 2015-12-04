@@ -21,12 +21,14 @@ Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
 
 
 Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
-	try{
+	try
+    {
 			--numOfCards;
 			//remove if equal to newCard
 			cardsInHand.remove(newCard);
 	}
-	catch (exception){
+	catch (exception)
+    {
 		cout << "card does not exist" << "\n";
 	}
 	return *this;
@@ -34,7 +36,8 @@ Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
 
 std::shared_ptr<AnimalCard> Hand::operator[](int index){
 	std::shared_ptr<AnimalCard> temp;
-	try{
+	try
+    {
 		if(index > numOfCards)
         {
             throw std::runtime_error("Missing Card");
@@ -58,9 +61,11 @@ int Hand::noCards(){
 }
 
 ostream& operator <<(ostream &out, const Hand& handGiven){
-		out << "Card in Hand" << endl;
-		int count = 0;
-	for(std::list<std::shared_ptr<AnimalCard>>::const_iterator i = handGiven.cardsInHand.begin(); i != handGiven.cardsInHand.end(); i++){
+    out << "Card in Hand" << endl;
+    int count = 0;
+    
+	for(std::list<std::shared_ptr<AnimalCard>>::const_iterator i = handGiven.cardsInHand.begin(); i != handGiven.cardsInHand.end(); i++)
+    {
 		//prints number 
 		
 		//print Cards

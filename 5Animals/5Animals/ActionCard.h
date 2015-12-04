@@ -7,19 +7,20 @@
 //
 
 #include "StartCard.h"
-
 #include "Player.h"
 #include "QueryResult.h"
+#include "Table.h"
 #include <iostream>
 
 #ifndef ActionCard_h
 #define ActionCard_h
-class Table;
+
 class ActionCard:public StartCard{
     
 public:
     virtual QueryResult query() = 0;
-    virtual void perform( Table&, Player* , QueryResult) = 0;
+    virtual void perform( Table&, Player*, QueryResult) = 0;
+    
 };
 
 

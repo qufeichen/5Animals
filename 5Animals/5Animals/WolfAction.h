@@ -18,9 +18,11 @@
 using namespace std;
 
 class WolfAction : public ActionCard {
+    
 public:
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
+    
 };
 
 #endif /* WolfAction_h */

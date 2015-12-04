@@ -17,6 +17,7 @@ class ActionCard;
 #define INC_5ANIMALS_TABLE_H
 
 class Table{
+    
 private:
 	//4 pointed graph
 	std::shared_ptr<AnimalCard> tableArray[103][103] ;
@@ -31,12 +32,12 @@ private:
 	int mooseCount;
 	int wolfCount;
 
+	//Create 4 players (or however many are playing)
 	//players
 	int d_numPlayers;
-    Player *players;
+	Player *players;
 	static int currentNumPlayers;
-	int *secretCardIndex;
-
+    int *secretCardIndex;
 
 public:
 	Table(const int);
@@ -51,6 +52,7 @@ public:
 	Player getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
 	void animalCount(std::shared_ptr<AnimalCard>); //count number of animal and incremenents
+    
 };
 
 #endif //INC_5ANIMALS_TABLE_H

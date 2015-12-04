@@ -18,6 +18,7 @@
 using namespace std;
 
 class HareAction : public ActionCard {
+    
 public:
     QueryResult query();
     void perform(Table &, Player* , QueryResult);

@@ -7,18 +7,20 @@ using namespace std;
 NoSplit::NoSplit(){
 
 }
+
 Joker::Joker(){
 	for(int i = 0 ; i < 2; i++){
 		for(int j = 0; j < 2; j++){
-
 			cardMatrix[i][j] = 'c';
 		}
 	}
 }
+
 void Joker::setOrientation(Orientation o){
 
 	orientation = o;
 }
+
 void Joker::setRow(EvenOdd eo){
 	evenOdd = eo;
 	if(eo == EVEN){
@@ -33,6 +35,7 @@ void Joker::setRow(EvenOdd eo){
 EvenOdd Joker::getRow(){
 	return next;
 }
+
 void Joker::printRow( EvenOdd eo){
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){
