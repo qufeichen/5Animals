@@ -19,17 +19,25 @@ class ActionCard;
 class Table{
 private:
 	//4 pointed graph
-	std::shared_ptr<AnimalCard> tableArray[103][103] = {0};
+	std::shared_ptr<AnimalCard> tableArray[103][103] ;
 	
 	//stack in middle of graph
 	std::shared_ptr<StartStack> stack;
-	
-	//Create 4 players (or however many are playing)
+
+	//Number of Each Animal card
+	int bearCount;	
+	int deerCount;
+	int hareCount;
+	int mooseCount;
+	int wolfCount;
+
 	//players
 	int d_numPlayers;
-	Player* players;
+    Player *players;
 	static int currentNumPlayers;
 	int *secretCardIndex;
+
+
 public:
 	Table(const int);
 	int addAt(std::shared_ptr<AnimalCard>, int row, int col);
@@ -42,6 +50,7 @@ public:
 	Player getPlayer(string); //gets player by name
 	Player getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
+	void animalCount(std::shared_ptr<AnimalCard>); //count number of animal and incremenents
 };
 
 #endif //INC_5ANIMALS_TABLE_H

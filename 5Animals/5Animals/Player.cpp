@@ -40,7 +40,7 @@ void Player::print(){
 }
 
 ostream &operator <<(ostream &out, const Player& player){
-	//cout << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
+	cout << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
 	return out;
 }
 
