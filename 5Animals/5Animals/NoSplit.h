@@ -21,7 +21,7 @@ public:
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
 	EvenOdd getRow();
-	void printRow( ostream&, EvenOdd );
+	void printRow( ostream&, EvenOdd ); 
 	//friend ostream & operator <<(ostream &out, const NoSplit&);
 
 };

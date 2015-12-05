@@ -26,12 +26,12 @@ QueryResult MooseAction::query(){
 
 void MooseAction::perform(Table & table, Player* player, QueryResult qr){
 	
-	string tempAni = table.getPlayer(table.getNumPlayers()).getSecretAnimal();
+	string tempAni = table.getPlayer(table.getNumPlayers())->getSecretAnimal();
 	for(int i = table.getNumPlayers(); i>0; i--)
 	{
-        string b = table.getPlayer(i-1).getSecretAnimal();
-        table.getPlayer(i).swapSecretAnimal(b);
+        string b = table.getPlayer(i-1)->getSecretAnimal();
+        table.getPlayer(i)->swapSecretAnimal(b);
     
     }
-	table.getPlayer(0).swapSecretAnimal( tempAni );
+	table.getPlayer(0)->swapSecretAnimal( tempAni );
 }

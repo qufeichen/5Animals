@@ -27,11 +27,11 @@ QueryResult DeerAction::query(){
 
 void DeerAction::perform(Table & table, Player* player, QueryResult qr){
 	
-    string animal1 = table.getPlayer( qr.getPlayerName() ).getSecretAnimal();
+    string animal1 = table.getPlayer( qr.getPlayerName() )->getSecretAnimal();
     string animal2 = player->getSecretAnimal();
 
     player->swapSecretAnimal(animal1);
-    table.getPlayer(qr.getPlayerName()).swapSecretAnimal(animal2);
+    table.getPlayer(qr.getPlayerName())->swapSecretAnimal(animal2);
     //TODO: swap methods return old method. should we print this?
     
 }
