@@ -5,5 +5,4 @@
 //Robert Luo -
 //Due Date: December 9th, 2015
 
-
-//Virtual Class
+//virtual class

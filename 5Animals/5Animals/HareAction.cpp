@@ -42,8 +42,8 @@ QueryResult HareAction::query(){
     qr.addToArray(bCol);
 
     return qr;
+    
 }
-
 
 void HareAction::perform(Table & table, Player* player , QueryResult qr){
 

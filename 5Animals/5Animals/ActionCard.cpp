@@ -5,6 +5,5 @@
 //Robert Luo -
 //Due Date: December 9th, 2015
 
-
-//virtual function
+//virtual class
 

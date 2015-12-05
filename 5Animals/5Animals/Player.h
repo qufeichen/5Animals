@@ -8,10 +8,11 @@
 #include <string>
 #include "Hand.h"
 
-using namespace std;
-
 #ifndef INC_5ANIMALS_PLAYER_H
 #define INC_5ANIMALS_PLAYER_H
+
+using namespace std;
+
 
 class Player {
     
@@ -35,4 +36,4 @@ public:
 };
 
 
-#endif //INC_5ANIMALS_PLAYER_H
+#endif

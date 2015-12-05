@@ -19,10 +19,12 @@ TwoSplit::TwoSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), even
             cardMatrix[i][j] = a[i][j];
         }
     }
+    
 }
 
 
 void TwoSplit::setOrientation(Orientation o){
+    
 	orientation = o;
 	//Temp variables
 	char topLeft, topRight, bottomLeft, bottomRight;
@@ -35,9 +37,11 @@ void TwoSplit::setOrientation(Orientation o){
 	cardMatrix[0][1] = bottomLeft;
 	cardMatrix[1][0] = topRight;
 	cardMatrix[1][1] = topLeft;
+    
 }
 
 void TwoSplit::setRow(EvenOdd eo){
+    
 	evenOdd = eo;
 	if(eo == EVEN){
 		next = ODD;
@@ -46,12 +50,17 @@ void TwoSplit::setRow(EvenOdd eo){
 	}else{
 		next = DEFAULT;
 	}
+    
 }
 
 EvenOdd TwoSplit::getRow(){
+    
 	return next;
+    
 }
+
 //void TwoSplit::printRow(EvenOdd eo){
+//
 //	if(eo == EVEN){
 //		for(int i=0; i< 2; i++){
 //
@@ -68,10 +77,12 @@ EvenOdd TwoSplit::getRow(){
 //
 //		}
 //	}
+//
 //}
 //
 //
 //ostream &operator <<(ostream &out, const TwoSplit& splitCard){
+//
 //	for(int i = 0; i < 2; i++){
 //		for(int j = 0; j<2; j++){
 //			out << splitCard.cardMatrix[i][j];
@@ -80,9 +91,11 @@ EvenOdd TwoSplit::getRow(){
 //		cout << "\n";
 //	}
 //	return out;
+//
 //}
 
 void TwoSplit::printRow(ostream& out, EvenOdd eo){
+    
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){	
 			out << cardMatrix[0][i] << "first row";	
@@ -98,4 +111,5 @@ void TwoSplit::printRow(ostream& out, EvenOdd eo){
 		}
 	}
 	cout <<"\n";
+    
 }

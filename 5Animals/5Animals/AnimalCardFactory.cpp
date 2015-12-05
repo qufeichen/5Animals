@@ -17,7 +17,6 @@
 #include "FourSplit.h"
 #include "Joker.h"
 
-
 AnimalCardFactory::AnimalCardFactory(){
 
     //create cards

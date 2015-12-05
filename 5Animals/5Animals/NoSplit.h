@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <iostream>
 
+
 class NoSplit:public AnimalCard{
     
 private:

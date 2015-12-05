@@ -17,6 +17,7 @@
 
 using namespace std;
 
+
 class HareAction : public ActionCard {
     
 public:
@@ -24,4 +25,5 @@ public:
     void perform(Table &, Player* , QueryResult);
 
 };
-#endif /* HareAction_h */
+
+#endif

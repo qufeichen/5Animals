@@ -10,11 +10,11 @@
 #include "QueryResult.h"
 #include <iostream>
 
-//NEED class Table or else there is conflict
 class Table;
 
 #ifndef ActionCard_h
 #define ActionCard_h
+
 
 class ActionCard:public StartCard{
     
@@ -24,5 +24,4 @@ public:
     
 };
 
-
-#endif /* ActionCard_h */
+#endif

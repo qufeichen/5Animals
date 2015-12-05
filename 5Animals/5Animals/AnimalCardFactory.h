@@ -5,8 +5,6 @@
 //Robert Luo -
 //Due Date: December 9th, 2015
 
-#ifndef AnimalCardFactory_H
-#define AnimalCardFactory_H
 #include <string>
 #include <cstdlib>
 #include <iostream>
@@ -18,6 +16,10 @@
 #include "FourSplit.h"
 #include "Joker.h"
 #include <memory>
+
+#ifndef AnimalCardFactory_H
+#define AnimalCardFactory_H
+
 
 class AnimalCardFactory{
     

@@ -10,6 +10,7 @@
 #include "Hand.h"
 #include <algorithm>
 #include <vector>
+
 using namespace std;
 
 Hand::Hand(){
@@ -23,10 +24,12 @@ Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
 
 	//call add
 	return *this;
+    
 }
 
 
 Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
+    
 	try
     {
 			--numOfCards;
@@ -38,9 +41,11 @@ Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
 		cout << "card does not exist" << "\n";
 	}
 	return *this;
+    
 }
 
 std::shared_ptr<AnimalCard> Hand::operator[](int index){
+    
 	std::shared_ptr<AnimalCard> temp;
 	try
     {
@@ -63,10 +68,13 @@ std::shared_ptr<AnimalCard> Hand::operator[](int index){
 }
 
 int Hand::noCards(){
+    
 	return numOfCards;
+    
 }
 
 ostream& operator <<(ostream &out, const Hand& handGiven){
+    
     out << "Card in Hand" << endl;
     int count = 0;
     

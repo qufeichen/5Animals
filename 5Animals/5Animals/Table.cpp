@@ -26,6 +26,7 @@ Table::Table (int numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCou
 }
 
 int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
+    
 	int value = 0;
 	//check if able to put in card
 	if(tableArray[row][col] != 0)
@@ -37,23 +38,26 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 	tableArray[row][col] = newCard;
 	
     return value;
+    
 }
 
 Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){
+    
 	*stack+=newCard;
-
 	//get type for newCard see what kind of animal it is
-
 	return *this;
+    
 }
 
 Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
+    
 	*stack-=newCard;
-
 	return *this;
+    
 }
 
 std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
+    
 	std::shared_ptr<AnimalCard> pickedCard;
 	//remove from the table
 	try{
@@ -74,9 +78,11 @@ std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
 		cout << "Illegal Pick";
 	}
 	return pickedCard;
+    
 }
 
 void Table::animalCount(std::shared_ptr<AnimalCard> card){
+    
 	// check what type it is
 	std::string animalType =typeid(card).name();
 	//check no split, two split etc
@@ -93,10 +99,10 @@ void Table::animalCount(std::shared_ptr<AnimalCard> card){
 	//	//print each row to check
 	//}
 
-
 }
 
 bool Table::win(std::string& animal){
+    
 	bool win = true;
 
 	//Need logic
@@ -108,8 +114,8 @@ bool Table::win(std::string& animal){
 	//-> do we want to keep 5 variables, that each counts the number of occurance of each animal? 
 	// if any of them = 7, they win
 
-
 	return win;
+    
 }
 
 ostream & operator <<(ostream& out , const Table& table){
@@ -124,10 +130,13 @@ ostream & operator <<(ostream& out , const Table& table){
 		cout <<"\n";
 	}
 	return out;
+    
 }
 
 int Table::getNumPlayers(){
+    
 	return d_numPlayers;
+    
 }
 
 Player* Table::getPlayer(string playerName) {
@@ -149,13 +158,13 @@ Player* Table::getPlayer(int i){
     Player* player = 0;
 	player = &players[i];
     return player;
+    
 }
 
-
 string Table::createPlayer(string name){
+    
 	if(currentNumPlayers >= d_numPlayers)
 		return "max number of players already reached";
-
 
 	string secretAnimal;
 	switch(secretCardIndex[currentNumPlayers]) //assign secret animal
@@ -179,5 +188,6 @@ string Table::createPlayer(string name){
 	players[currentNumPlayers] = Player(name, secretAnimal);
 	++currentNumPlayers;
 	return "player created successfully";
+    
 }
 

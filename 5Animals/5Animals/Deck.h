@@ -5,14 +5,16 @@
 //Robert Luo -
 //Due Date: December 9th, 2015
 
-#ifndef DECK_H
-#define DECK_H
 #include <string>
 #include <cstdlib>
 #include <iostream>
 #include <vector>
 #include "AnimalCard.h"
 #include <memory>
+
+#ifndef DECK_H
+#define DECK_H
+
 
 template <class T>
 

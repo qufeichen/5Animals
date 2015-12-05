@@ -27,7 +27,6 @@ QueryResult DeerAction::query(){
     return qr;
 }
 
-
 void DeerAction::perform(Table & table, Player* player, QueryResult qr){
 	
     string animal1 = table.getPlayer( qr.getPlayerName() )->getSecretAnimal();

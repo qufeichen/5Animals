@@ -13,15 +13,17 @@
 using namespace std;
 
 ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e){
+    
     for (int i=0; i<2; i++){
         for(int j=0; j<2; j++){
             cardMatrix[i][j] = a[i][j];
         }
     }
+    
 }
 
-
 void ThreeSplit::setOrientation(Orientation o){
+    
 	orientation = o;
 	//Temp variables
 	char topLeft, topRight, bottomLeft, bottomRight;
@@ -34,8 +36,11 @@ void ThreeSplit::setOrientation(Orientation o){
 	cardMatrix[0][1] = bottomLeft;
 	cardMatrix[1][0] = topRight;
 	cardMatrix[1][1] = topLeft;
+    
 }
+
 void ThreeSplit::setRow(EvenOdd eo){
+    
 	evenOdd = eo;
 	if(eo == EVEN){
 		next = ODD;
@@ -44,13 +49,17 @@ void ThreeSplit::setRow(EvenOdd eo){
 	}else{
 		next = DEFAULT;
 	}
+    
 }
 
 EvenOdd ThreeSplit::getRow(){
+    
 	return next;
+    
 }
 
 void ThreeSplit::printRow(ostream& out, EvenOdd eo){
+    
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){	
 			out << cardMatrix[0][i] << "first row";	
@@ -66,8 +75,11 @@ void ThreeSplit::printRow(ostream& out, EvenOdd eo){
 		}
 	}
 	cout <<"\n";
+    
 }
+
 //void ThreeSplit::printRow(EvenOdd eo){
+//
 //	if(eo == EVEN){
 //		for(int i=0; i< 2; i++){
 //
@@ -84,10 +96,11 @@ void ThreeSplit::printRow(ostream& out, EvenOdd eo){
 //
 //		}
 //	}
+//
 //}
 //
-//
 //ostream &operator <<(ostream &out, const ThreeSplit& splitCard){
+//
 //	for(int i = 0; i < 2; i++){
 //		for(int j = 0; j<2; j++){
 //			out << splitCard.cardMatrix[i][j];
@@ -96,4 +109,5 @@ void ThreeSplit::printRow(ostream& out, EvenOdd eo){
 //		cout << "\n";
 //	}
 //	return out;
+//
 //}

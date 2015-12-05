@@ -1,12 +1,3 @@
-//
-// Created by Qufei Chen on 2015-11-24.
-//
-#pragma once
-#include <string>
-#include <cstdlib>
-#include <iostream>
-#include <memory>
-#include <vector>
 //5Animals
 //CSI2372 Final Project
 //Professor Jochen Lang
@@ -14,6 +5,12 @@
 //Robert Luo -
 //Due Date: December 9th, 2015
 
+#pragma once
+#include <string>
+#include <cstdlib>
+#include <iostream>
+#include <memory>
+#include <vector>
 #include "StartCard.h"
 #include "StartStack.h"
 #include "Player.h"
@@ -25,6 +22,7 @@ class ActionCard;
 
 #ifndef INC_5ANIMALS_TABLE_H
 #define INC_5ANIMALS_TABLE_H
+
 
 class Table{
     
@@ -65,4 +63,4 @@ public:
     
 };
 
-#endif //INC_5ANIMALS_TABLE_H
+#endif

@@ -18,7 +18,6 @@
 #define HAND_H
 
 
-
 class Hand{
     
 private:

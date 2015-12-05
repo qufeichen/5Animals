@@ -16,6 +16,7 @@
 
 using namespace std;
 
+
 class BearAction : public ActionCard {
 
 public:
@@ -24,4 +25,5 @@ public:
     string action;
 
 };
-#endif /* BearAction_h */
+
+#endif

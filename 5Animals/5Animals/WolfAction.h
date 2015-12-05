@@ -17,6 +17,7 @@
 
 using namespace std;
 
+
 class WolfAction : public ActionCard {
     
 public:
@@ -25,4 +26,4 @@ public:
     
 };
 
-#endif /* WolfAction_h */
+#endif

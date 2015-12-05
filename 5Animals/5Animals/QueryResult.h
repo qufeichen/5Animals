@@ -13,6 +13,7 @@
 
 using namespace std;
 
+
 class QueryResult{
 
 private:
@@ -31,4 +32,4 @@ public:
     
 };
 
-#endif //INC_5ANIMALS_QUERYRESULT_H
+#endif

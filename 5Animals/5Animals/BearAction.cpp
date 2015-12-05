@@ -14,7 +14,6 @@
 #include <iostream>
 #include <string>
 
-
 using namespace std;
 
 QueryResult BearAction::query(){

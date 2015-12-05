@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <iostream>
 
+
 class Joker:public NoSplit{
     
 private:

@@ -14,6 +14,8 @@
 #include "ActionCard.h"
 #ifndef STARTSTACK_H
 #define STARTSTACK_H
+
+
 class StartStack:public AnimalCard{
     
 private:

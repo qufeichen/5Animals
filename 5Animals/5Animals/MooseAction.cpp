@@ -23,9 +23,8 @@ QueryResult MooseAction::query(){
 
 	QueryResult qr = QueryResult(userIn,0);
 	return qr;
+    
 }
-
-
 
 void MooseAction::perform(Table & table, Player* player, QueryResult qr){
 	
@@ -37,4 +36,5 @@ void MooseAction::perform(Table & table, Player* player, QueryResult qr){
     
     }
 	table.getPlayer(0)->swapSecretAnimal( tempAni );
+    
 }

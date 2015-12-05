@@ -6,11 +6,13 @@
 //Due Date: December 9th, 2015
 
 #include "AnimalCard.h"
-#ifndef FOURSPLIT_H
-#define FOURSPLIT_H
 #include <string>
 #include <cstdlib>
 #include <iostream>
+
+#ifndef FOURSPLIT_H
+#define FOURSPLIT_H
+
 
 class FourSplit:public AnimalCard{
     
@@ -27,8 +29,6 @@ public:
 	EvenOdd getRow();
 	void printRow(ostream&, EvenOdd );
 	//friend ostream & operator <<(ostream &out, const FourSplit&);
-
-    
     
 };
 

@@ -14,20 +14,25 @@ using namespace std;
 
 
 NoSplit::NoSplit(char animal, Orientation o, EvenOdd e): orientation(o), evenOdd(e){
+    
 	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
 			cardMatrix[i][j] = animal;
 		}
 	}
+    
 }
 
 
 void NoSplit::setOrientation(Orientation o){
+    
 	orientation = o;
 	//flip does not matter
+    
 }
 
 void NoSplit::setRow(EvenOdd eo){
+    
 	evenOdd = eo;
 	if(eo == EVEN){
 		next = ODD;
@@ -36,10 +41,13 @@ void NoSplit::setRow(EvenOdd eo){
 	}else{
 		next = DEFAULT;
 	}
+    
 }
 
 EvenOdd NoSplit::getRow(){
+    
 	return next;
+    
 }
 
 //void NoSplit::printRow( EvenOdd eo){
@@ -61,6 +69,7 @@ EvenOdd NoSplit::getRow(){
 //}
 
 void NoSplit::printRow(ostream& out, EvenOdd eo){
+    
 	if(eo == EVEN){
 		for(int i=0; i< 2; i++){	
 			out << cardMatrix[0][i] << "first row";	
@@ -76,6 +85,7 @@ void NoSplit::printRow(ostream& out, EvenOdd eo){
 		}
 	}
 	cout <<"\n";
+    
 }
 
 //ostream &operator <<(ostream &out, const NoSplit& noSplitCard){

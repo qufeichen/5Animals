@@ -10,11 +10,11 @@
 #include "Player.h"
 #include "Table.h"
 
+#ifndef INC_5ANIMALS_GAME_H
+#define INC_5ANIMALS_GAME_H
 
 using namespace std;
 
-#ifndef INC_5ANIMALS_GAME_H
-#define INC_5ANIMALS_GAME_H
 
 class Game {
     
@@ -27,5 +27,4 @@ public:
     
 };
 
-
-#endif //INC_5ANIMALS_GAME_H
+#endif

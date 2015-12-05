@@ -11,19 +11,27 @@
 #include <iostream>
 #ifndef ANIMALCARD_H
 #define ANIMALCARD_H
+
 using namespace std;
 
-	enum EvenOdd
-	{EVEN, ODD, DEFAULT
+enum EvenOdd {
+    
+    EVEN,
+    ODD,
+    DEFAULT
 
-	};
+};
 
-	enum Orientation{
-		UP,DOWN
-	};
+enum Orientation{
+    
+    UP,
+    DOWN
+    
+};
 
 
 class AnimalCard{
+    
 private:
 
 public:

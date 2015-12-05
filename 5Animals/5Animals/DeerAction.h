@@ -5,9 +5,6 @@
 //Robert Luo -
 //Due Date: December 9th, 2015
 
-#ifndef DeerAction_h
-#define DeerAction_h
-
 #include "ActionCard.h"
 #include "Table.h"
 #include "Player.h"
@@ -15,7 +12,11 @@
 #include <string>
 #include <iostream>
 
+#ifndef DeerAction_h
+#define DeerAction_h
+
 using namespace std;
+
 
 class DeerAction : public ActionCard {
     
@@ -24,4 +25,5 @@ public:
     void perform(Table &, Player* , QueryResult);
 
 };
-#endif /* DeerAction_h */
+
+#endif
