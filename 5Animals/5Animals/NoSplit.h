@@ -1,5 +1,10 @@
-// prime header file
-//
+//5Animals
+//CSI2372 Final Project
+//Professor Jochen Lang
+//Qufei Chen - 6771326
+//Robert Luo -
+//Due Date: December 9th, 2015
+
 #include "AnimalCard.h"
 #ifndef NOSPLIT_H
 #define NOSPLIT_H

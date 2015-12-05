@@ -7,13 +7,21 @@
 #include <iostream>
 #include <memory>
 #include <vector>
-class AnimalCard;
-class ActionCard;
+//5Animals
+//CSI2372 Final Project
+//Professor Jochen Lang
+//Qufei Chen - 6771326
+//Robert Luo -
+//Due Date: December 9th, 2015
+
 #include "StartCard.h"
 #include "StartStack.h"
 #include "Player.h"
 //#include "AnimalCard.h"
 //#include "ActionCard.h"
+
+class AnimalCard;
+class ActionCard;
 
 #ifndef INC_5ANIMALS_TABLE_H
 #define INC_5ANIMALS_TABLE_H

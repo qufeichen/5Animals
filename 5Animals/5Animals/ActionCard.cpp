@@ -1,10 +1,10 @@
-//
-//  ActionCard.cpp
-//  5Animals
-//
-//  Created by Qufei Chen on 2015-11-12.
-//  Copyright © 2015 Qufei Chen. All rights reserved.
-//
+//5Animals
+//CSI2372 Final Project
+//Professor Jochen Lang
+//Qufei Chen - 6771326
+//Robert Luo -
+//Due Date: December 9th, 2015
+
 
 //virtual function
 
