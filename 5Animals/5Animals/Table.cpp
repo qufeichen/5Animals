@@ -3,9 +3,10 @@
 #include "Player.h"
 
 Table::Table (int const numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0){
-	//only contains start card
+	
+    //only contains start card
 	currentNumPlayers = 0;
-	tableArray[52][52] = stack; //pointer to startstack TODO: check this?
+	tableArray[52][52] = stack;
 
     //index for selecting secret cards
     secretCardIndex = new int[numPlayers];
