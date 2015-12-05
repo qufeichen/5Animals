@@ -41,7 +41,7 @@ int main( int narg, char *args[] ) {
     for(int i=0;i<numPlayers;i++){
         cout<<"Please enter player 1's name"<<endl;
         cin>>name;
-        game.table->createPlayer(name);
+        //game.table->createPlayer(name);
     }
 
 	//testing animal card factory

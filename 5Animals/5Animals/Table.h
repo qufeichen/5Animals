@@ -11,6 +11,7 @@ class AnimalCard;
 class ActionCard;
 #include "StartCard.h"
 #include "StartStack.h"
+#include "Player.h"
 //#include "AnimalCard.h"
 //#include "ActionCard.h"
 
@@ -37,11 +38,11 @@ private:
     //players
     int d_numPlayers;
     vector<Player> players;
-    static int currentNumPlayers;
+    int currentNumPlayers;
     int *secretCardIndex;
 
 public:
-	Table(const int);
+	Table(int);
 	int addAt(std::shared_ptr<AnimalCard>, int row, int col);
 	Table& operator+=(std::shared_ptr<ActionCard>);
 	Table& operator-=(std::shared_ptr<ActionCard>);

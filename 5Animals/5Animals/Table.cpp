@@ -2,7 +2,7 @@
 #include "Table.h"
 #include "Player.h"
 
-Table::Table (int const numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0){
+Table::Table (int numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0){
 	
     //only contains start card
 	currentNumPlayers = 0;
@@ -144,9 +144,11 @@ Player* Table::getPlayer(int i){
     return player;
 }
 
+
 string Table::createPlayer(string name){
 	if(currentNumPlayers >= d_numPlayers)
 		return "max number of players already reached";
+
 
 	string secretAnimal;
 	switch(secretCardIndex[currentNumPlayers]) //assign secret animal
@@ -171,3 +173,4 @@ string Table::createPlayer(string name){
 	++currentNumPlayers;
 	return "player created successfully";
 }
+
