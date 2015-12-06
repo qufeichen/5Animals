@@ -88,55 +88,99 @@ Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
 
 void Table::addToAnimalCount(std::shared_ptr<AnimalCard> card){
         
-        //get all unique animals from card
-        char unique[4] = {};
-        int index = 0;
-        bool exists;
+    //get all unique animals from card
+    char unique[4] = {};
+    int index = 0;
+    bool exists;
         
-        for (int i = 0; i<2; i++){
-            for(int j = 0; j<2; j++){
-                exists = false;
+    for (int i = 0; i<2; i++){
+        for(int j = 0; j<2; j++){
+            exists = false;
                 
-                for(int k=0; k<4; k++) {
-                    if(card->getAnimal(i, j) == unique[k]){
-                        exists = true;
-                        break;
-                    }
-                    if(exists == false){
-                        unique[index] = card->getAnimal(i, j);
-                        index++;
-                    }
+            for(int k=0; k<4; k++) {
+                if(card->getAnimal(i, j) == unique[k]){
+                    exists = true;
+                    break;
                 }
+                if(exists == false){
+                    unique[index] = card->getAnimal(i, j);
+                    index++;
+                }
+            }
                 
-            }
         }
+    }
         
-        for(int l = 0; l<index; l++){
-            switch (unique[l]) {
-                case 'b':
-                    bearCount++;
-                    break;
-                case 'd':
-                    deerCount++;
-                    break;
-                case 'h':
-                    hareCount++;
-                    break;
-                case 'm':
-                    mooseCount++;
-                    break;
-                case 'w':
-                    wolfCount++;
-                    break;
-                default:
-                    break;
-            }
+    for(int l = 0; l<index; l++){
+        switch (unique[l]) {
+            case 'b':
+                bearCount++;
+                break;
+            case 'd':
+                deerCount++;
+                break;
+            case 'h':
+                hareCount++;
+                break;
+            case 'm':
+                mooseCount++;
+                break;
+            case 'w':
+                wolfCount++;
+                break;
+            default:
+                break;
         }
+    }
     
 }
 
 void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
     
+    //get all unique animals from card
+    char unique[4] = {};
+    int index = 0;
+    bool exists;
+    
+    for (int i = 0; i<2; i++){
+        for(int j = 0; j<2; j++){
+            exists = false;
+            
+            for(int k=0; k<4; k++) {
+                if(card->getAnimal(i, j) == unique[k]){
+                    exists = true;
+                    break;
+                }
+                if(exists == false){
+                    unique[index] = card->getAnimal(i, j);
+                    index++;
+                }
+            }
+            
+        }
+    }
+    
+    for(int l = 0; l<index; l++){
+        switch (unique[l]) {
+            case 'b':
+                bearCount--;
+                break;
+            case 'd':
+                deerCount--;
+                break;
+            case 'h':
+                hareCount--;
+                break;
+            case 'm':
+                mooseCount--;
+                break;
+            case 'w':
+                wolfCount--;
+                break;
+            default:
+                break;
+        }
+    }
     
 }
 
