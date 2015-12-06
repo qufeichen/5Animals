@@ -23,7 +23,7 @@
 using namespace std;
 
 int main( int argc, char *args[] ) {
-  
+    
     //IF NEW GAME:
     //enter number of players
     cout<<"Please enter the number of players:"<<endl;
@@ -37,29 +37,59 @@ int main( int argc, char *args[] ) {
     }
     
     //create game
-    Table table = Table(numPlayers);
+    Table board = Table(numPlayers);
     
     //create deck
-     Deck<std::shared_ptr<AnimalCard> > deck;
+    Deck<std::shared_ptr<AnimalCard> > deck;
     
     //create players
     string name;
     for(int i=0;i<numPlayers;i++){
-        cout<<"Please enter player "<<(i+1)<<"'s name"<<endl;
+        cout<<"Please enter player "<<(i+1)<<"'s name:"<<endl;
         cin>>name;
-        table.createPlayer(name);
+        board.createPlayer(name);
     }
-
-	AnimalCardFactory factory;
-	factory.getFactory();
-
+    
+    AnimalCardFactory *factory;
+    factory->getFactory();
+    
+    //Algorithm from project
+    //
+    //    While no Player has won
+    //    if pause save game to file and exit
+    //      For each Player
+    //        Display Table
+    //        Player draws top card from Deck Display Player
+    //        do
+    //            Ask Player input to choose card Play a card
+    //            Place card in Table
+    //            while card is not placed legally
+    //                if ActionCard was played and added on the bottom, perform the action for all players
+    //                    check if the player has won
+    //                        // Note player may win even at another player's turn end
+    //
+    
+    bool playerHasWon = false;
+    while(!playerHasWon){
+        
+        //TODO: prompt to save game
+        
+        for( int i = 0; i<numPlayers; i++) {
+            //display table
+            board.print();
+            
+        }
+    }
+    
     //OR
     //LOAD FROM FILE
     //TODO: implement load from file
     
     //initialize deck
     //draw three cards for hand of each player
-
+    
+    
+    
     
     
     // TODO: create cards here?
@@ -82,93 +112,93 @@ int main( int argc, char *args[] ) {
      TODO: FIX THIS:
      Full of errors
      will not build/compile
-    
      
-  if (narg > 1) {
-    // open file and check for errors
-    ifstream ifs; // associated with file 
-    ifs >> deck;
-    ifs >> tab;
-    ifs >> noPlayers;
-    players = new Player*[noPlayers];
-    for ( int pl=0; pl<noPlayers; ++pl ) {
-      players[pl] = new Player();
-      ifs >> players[pl]; // will load hand of player
-    }
-  } else {
-    AnimalCardFactory* factory = AnimalCardFactory::get();
-    deck = factory->getDeck();
-    cout << "Number of Players?" << endl;
-    cin >> noPlayers;
-    players = new Player*[noPlayers];
-    Hand  = deck.getHand();
-    for ( int pl=0; pl<noPlayers; ++pl ) {
-      cout << "Name of player " << pl << "?" << endl;
-      std::string name; 
-      cin >> name;
-      players[pl] = new Player(name); 
-      for (int i=0; i<3; ++i ) {
-	players[pl].hd += deck.draw(); 
-      }
-    }
-  }
-
-  bool won{false};
-  
-  while (!won) {
-    for ( int pl=0; pl<noPlayers; ++pl ) {
-      cout << tab;
-      players[pl] += deck.draw(); 
-      cout << players[pl];
-      bool next = true;
-      do {
-	int cardNo;
-	cout << "Which card to play? (0 to " 
-	     << players[pl].hd.noCards() << ")? "; 
-	cin >> cardNo;
-	std::shared_ptr<AnimalCard> ac = players[pl].hd[cardNo];
-	players[pl].hd -= ac;
-	// try downcasting to action card
-	std::shared_ptr<ActionCard> action = 
-	  dynamic_pointer_cast<ActionCard>(ac);
-	if ( action != nullptr ) {
-	  // on success
-	  cout << "Top (1) or bottom (0) of start stack? " << endl;
-	  int tmp;
-	  cin >> tmp;
-	  if (tmp>0)
+     
+     if (narg > 1) {
+     // open file and check for errors
+     ifstream ifs; // associated with file
+     ifs >> deck;
+     ifs >> tab;
+     ifs >> noPlayers;
+     players = new Player*[noPlayers];
+     for ( int pl=0; pl<noPlayers; ++pl ) {
+     players[pl] = new Player();
+     ifs >> players[pl]; // will load hand of player
+     }
+     } else {
+     AnimalCardFactory* factory = AnimalCardFactory::get();
+     deck = factory->getDeck();
+     cout << "Number of Players?" << endl;
+     cin >> noPlayers;
+     players = new Player*[noPlayers];
+     Hand  = deck.getHand();
+     for ( int pl=0; pl<noPlayers; ++pl ) {
+     cout << "Name of player " << pl << "?" << endl;
+     std::string name;
+     cin >> name;
+     players[pl] = new Player(name);
+     for (int i=0; i<3; ++i ) {
+     players[pl].hd += deck.draw();
+     }
+     }
+     }
+     
+     bool won{false};
+     
+     while (!won) {
+     for ( int pl=0; pl<noPlayers; ++pl ) {
+     cout << tab;
+     players[pl] += deck.draw();
+     cout << players[pl];
+     bool next = true;
+     do {
+     int cardNo;
+     cout << "Which card to play? (0 to "
+     << players[pl].hd.noCards() << ")? ";
+     cin >> cardNo;
+     std::shared_ptr<AnimalCard> ac = players[pl].hd[cardNo];
+     players[pl].hd -= ac;
+     // try downcasting to action card
+     std::shared_ptr<ActionCard> action =
+     dynamic_pointer_cast<ActionCard>(ac);
+     if ( action != nullptr ) {
+     // on success
+     cout << "Top (1) or bottom (0) of start stack? " << endl;
+     int tmp;
+     cin >> tmp;
+     if (tmp>0)
 	    tab += action;
-	  else {
+     else {
 	    tab -= action;
 	    // Perform action
-	    QueryResult q = action.query(); 
-	    action.perfom( tab, players, q ); 
-	  }
-	} else {
-	  int row, col;
-	  cout << "Where should the card go? (row column)" << endl;
-	  cin >> row >> col;
-	  int extraCard = tab.addAt( ac, row, col );
-	  if ( extraCard == 0 ) {
+	    QueryResult q = action.query();
+	    action.perfom( tab, players, q );
+     }
+     } else {
+     int row, col;
+     cout << "Where should the card go? (row column)" << endl;
+     cin >> row >> col;
+     int extraCard = tab.addAt( ac, row, col );
+     if ( extraCard == 0 ) {
 	    // illegal card
 	    next = false;
-	  } else {
+     } else {
 	    for ( int c=1;c<extraCard;++c ) {
-	      players[pl] += deck.draw(); 
+     players[pl] += deck.draw();
 	    }
-	  }
-	}
-	if ( next ) {
-	  for ( int pl=0; pl<noPlayers; ++pl ) {
+     }
+     }
+     if ( next ) {
+     for ( int pl=0; pl<noPlayers; ++pl ) {
 	    tab.win( players[pl].getSecretAnimal() );
-	  }
-	}
-      }
-    }
-
-  }
+     }
+     }
+     }
+     }
+     
+     }
      
      
      */
-
+    
 }
