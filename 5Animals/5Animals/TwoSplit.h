@@ -20,6 +20,7 @@ private:
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
+    char topLeft, topRight, bottomLeft, bottomRight;
     
 public:
     TwoSplit(char[2][2], Orientation o, EvenOdd e);

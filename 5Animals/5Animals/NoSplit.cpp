@@ -13,7 +13,7 @@
 using namespace std;
 
 
-NoSplit::NoSplit(char animal, Orientation o, EvenOdd e): orientation(o), evenOdd(e){
+NoSplit::NoSplit(char animal, Orientation o, EvenOdd e){
     
 	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
@@ -21,12 +21,15 @@ NoSplit::NoSplit(char animal, Orientation o, EvenOdd e): orientation(o), evenOdd
 		}
 	}
     
+    setOrientation(o);
+    setRow(e);
 }
 
 
 void NoSplit::setOrientation(Orientation o){
     
 	orientation = o;
+    animal = cardMatrix[0][0];
 	//flip does not matter
     
 }

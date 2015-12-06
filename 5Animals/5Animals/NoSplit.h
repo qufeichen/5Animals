@@ -20,6 +20,7 @@ private:
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
+    char animal;
     
 public:
 	NoSplit(char, Orientation, EvenOdd);

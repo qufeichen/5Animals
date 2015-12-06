@@ -12,7 +12,7 @@
 
 using namespace std;
 
-ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e){
+ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e){
     
     for (int i=0; i<2; i++){
         for(int j=0; j<2; j++){
@@ -20,22 +20,29 @@ ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), 
         }
     }
     
+    setOrientation(o);
+    setRow(e);
+    
 }
 
 void ThreeSplit::setOrientation(Orientation o){
     
-	orientation = o;
-	//Temp variables
-	char topLeft, topRight, bottomLeft, bottomRight;
-	topLeft = cardMatrix[0][0];
-	topRight = cardMatrix[0][1];
-	bottomLeft = cardMatrix[1][0];
-	bottomRight = cardMatrix[1][1];
-	//Flip orientation
-	cardMatrix[0][0] = bottomRight;
-	cardMatrix[0][1] = bottomLeft;
-	cardMatrix[1][0] = topRight;
-	cardMatrix[1][1] = topLeft;
+    orientation = o;
+    if(o == UP){
+        topLeft = cardMatrix[0][0];
+        topRight = cardMatrix[0][1];
+        bottomLeft = cardMatrix[1][0];
+        bottomRight = cardMatrix[1][1];
+        setRow(EvenOdd::EVEN);
+    }
+    //Flip orientation
+    else {
+        bottomRight = cardMatrix[0][0];
+        bottomLeft = cardMatrix[0][1];
+        topRight = cardMatrix[1][0];
+        topLeft = cardMatrix[1][1];
+        setRow(EvenOdd::ODD);
+    }
     
 }
 
