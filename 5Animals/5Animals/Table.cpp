@@ -300,4 +300,3 @@ string Table::createPlayer(string name){
 void Table::print(){
     
 }
-
