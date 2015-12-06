@@ -299,4 +299,27 @@ string Table::createPlayer(string name){
 
 void Table::print(){
     
+    for (int i=0; i<103; i++){
+        for (int j=0; j<103; j++){
+            if(occupied[i][j] == 1){
+                tableArray[i][j]->printRow(EvenOdd::EVEN);
+                cout<<" ";
+            } else {
+                cout<<"  ";
+                cout<<" ";
+            }
+        }
+        for (int k=0; k<103; k++){
+            if(occupied[i][k] == 1){
+                tableArray[i][k]->printRow(EvenOdd::ODD);
+                cout<<" ";
+            } else {
+                cout<<"  ";
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+        
+    }
+    
 }
