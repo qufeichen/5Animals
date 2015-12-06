@@ -22,7 +22,7 @@
 
 using namespace std;
 
-int main( int narg, char *args[] ) {
+int main( int argc, char *args[] ) {
   
     //IF NEW GAME:
     //enter number of players
@@ -37,7 +37,7 @@ int main( int narg, char *args[] ) {
     }
     
     //create game
-    Game game(numPlayers);
+    Table table = Table(numPlayers);
     
     //create deck
      Deck<std::shared_ptr<AnimalCard> > deck;
@@ -45,12 +45,11 @@ int main( int narg, char *args[] ) {
     //create players
     string name;
     for(int i=0;i<numPlayers;i++){
-        cout<<"Please enter player 1's name"<<endl;
+        cout<<"Please enter player "<<(i+1)<<"'s name"<<endl;
         cin>>name;
-        //game.table->createPlayer(name);
+        table.createPlayer(name);
     }
 
-	//testing animal card factory
 	AnimalCardFactory factory;
 	factory.getFactory();
 

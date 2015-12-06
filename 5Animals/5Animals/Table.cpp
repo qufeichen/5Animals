@@ -272,25 +272,26 @@ string Table::createPlayer(string name){
 		return "max number of players already reached";
 
 	string secretAnimal;
+    
 	switch(secretCardIndex[currentNumPlayers]) //assign secret animal
 	{
-	case '1' :
+	case 1 :
 		secretAnimal = "Bear";
 		break;
-	case '2' :
+	case 2 :
 		secretAnimal = "Wolf";
 		break;
-	case '3' :
+	case 3:
 		secretAnimal = "Hare";
 		break;
-	case '4' :
+	case 4 :
 		secretAnimal = "Moose";
 		break;
-	case '5' :
+	case 5 :
 		secretAnimal = "Deer";
 		break;
 	}
-	players[currentNumPlayers] = Player(name, secretAnimal);
+	players.push_back( Player(name, secretAnimal) );
 	++currentNumPlayers;
 	return "player created successfully";
     
@@ -300,4 +301,3 @@ void Table::print(){
     
 }
 
-}
