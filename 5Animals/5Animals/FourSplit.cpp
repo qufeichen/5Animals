@@ -12,7 +12,7 @@
 
 using namespace std;
 
-FourSplit::FourSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e), split(4){
+FourSplit::FourSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e){
     
     for (int i=0; i<2; i++){
         for(int j=0; j<2; j++){
@@ -115,11 +115,5 @@ void FourSplit::printRow(ostream& out, EvenOdd eo){
 char FourSplit::getAnimal(int row, int col){
     
     return cardMatrix[row][col];
-    
-}
-
-int FourSplit::getSplit(){
-    
-    return split;
     
 }

@@ -12,7 +12,7 @@
 
 using namespace std;
 
-TwoSplit::TwoSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e), split(2){
+TwoSplit::TwoSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e){
     
     for (int i=0; i<2; i++){
         for(int j=0; j<2; j++){
@@ -117,11 +117,5 @@ void TwoSplit::printRow(ostream& out, EvenOdd eo){
 char TwoSplit::getAnimal(int row, int col){
     
     return cardMatrix[row][col];
-    
-}
-
-int TwoSplit::getSplit(){
-    
-    return split;
     
 }

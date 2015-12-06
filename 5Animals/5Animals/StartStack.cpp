@@ -92,3 +92,9 @@ void StartStack::printRow(EvenOdd eo){
 	}
     
 }
+
+char StartStack::getAnimal(int, int){
+    
+    return 's';
+    
+}

@@ -37,6 +37,7 @@ public:
 	void setRow(EvenOdd);
 	EvenOdd getRow();
 	void printRow( EvenOdd );
+    virtual char getAnimal(int, int);
 
 	//Need to print object???
     

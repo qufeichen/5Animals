@@ -22,6 +22,7 @@ private:
 	EvenOdd next;
 	char cardMatrix[2][2];
     
+    
 public:
 	Joker();
 	void setOrientation(Orientation);

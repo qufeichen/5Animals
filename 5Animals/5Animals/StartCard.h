@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "NoSplit.h"
+#include "AnimalCard.h"
 
 #ifndef STARTCARD_H
 #define STARTCARD_H

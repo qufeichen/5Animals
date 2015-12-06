@@ -21,7 +21,6 @@ private:
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
-    const int split;
 
 public:
     FourSplit( char[2][2], Orientation, EvenOdd);
@@ -30,7 +29,6 @@ public:
 	EvenOdd getRow();
 	void printRow(ostream&, EvenOdd );
     char getAnimal(int, int);
-    int getSplit();
 	//friend ostream & operator <<(ostream &out, const FourSplit&);
     
 };

@@ -12,7 +12,7 @@
 
 using namespace std;
 
-ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e), split(3){
+ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e): orientation(o), evenOdd(e){
     
     for (int i=0; i<2; i++){
         for(int j=0; j<2; j++){
@@ -81,12 +81,6 @@ void ThreeSplit::printRow(ostream& out, EvenOdd eo){
 char ThreeSplit::getAnimal(int row, int col){
     
     return cardMatrix[row][col];
-    
-}
-
-int ThreeSplit::getSplit(){
-    
-    return split;
     
 }
 
