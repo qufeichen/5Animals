@@ -33,6 +33,7 @@ enum Orientation{
 class AnimalCard{
     
 private:
+    int split;
 
 public:
 
@@ -41,6 +42,8 @@ public:
 	virtual void setRow(EvenOdd)=0;
 	virtual EvenOdd getRow()=0;
 	virtual void printRow( ostream &, EvenOdd )=0;
+    virtual char getAnimal(int, int);
+    virtual int getSplit();
 	//virtual void printRow(EvenOdd )=0;
 	//virtual friend ostream & operator <<(ostream &out, const AnimalCard&) = 0;
 

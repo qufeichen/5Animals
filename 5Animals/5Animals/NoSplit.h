@@ -20,6 +20,7 @@ private:
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
+    const int split;
     
 public:
 	NoSplit(char, Orientation, EvenOdd);
@@ -27,7 +28,9 @@ public:
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
 	EvenOdd getRow();
-	void printRow( ostream&, EvenOdd ); 
+	void printRow( ostream&, EvenOdd );
+    char getAnimal(int, int);
+    int getSplit();
 	//friend ostream & operator <<(ostream &out, const NoSplit&);
 
 };

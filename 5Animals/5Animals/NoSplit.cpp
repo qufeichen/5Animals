@@ -13,7 +13,7 @@
 using namespace std;
 
 
-NoSplit::NoSplit(char animal, Orientation o, EvenOdd e): orientation(o), evenOdd(e){
+NoSplit::NoSplit(char animal, Orientation o, EvenOdd e): orientation(o), evenOdd(e), split(1){
     
 	for(int i = 0; i < 2; i++){
 		for(int j = 0; j<2; j++){
@@ -85,6 +85,18 @@ void NoSplit::printRow(ostream& out, EvenOdd eo){
 		}
 	}
 	cout <<"\n";
+    
+}
+
+char NoSplit::getAnimal(int row, int col){
+    
+    return cardMatrix[row][col];
+    
+}
+
+int NoSplit::getSplit(){
+    
+    return split;
     
 }
 
