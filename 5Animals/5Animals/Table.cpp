@@ -14,7 +14,8 @@ Table::Table (int numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCou
     //only contains start card
 	currentNumPlayers = 0;
 	tableArray[52][52] = stack;
-
+    occupied[52][52] = 1;
+    
     //index for selecting secret cards
     secretCardIndex = new int[numPlayers];
 	for(int i = 0; i<numPlayers; ++i)
@@ -27,17 +28,17 @@ Table::Table (int numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCou
 
 int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
     
-	int value = 0;
 	//check if able to put in card
-	if(tableArray[row][col] != 0)
+	if(occupied[row][col] != 0)
 	{
 		cout<<"error: this index is already occupied"<<endl;
 		return 1; 
 	}
 
 	tableArray[row][col] = newCard;
+    occupied[row][col] = 1;
 	
-    return value;
+    return 0;
     
 }
 
@@ -56,7 +57,7 @@ Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
     
 }
 
-std::shared_ptr<AnimalCard>Table::pickAt(int row, int col){
+std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
     
 	std::shared_ptr<AnimalCard> pickedCard;
 	//remove from the table

@@ -27,8 +27,9 @@ class ActionCard;
 class Table{
     
 private:
-	//4 pointed graph
+	//array of pointers to animal cards, and array to track which positions are taken
 	std::shared_ptr<AnimalCard> tableArray[103][103] ;
+    int occupied[103][103]={};
 	
 	//stack in middle of graph
 	std::shared_ptr<StartStack> stack;
