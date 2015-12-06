@@ -196,6 +196,28 @@ bool Table::win(std::string& animal){
 
 	//-> do we want to keep 5 variables, that each counts the number of occurance of each animal? 
 	// if any of them = 7, they win
+    
+    if( animal.compare("Bear")==0 ){
+        if(bearCount >=12){
+            win = true;
+        }
+    } else if(animal.compare("Dear")==0)  {
+        if(deerCount >=12){
+            win = true;
+        }
+    } else if(animal.compare("Hare")==0)  {
+        if(hareCount >=12){
+            win = true;
+        }
+    } else if(animal.compare("Moose")==0)  {
+        if(mooseCount >=12){
+            win = true;
+        }
+    } else if(animal.compare("Wolf")==0)  {
+        if(wolfCount >=12){
+            win = true;
+        }
+    }
 
 	return win;
     
@@ -274,3 +296,8 @@ string Table::createPlayer(string name){
     
 }
 
+void Table::print(){
+    
+}
+
+}

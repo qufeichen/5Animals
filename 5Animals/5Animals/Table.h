@@ -64,6 +64,7 @@ public:
 	Player *getPlayer(string); //gets player by name
 	Player *getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
+    void print();
     
 };
 
