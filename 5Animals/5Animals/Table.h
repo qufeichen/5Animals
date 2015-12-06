@@ -43,10 +43,14 @@ private:
 
     //Create 4 players (or however many are playing)
     //players
-    int d_numPlayers;
+    int d_maxNumPlayers;
     vector<Player> players;
     int currentNumPlayers;
     int *secretCardIndex;
+    
+    //methods to update animal count
+    void addToAnimalCount(std::shared_ptr<AnimalCard>); //count number of animal and incremenents
+    void removeFromAnimalCount(std::shared_ptr<AnimalCard>);
 
 public:
 	Table(int);
@@ -60,7 +64,6 @@ public:
 	Player *getPlayer(string); //gets player by name
 	Player *getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
-	void animalCount(std::shared_ptr<AnimalCard>); //count number of animal and incremenents
     
 };
 

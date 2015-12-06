@@ -9,10 +9,9 @@
 #include "Table.h"
 #include "Player.h"
 
-Table::Table (int numPlayers) : d_numPlayers(numPlayers),  bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0){
+Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0){
 	
     //only contains start card
-	currentNumPlayers = 0;
 	tableArray[52][52] = stack;
     occupied[52][52] = 1;
     
@@ -37,25 +36,13 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 
 	tableArray[row][col] = newCard;
     occupied[row][col] = 1;
+    
+    addToAnimalCount(newCard);
 	
     return 0;
     
 }
 
-Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){
-    
-	*stack+=newCard;
-	//get type for newCard see what kind of animal it is
-	return *this;
-    
-}
-
-Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
-    
-	*stack-=newCard;
-	return *this;
-    
-}
 
 std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
     
@@ -70,36 +57,87 @@ std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
 		{
 			pickedCard = tableArray[row][col];
 
-
 			//delete element in table
 			tableArray[row][col] = NULL;
+            occupied[row][col] = 0;
 		}
 	}
 	catch(exception& e){
 		cout << "Illegal Pick";
 	}
+    
+    removeFromAnimalCount(pickedCard);
 	return pickedCard;
     
 }
 
-void Table::animalCount(std::shared_ptr<AnimalCard> card){
+Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){
     
-	// check what type it is
-	std::string animalType =typeid(card).name();
-	//check no split, two split etc
+    *stack+=newCard;
+    //get type for newCard see what kind of animal it is
+    return *this;
+    
+}
 
-	//need to test
-	//if(animalType == "NoSplit"){
-	//	//print each row to check
+Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
+    
+    *stack-=newCard;
+    return *this;
+    
+}
 
-	//}else if(animalType == "TwoSplit"){
-	//	//print each row to check
-	//}else if(animalType == "ThreeSplit"){
-	//	//print each row to check
-	//}else if(animalType == "FoursSplit"){
-	//	//print each row to check
-	//}
+void Table::addToAnimalCount(std::shared_ptr<AnimalCard> card){
+        
+        //get all unique animals from card
+        char unique[4] = {};
+        int index = 0;
+        bool exists;
+        
+        for (int i = 0; i<2; i++){
+            for(int j = 0; j<2; j++){
+                exists = false;
+                
+                for(int k=0; k<4; k++) {
+                    if(card->getAnimal(i, j) == unique[k]){
+                        exists = true;
+                        break;
+                    }
+                    if(exists == false){
+                        unique[index] = card->getAnimal(i, j);
+                        index++;
+                    }
+                }
+                
+            }
+        }
+        
+        for(int l = 0; l<index; l++){
+            switch (unique[l]) {
+                case 'b':
+                    bearCount++;
+                    break;
+                case 'd':
+                    deerCount++;
+                    break;
+                case 'h':
+                    hareCount++;
+                    break;
+                case 'm':
+                    mooseCount++;
+                    break;
+                case 'w':
+                    wolfCount++;
+                    break;
+                default:
+                    break;
+            }
+        }
+    
+}
 
+void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
+    
+    
 }
 
 bool Table::win(std::string& animal){
@@ -136,14 +174,14 @@ ostream & operator <<(ostream& out , const Table& table){
 
 int Table::getNumPlayers(){
     
-	return d_numPlayers;
+	return d_maxNumPlayers;
     
 }
 
 Player* Table::getPlayer(string playerName) {
     
     Player* player = 0;
-        for(int i = 0; i<d_numPlayers;i++)
+        for(int i = 0; i<d_maxNumPlayers;i++)
             {
                 if(players[i].getName() == playerName){
                     player = getPlayer(i);
@@ -164,7 +202,7 @@ Player* Table::getPlayer(int i){
 
 string Table::createPlayer(string name){
     
-	if(currentNumPlayers >= d_numPlayers)
+	if(currentNumPlayers >= d_maxNumPlayers)
 		return "max number of players already reached";
 
 	string secretAnimal;
