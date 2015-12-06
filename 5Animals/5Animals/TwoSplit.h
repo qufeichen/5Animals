@@ -28,6 +28,7 @@ public:
 	void setRow(EvenOdd);
 	EvenOdd getRow();
 	void printRow(ostream&, EvenOdd);
+    void printRow( EvenOdd);
     char getAnimal(int, int);
 	//friend ostream & operator <<(ostream &out, const TwoSplit&);
 

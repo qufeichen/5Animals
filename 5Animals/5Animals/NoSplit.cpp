@@ -91,6 +91,13 @@ void NoSplit::printRow(ostream& out, EvenOdd eo){
     
 }
 
+void NoSplit::printRow(EvenOdd e){
+    
+        cout << animal;
+        cout << animal;
+    
+}
+
 char NoSplit::getAnimal(int row, int col){
     
     return cardMatrix[row][col];

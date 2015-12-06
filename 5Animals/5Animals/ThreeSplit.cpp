@@ -85,6 +85,19 @@ void ThreeSplit::printRow(ostream& out, EvenOdd eo){
     
 }
 
+void ThreeSplit::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << topLeft;
+        cout << topRight;
+    }
+    else if(e == ODD){
+        cout<< bottomLeft;
+        cout<< bottomRight;
+    }
+    
+}
+
 char ThreeSplit::getAnimal(int row, int col){
     
     return cardMatrix[row][col];

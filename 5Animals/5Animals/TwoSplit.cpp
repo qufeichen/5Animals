@@ -121,6 +121,20 @@ void TwoSplit::printRow(ostream& out, EvenOdd eo){
     
 }
 
+
+void TwoSplit::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << topLeft;
+        cout << topRight;
+    }
+    else if(e == ODD){
+        cout<< bottomLeft;
+        cout<< bottomRight;
+    }
+    
+}
+
 char TwoSplit::getAnimal(int row, int col){
     
     return cardMatrix[row][col];

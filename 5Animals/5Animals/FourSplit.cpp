@@ -118,6 +118,19 @@ void FourSplit::printRow(ostream& out, EvenOdd eo){
     
 }
 
+void FourSplit::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << topLeft;
+        cout << topRight;
+    }
+    else if(e == ODD){
+        cout<< bottomLeft;
+        cout<< bottomRight;
+    }
+    
+}
+
 char FourSplit::getAnimal(int row, int col){
     
     return cardMatrix[row][col];
