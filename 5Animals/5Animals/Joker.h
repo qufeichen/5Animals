@@ -21,6 +21,7 @@ private:
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
+    char j;
     
     
 public:

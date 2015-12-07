@@ -19,9 +19,13 @@ Joker::Joker(){
     
 	for(int i = 0 ; i < 2; i++){
 		for(int j = 0; j < 2; j++){
-			cardMatrix[i][j] = 'c';
+			cardMatrix[i][j] = 'j';
 		}
 	}
+    
+    j='j';
+    setOrientation(Orientation::UP);
+    setRow(EvenOdd::EVEN);
     
 }
 
@@ -50,23 +54,15 @@ EvenOdd Joker::getRow(){
     
 }
 
-void Joker::printRow( EvenOdd eo){
+void Joker::printRow(EvenOdd e){
     
-	if(eo == EVEN){
-		for(int i=0; i< 2; i++){
-
-			cout << cardMatrix[0][i] << "first row" << endl;	
-		}
-	}
-	else if(eo == ODD){
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[1][i] << "second row"  << endl;	
-		}
-	}else{
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[0][i] << "default" << endl;	
-
-		}
-	}
-
+    if(e == EVEN){
+        cout << j;
+        cout << j;
+    }
+    else if(e == ODD){
+        cout<< j;
+        cout<< j;
+    }
+    
 }
