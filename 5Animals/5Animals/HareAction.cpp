@@ -16,6 +16,15 @@
 
 using namespace std;
 
+HareAction::HareAction(){
+    
+    cardMatrix[0][0] = 'h';
+    cardMatrix[0][1] = 'h';
+    cardMatrix[1][0] = 'h';
+    cardMatrix[1][1] = 'h';
+    
+}
+
 QueryResult HareAction::query(){
     
     cout<<" The Hare action allows you to move an animal card on the table including the joker to a different location on the table where the card is valid" << endl;

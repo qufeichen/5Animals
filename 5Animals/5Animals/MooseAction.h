@@ -20,7 +20,11 @@ using namespace std;
 
 class MooseAction : public ActionCard {
     
+private:
+    char cardMatrix[2][2];
+    
 public:
+    MooseAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
 

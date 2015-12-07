@@ -20,7 +20,11 @@ using namespace std;
 
 class DeerAction : public ActionCard {
     
+private:
+    char cardMatrix[2][2];
+    
 public:
+    DeerAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
 

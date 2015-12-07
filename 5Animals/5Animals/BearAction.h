@@ -19,7 +19,11 @@ using namespace std;
 
 class BearAction : public ActionCard {
 
+private:
+    char cardMatrix[2][2];
+    
 public:
+    BearAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
     string action;

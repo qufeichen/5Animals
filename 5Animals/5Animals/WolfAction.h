@@ -20,7 +20,11 @@ using namespace std;
 
 class WolfAction : public ActionCard {
     
+private:
+    char cardMatrix[2][2];
+    
 public:
+    WolfAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
     

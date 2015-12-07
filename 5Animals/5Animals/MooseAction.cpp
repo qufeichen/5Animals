@@ -15,6 +15,14 @@
 
 using namespace std;
 
+MooseAction::MooseAction(){
+    
+    cardMatrix[0][0] = 'm';
+    cardMatrix[0][1] = 'm';
+    cardMatrix[1][0] = 'm';
+    cardMatrix[1][1] = 'm';
+}
+
 QueryResult MooseAction::query(){
     
 	cout << " The Moose action triggers a rotation of secret animals from player 1 to player 2, from 2 to 3, etc." << endl;

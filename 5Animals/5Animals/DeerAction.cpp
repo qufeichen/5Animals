@@ -15,6 +15,15 @@
 
 using namespace std;
 
+DeerAction::DeerAction(){
+    
+    cardMatrix[0][0] = 'd';
+    cardMatrix[0][1] = 'd';
+    cardMatrix[1][0] = 'd';
+    cardMatrix[1][1] = 'd';
+    
+}
+
 QueryResult DeerAction::query(){
 
     cout<<" The Deer Action allows a player to select another player to trade goals with" << endl;

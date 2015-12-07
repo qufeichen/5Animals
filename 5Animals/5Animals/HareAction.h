@@ -20,7 +20,11 @@ using namespace std;
 
 class HareAction : public ActionCard {
     
+private:
+    char cardMatrix[2][2];
+    
 public:
+    HareAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
 

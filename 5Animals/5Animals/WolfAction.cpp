@@ -15,6 +15,15 @@
 
 using namespace std;
 
+WolfAction::WolfAction(){
+    
+    cardMatrix[0][0] = 'w';
+    cardMatrix[0][1] = 'w';
+    cardMatrix[1][0] = 'w';
+    cardMatrix[1][1] = 'w';
+    
+}
+
 QueryResult WolfAction::query(){
     
 	cout << " The Wolf action allows you to pick up a card from a table and place it in your hand" << endl;

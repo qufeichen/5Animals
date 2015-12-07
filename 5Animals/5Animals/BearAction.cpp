@@ -16,6 +16,15 @@
 
 using namespace std;
 
+BearAction::BearAction(){
+    
+    cardMatrix[0][0] = 'b';
+    cardMatrix[0][1] = 'b';
+    cardMatrix[1][0] = 'b';
+    cardMatrix[1][1] = 'b';
+    
+}
+
 QueryResult BearAction::query(){
 
     cout<<" The Bear Action is allows a player to select another player to switch hands" << endl;
