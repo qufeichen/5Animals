@@ -7,7 +7,12 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
+#include "AnimalCard.h"
+#include "ActionCard.h"
+#include "StartCard.h"
+#include "StartStack.h"
 #include "NoSplit.h"
 #include "TwoSplit.h"
 #include "FourSplit.h"
@@ -17,6 +22,8 @@
 #include "MooseAction.h"
 #include "Joker.h"
 #include "Deck.h"
+#include "Table.h"
+#include "Hand.h"
 #include "Game.h"
 #include "AnimalCardFactory.h"
 
@@ -40,7 +47,9 @@ int main( int argc, char *args[] ) {
     Table board = Table(numPlayers);
     
     //create deck
-    Deck<std::shared_ptr<AnimalCard> > deck;
+    AnimalCardFactory *factory;
+    factory->getFactory();
+    Deck<AnimalCard> deck = factory->getDeck();
     
     //create players
     string name;
@@ -48,10 +57,22 @@ int main( int argc, char *args[] ) {
         cout<<"Please enter player "<<(i+1)<<"'s name:"<<endl;
         cin>>name;
         board.createPlayer(name);
+        cout<<"Your secret animal is "+board.getPlayer(i)->getSecretAnimal()<<endl;
     }
     
-    AnimalCardFactory *factory;
-    factory->getFactory();
+    //draw three cards per player
+    for(int i = 0; i<numPlayers; i++){
+        //TODO: fix error here
+        //board.getPlayer(i)->getHand() += factory->getDeck().draw();
+        //board.getPlayer(i)->getHand() += factory->getDeck().draw();
+        //board.getPlayer(i)->getHand() += factory->getDeck().draw();
+        
+       deck.draw();
+    }
+    
+    //OR
+    //LOAD FROM FILE
+    //TODO: implement load from file
     
     //Algorithm from project
     //
@@ -70,42 +91,124 @@ int main( int argc, char *args[] ) {
     //
     
     bool playerHasWon = false;
+    string winner;
+    Hand currentHand;
     while(!playerHasWon){
         
         //TODO: prompt to save game
         
+        //loop for each player
         for( int i = 0; i<numPlayers; i++) {
+            
+            cout<<"Player "+board.getPlayer(i)->getName()+"'s turn: "<<endl;
+            cout<<endl;
             //display table
+            cout<<"Game Board:"<<endl;
             board.print();
             
+            //draw card for player
+            //TODO: fix error here
+            currentHand = board.getPlayer(i)->getHand();
+            currentHand += deck.draw();
+            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
+            
+            //print hand
+            
+            cout<<"Please choose a card to play:?"<<endl;
+            int card;
+            cin>>card;
+            while (card<0 || card > board.getPlayer(i)->getHand().noCards()-1){
+                cout<<"Thats not a valid card! Please choose a card from you hand:"<<endl;;
+                cin>>card;
+            }
+            
+            cout<<"Please choose a position on the board to play the card:"<<endl;
+            int row;
+            int col;
+            cout<<"Enter a row: ";
+            cin>>row;
+            while (row<0 || row > 102){
+                cout<<"Thats not a valid row! Please choose a row position on the board:";
+                cin>>card;
+            }
+            cout<<endl;
+            
+            cout<<"Enter a column: ";
+            cin>>col;
+            while (col<0 || col > 102){
+                cout<<"Thats not a valid row! Please choose a row position on the board:";
+                cin>>card;
+            }
+            cout<<endl;
+            
+            //if placing an action card
+            if( row == 52 && col == 52){
+                
+                //TODO: check if card is an action card
+                if(true){
+                    
+                    //get card
+                    shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
+                    //remove card from hand
+                    currentHand -= currentHand[card];
+                    
+                    int top;
+                    cout<<"Are you placing the card on top of the stack? Press 1 for yes, and any other key for no"<<endl;
+                    cin>>top;
+                    
+                    if(top == 1){
+                
+                        board += cardToPlay;
+                    } else {
+                        //perform action
+                        board -= cardToPlay;
+                        QueryResult qr = cardToPlay->query();
+                        cardToPlay->perform(board, board.getPlayer(i), qr);
+                    }
+
+                
+                }
+                //if not an action card
+                else {
+                    
+                    //You cannot place a non-action card on the stack
+                    cout<<"You cannot place a non-action card on the stack"<<endl;
+                    //TODO:
+                    //return to start of loop so player can enter another location to place card?
+                    cout<<"Please start your turn again."<<endl;
+                    i--;
+                    //should an exception be called here?
+                }
+            
+            } else {
+                //if not an action card
+                
+                //get card
+                shared_ptr<AnimalCard> cardToPlay = dynamic_pointer_cast<AnimalCard>(currentHand[card]);
+                
+                //remove card from hand
+                 currentHand -= currentHand[card];
+                
+                //place card on board
+                board.addAt(cardToPlay, row, col);
+                
+            }
+            
+            //check if player has won (check ALL PLAYERS)
+            string secretAni;
+            for(int x = 0; x<numPlayers; x++){
+                secretAni = board.getPlayer(x)->getSecretAnimal();
+                playerHasWon = board.win(secretAni);
+                //get name of winner
+                if(playerHasWon){
+                    winner = board.getPlayer(x)->getName();
+                }
+            }
         }
+        
     }
     
-    //OR
-    //LOAD FROM FILE
-    //TODO: implement load from file
-    
-    //initialize deck
-    //draw three cards for hand of each player
-    
-    
-    
-    
-    
-    // TODO: create cards here?
-    //    NoSplit no('c');
-    //    EvenOdd even = EVEN;
-    //    no.printRow(cout, even);
-    //    TwoSplit two(2);
-    //    ThreeSplit three(25);
-    //    FourSplit four(51);
-    //    BearAction bear;
-    //    DeerAction deer;
-    //    MooseAction moose;
-    //    Joker joker;
-    //    Deck<MooseAction> deck;
-    //    StartCard start;
-    
+    cout<<"Congratulations "+winner<<", you have won the game!"<<endl;
     
     
     /*
@@ -200,5 +303,6 @@ int main( int argc, char *args[] ) {
      
      
      */
+    return 0;
     
 }

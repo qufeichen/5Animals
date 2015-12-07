@@ -18,7 +18,7 @@
 #include "Joker.h"
 
 AnimalCardFactory::AnimalCardFactory(){
-
+    
     //create cards
     
     //no splits
@@ -192,7 +192,6 @@ AnimalCardFactory* AnimalCardFactory::getFactory(){
     return &animalFactory;
     
 }
-
 
 //
 //Deck<std::shared_ptr<AnimalCard> > AnimalCardFactory::getDeck(){

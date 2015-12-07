@@ -9,7 +9,7 @@
 #include "Table.h"
 #include "Player.h"
 
-Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0){
+Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), occupied{}{
 	
     //only contains start card
 	tableArray[52][52] = stack;
