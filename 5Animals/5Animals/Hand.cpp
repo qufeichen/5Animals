@@ -90,3 +90,28 @@ ostream& operator <<(ostream &out, const Hand& handGiven){
 
 }
 
+void Hand::print(){
+    
+    //print index
+    for (int i = 0; i<numOfCards; i++){
+        cout<<i<<"   ";
+    }
+    cout<<endl;
+    
+    //print cards in hand -> use an iterator
+    list<shared_ptr<AnimalCard>>::iterator it;
+    
+    for(it=cardsInHand.begin(); it!=cardsInHand.end(); it++){
+        (*it)->printRow(EvenOdd::EVEN);
+        cout<<"  ";
+    }
+    cout<<endl;
+    for(it=cardsInHand.begin(); it!=cardsInHand.end(); it++){
+        (*it)->printRow(EvenOdd::ODD);
+         cout<<"  ";
+    }
+    cout<<endl;
+    
+}
+
+
