@@ -113,9 +113,12 @@ bool Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
 
 std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
     
-	std::shared_ptr<AnimalCard> pickedCard;
+	std::shared_ptr<AnimalCard> pickedCard = 0;
+    //returns 0;
+    
 	//remove from the table
 	try{
+        
 		if(row == 52 && col == 52)
 		{
 			throw runtime_error("Illegal Pick");
@@ -131,9 +134,12 @@ std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
 	}
 	catch(exception& e){
 		cout << "Illegal Pick";
+        //TODO: how to return nothing
 	}
     
-    removeFromAnimalCount(pickedCard);
+    if(pickedCard != 0){
+        removeFromAnimalCount(pickedCard);
+    }
 	return pickedCard;
     
 }
@@ -254,15 +260,6 @@ void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
 bool Table::win(std::string& animal){
     
 	bool win = true;
-
-	//Need logic
-	//Project simplification. 
-	//To ease checking if a player has won, you now only have to count the number of cards on the table with the player's secret animal. 
-	//The animals do not have to be connected in order to be included in the count. Because the counts will go up, a player will now need 12 cards. 
-	//The rules for placing cards (or anything else) are not affected by this change.
-
-	//-> do we want to keep 5 variables, that each counts the number of occurance of each animal? 
-	// if any of them = 7, they win
     
     if( animal.compare("Bear")==0 ){
         if(bearCount >=12){
