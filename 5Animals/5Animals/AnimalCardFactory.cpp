@@ -16,6 +16,11 @@
 #include "ThreeSplit.h"
 #include "FourSplit.h"
 #include "Joker.h"
+#include "BearAction.h"
+#include "DeerAction.h"
+#include "HareAction.h"
+#include "MooseAction.h"
+#include "WolfAction.h"
 
 AnimalCardFactory::AnimalCardFactory(){
     
@@ -173,6 +178,39 @@ AnimalCardFactory::AnimalCardFactory(){
     //joker
     std::shared_ptr<AnimalCard>joker(new Joker());
     deck.push_back(joker);
+    
+    //action cards
+    std::shared_ptr<ActionCard> ba1( new BearAction() );
+    deck.push_back(ba1);
+    std::shared_ptr<ActionCard> ba2( new BearAction() );
+    deck.push_back(ba2);
+    std::shared_ptr<ActionCard> ba3( new BearAction() );
+    deck.push_back(ba3);
+    std::shared_ptr<ActionCard> da1( new DeerAction() );
+    deck.push_back(da1);
+    std::shared_ptr<ActionCard> da2( new DeerAction() );
+    deck.push_back(da2);
+    std::shared_ptr<ActionCard> da3( new DeerAction() );
+    deck.push_back(da3);
+    std::shared_ptr<ActionCard> ha1( new HareAction() );
+    deck.push_back(ha1);
+    std::shared_ptr<ActionCard> ha2( new HareAction() );
+    deck.push_back(ha2);
+    std::shared_ptr<ActionCard> ha3( new HareAction() );
+    deck.push_back(ha3);
+    std::shared_ptr<ActionCard> ma1( new MooseAction() );
+    deck.push_back(ma1);
+    std::shared_ptr<ActionCard> ma2( new MooseAction() );
+    deck.push_back(ma2);
+    std::shared_ptr<ActionCard> ma3( new MooseAction() );
+    deck.push_back(ma3);
+    std::shared_ptr<ActionCard> wa1( new WolfAction() );
+    deck.push_back(wa1);
+    std::shared_ptr<ActionCard> wa2( new WolfAction() );
+    deck.push_back(wa2);
+    std::shared_ptr<ActionCard> wa3( new WolfAction() );
+    deck.push_back(wa3);
+    
     
     //TODO: shuffle cards here? or in Table? 
     
