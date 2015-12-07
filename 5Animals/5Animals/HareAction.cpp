@@ -18,10 +18,23 @@ using namespace std;
 
 HareAction::HareAction(){
     
-    cardMatrix[0][0] = 'h';
-    cardMatrix[0][1] = 'h';
-    cardMatrix[1][0] = 'h';
-    cardMatrix[1][1] = 'h';
+    cardMatrix[0][0] = 'H';
+    cardMatrix[0][1] = 'H';
+    cardMatrix[1][0] = 'A';
+    cardMatrix[1][1] = 'A';
+    
+}
+
+void HareAction::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << cardMatrix[0][0];
+        cout << cardMatrix[0][1];
+    }
+    else if(e == ODD){
+        cout << cardMatrix[1][0];
+        cout << cardMatrix[1][1];
+    }
     
 }
 

@@ -27,6 +27,7 @@ public:
     DeerAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
+    void printRow(EvenOdd);
 
 };
 

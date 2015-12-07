@@ -17,10 +17,23 @@ using namespace std;
 
 WolfAction::WolfAction(){
     
-    cardMatrix[0][0] = 'w';
-    cardMatrix[0][1] = 'w';
-    cardMatrix[1][0] = 'w';
-    cardMatrix[1][1] = 'w';
+    cardMatrix[0][0] = 'W';
+    cardMatrix[0][1] = 'W';
+    cardMatrix[1][0] = 'A';
+    cardMatrix[1][1] = 'A';
+    
+}
+
+void WolfAction::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << cardMatrix[0][0];
+        cout << cardMatrix[0][1];
+    }
+    else if(e == ODD){
+        cout << cardMatrix[1][0];
+        cout << cardMatrix[1][1];
+    }
     
 }
 

@@ -17,10 +17,23 @@ using namespace std;
 
 MooseAction::MooseAction(){
     
-    cardMatrix[0][0] = 'm';
-    cardMatrix[0][1] = 'm';
-    cardMatrix[1][0] = 'm';
-    cardMatrix[1][1] = 'm';
+    cardMatrix[0][0] = 'M';
+    cardMatrix[0][1] = 'M';
+    cardMatrix[1][0] = 'A';
+    cardMatrix[1][1] = 'A';
+}
+
+void MooseAction::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << cardMatrix[0][0];
+        cout << cardMatrix[0][1];
+    }
+    else if(e == ODD){
+        cout << cardMatrix[1][0];
+        cout << cardMatrix[1][1];
+    }
+    
 }
 
 QueryResult MooseAction::query(){

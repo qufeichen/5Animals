@@ -125,8 +125,8 @@ void FourSplit::printRow(EvenOdd e){
         cout << topRight;
     }
     else if(e == ODD){
-        cout<< bottomLeft;
-        cout<< bottomRight;
+        cout << bottomLeft;
+        cout << bottomRight;
     }
     
 }

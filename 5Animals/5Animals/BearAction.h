@@ -27,6 +27,7 @@ public:
     QueryResult query();
     void perform(Table &, Player* , QueryResult);
     string action;
+    void printRow(EvenOdd);
 
 };
 

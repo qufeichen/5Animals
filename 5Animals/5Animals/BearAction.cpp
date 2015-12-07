@@ -18,10 +18,23 @@ using namespace std;
 
 BearAction::BearAction(){
     
-    cardMatrix[0][0] = 'b';
-    cardMatrix[0][1] = 'b';
-    cardMatrix[1][0] = 'b';
-    cardMatrix[1][1] = 'b';
+    cardMatrix[0][0] = 'B';
+    cardMatrix[0][1] = 'B';
+    cardMatrix[1][0] = 'A';
+    cardMatrix[1][1] = 'A';
+    
+}
+
+void BearAction::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << cardMatrix[0][0];
+        cout << cardMatrix[0][1];
+    }
+    else if(e == ODD){
+        cout << cardMatrix[1][0];
+        cout << cardMatrix[1][1];
+    }
     
 }
 

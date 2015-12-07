@@ -17,10 +17,23 @@ using namespace std;
 
 DeerAction::DeerAction(){
     
-    cardMatrix[0][0] = 'd';
-    cardMatrix[0][1] = 'd';
-    cardMatrix[1][0] = 'd';
-    cardMatrix[1][1] = 'd';
+    cardMatrix[0][0] = 'D';
+    cardMatrix[0][1] = 'D';
+    cardMatrix[1][0] = 'A';
+    cardMatrix[1][1] = 'A';
+    
+}
+
+void DeerAction::printRow(EvenOdd e){
+    
+    if(e == EVEN){
+        cout << cardMatrix[0][0];
+        cout << cardMatrix[0][1];
+    }
+    else if(e == ODD){
+        cout << cardMatrix[1][0];
+        cout << cardMatrix[1][1];
+    }
     
 }
 
