@@ -54,10 +54,11 @@ private:
 
 public:
 	Table(int);
-	int addAt(std::shared_ptr<AnimalCard>, int row, int col);
+	int addAt(std::shared_ptr<AnimalCard>, int, int);
+    bool checkNeighbours(shared_ptr<AnimalCard>, int, int);
 	Table& operator+=(std::shared_ptr<ActionCard>);
 	Table& operator-=(std::shared_ptr<ActionCard>);
-	std::shared_ptr<AnimalCard>pickAt(int row, int col);
+	std::shared_ptr<AnimalCard>pickAt(int, int );
 	bool win(std::string& animal);
 	friend ostream & operator <<(ostream& , const Table&);
 	int getNumPlayers();

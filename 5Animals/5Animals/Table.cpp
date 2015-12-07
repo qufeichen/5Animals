@@ -28,11 +28,18 @@ Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0
 int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
     
 	//check if able to put in card
+    //check if position is empty
 	if(occupied[row][col] != 0)
 	{
 		cout<<"error: this index is already occupied"<<endl;
 		return 1; 
 	}
+    //check if atleast one neightbour matches
+    if(!checkNeighbours(newCard, row, col)){
+        cout<<"error: cannot place card here, no matching neighbours"<<endl;
+        return 1;
+
+    }
 
 	tableArray[row][col] = newCard;
     occupied[row][col] = 1;
@@ -41,7 +48,67 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 	
     return 0;
     
+    //TODO: implement in main
+    //if return is 1, throw error
 }
+
+bool Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
+    
+    bool hasMatch = false;
+    
+    if( row > 0) {
+        if(card->getAnimal(0, 0) == tableArray[row-1][col]->getAnimal(1, 0)){
+            //check top left
+            hasMatch = true;
+            return hasMatch;
+        } else if(card->getAnimal(0, 1) == tableArray[row-1][col]->getAnimal(1, 1)){
+            //check top right
+            hasMatch = true;
+            return hasMatch;
+        }
+    }
+    
+    if( row < 103) {
+        if(card->getAnimal(1, 0) == tableArray[row+1][col]->getAnimal(0, 0)){
+            //check bottom left
+            hasMatch = true;
+            return hasMatch;
+        } else if(card->getAnimal(1, 1) == tableArray[row+1][col]->getAnimal(0, 1)){
+            //check bottom right
+            hasMatch = true;
+            return hasMatch;
+        }
+    }
+    
+    if( col > 0) {
+        if(card->getAnimal(0, 0) == tableArray[row][col-1]->getAnimal(0, 1)){
+            //check top left
+            hasMatch = true;
+            return hasMatch;
+        } else if(card->getAnimal(1, 0) == tableArray[row][col-1]->getAnimal(1, 1)){
+            //check bottom left
+            hasMatch = true;
+            return hasMatch;
+        }
+    }
+    
+    if(col<103) {
+        if(card->getAnimal(0, 1) == tableArray[row][col+1]->getAnimal(0, 0)){
+            //check top right
+            hasMatch = true;
+            return hasMatch;
+    
+        } else if(card->getAnimal(1, 1) == tableArray[row][col+1]->getAnimal(1, 0)){
+            //check bottom right
+            hasMatch = true;
+            return hasMatch;
+        }
+    }
+    
+       return hasMatch;
+    
+}
+       
 
 
 std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
