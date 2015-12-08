@@ -280,40 +280,6 @@ bool Table::win(std::string& animal){
     
 }
 
-ostream & operator <<(ostream& out , const Table& table){
-
-    out << table.bearCount;
-    out << table.deerCount;
-    out << table.hareCount;
-    out << table.mooseCount;
-    out << table.wolfCount;
-    
-    out << table.d_maxNumPlayers;
-    out << table.currentNumPlayers;
-    for (int i = 0; i < table.d_maxNumPlayers; i++){
-        out << table.players[i];
-    }
-    //TODO: Finish implementing this
-    //int *secretCardIndex; -> dont need to save?
-    
-    //std::deque<shared_ptr<StartCard>> stack;
-    //std::shared_ptr<StartCard> start;
-    
-	for(int i = 0 ; i < 103; i++){
-		for(int j = 0; j < 103; j++){
-            if(table.occupied[i][j] == 0){
-                out<< 0;
-            } else {
-                out<< table.tableArray[i][j];
-            }
-        }
-	}
-    
-    
-	return out;
-    
-}
-
 int Table::getNumPlayers(){
     
 	return d_maxNumPlayers;
@@ -397,5 +363,39 @@ void Table::print(){
         cout<<endl;
         
     }
+    
+}
+
+ostream & operator <<(ostream& out , const Table& table){
+    
+    out << table.bearCount;
+    out << table.deerCount;
+    out << table.hareCount;
+    out << table.mooseCount;
+    out << table.wolfCount;
+    
+    out << table.d_maxNumPlayers;
+    out << table.currentNumPlayers;
+    for (int x = 0; x < table.d_maxNumPlayers; x++){
+        out << table.players[x];
+    }
+    //TODO: Finish implementing this
+    //int *secretCardIndex; -> don't need to save?
+    
+    //std::shared_ptr<StartCard> start;
+    //TODO: implement ostream operator in Startstack?
+    
+    for(int i = 0; i < 103; i++){
+        for(int j = 0; j < 103; j++){
+            if(table.occupied[i][j] == 0){
+                out<< 0;
+            } else {
+                out<< table.tableArray[i][j];
+            }
+        }
+    }
+    
+    
+    return out;
     
 }
