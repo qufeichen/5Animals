@@ -213,7 +213,7 @@ AnimalCardFactory::AnimalCardFactory(){
     deck.push_back(wa3);
     
     
-    //TODO: shuffle cards here? or in Table? 
+    //shuffle deck
     std::random_shuffle(deck.begin(), deck.end());
     
 }

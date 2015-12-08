@@ -71,6 +71,7 @@ public:
 	Player *getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
     void print();
+    int getAnimalCount(char);
     
 };
 

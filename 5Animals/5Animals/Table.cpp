@@ -380,3 +380,22 @@ void Table::print(){
     }
     
 }
+
+int Table::getAnimalCount(char animal){
+    //use to write animal counts to file
+    
+    if(animal == 'b'){
+        return bearCount;
+    } else if(animal == 'd'){
+        return deerCount;
+    } else if(animal == 'h'){
+        return hareCount;
+    } else if(animal == 'm'){
+        return mooseCount;
+    } else if(animal == 'w'){
+        return wolfCount;
+    } else {
+        return 0;
+    }
+    
+}
