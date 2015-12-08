@@ -47,14 +47,14 @@ private:
     vector<Player> players;
     int currentNumPlayers;
     int *secretCardIndex;
-//    //TODO:for printing table
+//    //TODO:for printing table (keep track of size of table)
 //    int upperLeftRow;
 //    int upperLeftCol;
 //    int lowerRightRow;
 //    int lowerRightCol;
     
     //methods to update animal count
-    void addToAnimalCount(std::shared_ptr<AnimalCard>); //count number of animal and incremenents
+    void addToAnimalCount(std::shared_ptr<AnimalCard>);
     void removeFromAnimalCount(std::shared_ptr<AnimalCard>);
 
 public:
