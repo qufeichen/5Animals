@@ -13,18 +13,18 @@
 
 using namespace std;
 
-Hand::Hand(){
-	numOfCards = 0;
+Hand::Hand():numOfCards(0){
+    
 }
 
 Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
 
-	++numOfCards;
+    numOfCards = numOfCards+1;
 	cardsInHand.push_back(newCard);
-
-	//call add
+    //TEST
+    cout <<"card has been added to hand";
 	return *this;
-    
+
 }
 
 
@@ -32,7 +32,7 @@ Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
     
 	try
     {
-			--numOfCards;
+			numOfCards--;
 			//remove if equal to newCard
 			cardsInHand.remove(newCard);
 	}
@@ -75,6 +75,7 @@ int Hand::noCards(){
 
 void Hand::print(){
     
+    cout<<"numOfCards: "<<numOfCards<<endl;
     //print index
     for (int i = 0; i<numOfCards; i++){
         cout<<i<<"   ";

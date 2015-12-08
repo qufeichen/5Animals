@@ -27,6 +27,10 @@ public:
         temp = this->back();
         //remove last element from deck
         this->pop_back();
+        
+        //TEST
+        cout<<"card has been drawn!"<<endl;
+        
         return temp;
     }
 

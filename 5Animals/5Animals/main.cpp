@@ -31,7 +31,7 @@ int main( int argc, char *args[] ) {
     //declare variables
     bool playerHasWon = false;
     string winner;
-    Hand currentHand;
+    Hand *currentHand;
     int numPlayers;
     AnimalCardFactory *factory = new AnimalCardFactory();
 
@@ -111,13 +111,14 @@ int main( int argc, char *args[] ) {
             cout<<"Your secret animal is "+board.getPlayer(i)->getSecretAnimal()<<endl;
             cout<<endl;
         }
-        
+    
         //draw three cards per player
+        Hand *tempHand;
         for(int i = 0; i<numPlayers; i++){
-            deck.draw();
-            deck.draw();
-            deck.draw();
-            //deck::template draw<AnimalCard>();
+            tempHand = board.getPlayer(i)->getHand();
+            tempHand->operator+=(deck.draw());
+            tempHand->operator+=(deck.draw());
+            tempHand->operator+=(deck.draw());
 
         }
   //  }
@@ -158,6 +159,7 @@ int main( int argc, char *args[] ) {
         //loop for each player
         for( int i = 0; i<numPlayers; i++) {
             
+            cout<<endl<<"====================================="<<endl;
             cout<<"Player "+board.getPlayer(i)->getName()+"'s turn: "<<endl;
             cout<<endl;
             //display table
@@ -166,17 +168,19 @@ int main( int argc, char *args[] ) {
             
             //draw card for player
             currentHand = board.getPlayer(i)->getHand();
-            currentHand += deck.draw();
+            currentHand->operator+=(deck.draw());
 
             //print hand
             cout<<"Here is your hand:"<<endl;
-            currentHand.print();
+            currentHand->print();
             
             cout<<"Please choose a card to play:?"<<endl;
             int card;
             cin>>card;
-            while (card<0 || card > board.getPlayer(i)->getHand().noCards()-1){
-                cout<<"Thats not a valid card! Please choose a card from you hand:"<<endl;;
+            while (card<0 || card > board.getPlayer(i)->getHand()->noCards()-1){
+                cout<<"Thats not a valid card! Please choose a card from you hand:"<<endl;
+                //TEST
+                cout<<"numCards in hand: "<<board.getPlayer(i)->getHand()->noCards()<<endl;
                 cin>>card;
             }
             
@@ -187,15 +191,15 @@ int main( int argc, char *args[] ) {
             cin>>row;
             while (row<0 || row > 102){
                 cout<<"Thats not a valid row! Please choose a row position on the board:";
-                cin>>card;
+                cin>>row;
             }
             cout<<endl;
             
             cout<<"Enter a column: ";
             cin>>col;
             while (col<0 || col > 102){
-                cout<<"Thats not a valid row! Please choose a row position on the board:";
-                cin>>card;
+                cout<<"Thats not a valid row! Please choose a column position on the board:";
+                cin>>col;
             }
             cout<<endl;
             
@@ -214,13 +218,14 @@ int main( int argc, char *args[] ) {
 //                }
                 
                 //dynamic cast - will return null pointer if casting fails
-                shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
+               
+                shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand->operator[](card));
                 if( cardToPlay != nullptr){
                     
                     //get card
                     //shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
                     //remove card from hand
-                    currentHand -= currentHand[card];
+                    currentHand->operator-=(currentHand->operator[](card));
                     
                     int top;
                     cout<<"Are you placing the card on top of the stack? Press 1 for yes, and any other key for no"<<endl;
@@ -254,10 +259,10 @@ int main( int argc, char *args[] ) {
                 //if not an action card
                 
                 //get card
-                shared_ptr<AnimalCard> cardToPlay = dynamic_pointer_cast<AnimalCard>(currentHand[card]);
+                shared_ptr<AnimalCard> cardToPlay = currentHand->operator[](card);
                 
                 //remove card from hand
-                 currentHand -= currentHand[card];
+                currentHand->operator-=(currentHand->operator[](card));
                 
                 //place card on board
                 int numMatches = board.addAt(cardToPlay, row, col);
@@ -274,11 +279,12 @@ int main( int argc, char *args[] ) {
                     cout<<"Since your card made "<<numMatches<<" matches, you will draw "<<numMatches<<" additional cards.";
                     for(int i=0; i<numMatches; i++){
                         shared_ptr<AnimalCard> cardDrawn = deck.draw();
-                        currentHand += cardDrawn;
+                        currentHand->operator+=(cardDrawn);
+                        
                     }
                     //print new hand
                     cout<<"Your new hand:"<<endl;
-                    currentHand.print();
+                    currentHand->print();
                     
                 }
                 

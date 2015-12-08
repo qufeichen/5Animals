@@ -61,6 +61,7 @@ QueryResult WolfAction::query(){
 
 void WolfAction::perform(Table &table, Player *player , QueryResult qr){
 
-	player->getHand()+= table.pickAt(qr.getPosition(0),qr.getPosition(1));
-
+    Hand *currentHand = player->getHand();
+    currentHand->operator+=(table.pickAt(qr.getPosition(0),qr.getPosition(1)));
+    
 }

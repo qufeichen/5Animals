@@ -20,7 +20,7 @@ private:
 	string d_name;
 	string d_secretAnimal;
     int d_id;
-	Hand playerHand;
+	Hand *playerHand;
 
     
 public:
@@ -28,8 +28,8 @@ public:
     string swapSecretAnimal(string&);
 	string getSecretAnimal();
 	string getName();
-	Hand getHand();
-	void setHand(Hand);
+	Hand* getHand();
+	void setHand(Hand*);
     void swapHands(Player&);
 	void print();
 	friend ostream & operator <<(ostream &out, const Player&);

@@ -58,8 +58,15 @@ QueryResult BearAction::query(){
 
 void BearAction::perform(Table &table, Player* player , QueryResult qr){
 
-    Hand h = player->getHand();
-    player->setHand(table.getPlayer(qr.getPlayerName())->getHand());
-    table.getPlayer(qr.getPlayerName())->setHand(h);
+//    Hand h = player->getHand();
+//    player->setHand(table.getPlayer(qr.getPlayerName())->getHand());
+//    table.getPlayer(qr.getPlayerName())->setHand(h);
+//    
+    Hand *currentHand = player->getHand();
+    Player *otherPlayer = table.getPlayer(qr.getPlayerName());
+    Hand *otherPlayerHand = otherPlayer->getHand();
+    
+    player->setHand(otherPlayerHand);
+    otherPlayer->setHand(currentHand);
 
 }
