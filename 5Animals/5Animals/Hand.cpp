@@ -75,6 +75,7 @@ int Hand::noCards(){
 
 ostream& operator <<(ostream &out, const Hand& handGiven){
     
+    out<<handGiven.numOfCards;
     list<shared_ptr<AnimalCard>>::const_iterator it;
     for(it = handGiven.cardsInHand.begin(); it != handGiven.cardsInHand.end(); it++){
         out<<(*it);

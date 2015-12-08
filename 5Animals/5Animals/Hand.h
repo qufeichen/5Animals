@@ -31,6 +31,7 @@ public:
 	std::shared_ptr<AnimalCard> operator[](int);
 	int noCards();
 	friend ostream & operator <<(ostream &out, const Hand&);
+    //friend istream & operator >>(istream &in, Hand&)
     void print();
 
 };
