@@ -84,6 +84,8 @@ int main( int argc, char *args[] ) {
         }
     
     
+        //TODO: implement load from file here
+    
   
     while(!playerHasWon){
         
@@ -101,23 +103,14 @@ int main( int argc, char *args[] ) {
             
             outfile << numPlayers << endl;
             
-            //save players (name, secret animal, hand)
+            //save players
             for(int i = 0; i<numPlayers; i++){
-                
-                outfile << board.getPlayer(i)->getName()<<endl;
-                outfile << board.getPlayer(i)->getSecretAnimal()<<endl;
-                outfile << board.getPlayer(i)->getHand();
-                 
+                outfile << board.getPlayer(i);
                 }
             
             //table
             
             //save animal counts:
-            outfile << board.getAnimalCount('b');
-            outfile << board.getAnimalCount('d');
-            outfile << board.getAnimalCount('h');
-            outfile << board.getAnimalCount('m');
-            outfile << board.getAnimalCount('w');
             
             //save tableArray (contains pointers)
             //save occupied (int array)

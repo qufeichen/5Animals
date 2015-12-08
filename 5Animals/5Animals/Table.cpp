@@ -282,15 +282,34 @@ bool Table::win(std::string& animal){
 
 ostream & operator <<(ostream& out , const Table& table){
 
-	//Print whole table
-	for(int i = 0 ; i < 103; i++)
-	{
-		for(int j = 0; j < 103; j++)
-		{
-			cout << table.tableArray[i][j];
-		}
-		cout <<"\n";
+    out << table.bearCount;
+    out << table.deerCount;
+    out << table.hareCount;
+    out << table.mooseCount;
+    out << table.wolfCount;
+    
+    out << table.d_maxNumPlayers;
+    out << table.currentNumPlayers;
+    for (int i = 0; i < table.d_maxNumPlayers; i++){
+        out << table.players[i];
+    }
+    //TODO: Finish implementing this
+    //int *secretCardIndex; -> dont need to save?
+    
+    //std::deque<shared_ptr<StartCard>> stack;
+    //std::shared_ptr<StartCard> start;
+    
+	for(int i = 0 ; i < 103; i++){
+		for(int j = 0; j < 103; j++){
+            if(table.occupied[i][j] == 0){
+                out<< 0;
+            } else {
+                out<< table.tableArray[i][j];
+            }
+        }
 	}
+    
+    
 	return out;
     
 }
@@ -377,25 +396,6 @@ void Table::print(){
         }
         cout<<endl;
         
-    }
-    
-}
-
-int Table::getAnimalCount(char animal){
-    //use to write animal counts to file
-    
-    if(animal == 'b'){
-        return bearCount;
-    } else if(animal == 'd'){
-        return deerCount;
-    } else if(animal == 'h'){
-        return hareCount;
-    } else if(animal == 'm'){
-        return mooseCount;
-    } else if(animal == 'w'){
-        return wolfCount;
-    } else {
-        return 0;
     }
     
 }

@@ -58,9 +58,11 @@ void Player::print(){
 
 ostream &operator <<(ostream &out, const Player& player){
     
-	cout << "Secret Animal" << player.d_secretAnimal << "Player Hand" << player.playerHand;
-	return out;
+    out << player.d_name;
+    out << player.d_secretAnimal;
+    out << player.playerHand;
     
+    return out;
 }
 
 void Player::swapHands(Player &player){

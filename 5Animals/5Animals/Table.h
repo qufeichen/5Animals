@@ -59,19 +59,21 @@ private:
 
 public:
 	Table(int);
+    
 	int addAt(std::shared_ptr<AnimalCard>, int, int);
     int checkNeighbours(shared_ptr<AnimalCard>, int, int);
-	Table& operator+=(std::shared_ptr<ActionCard>);
-	Table& operator-=(std::shared_ptr<ActionCard>);
-	std::shared_ptr<AnimalCard>pickAt(int, int );
-	bool win(std::string& animal);
-	friend ostream & operator <<(ostream& , const Table&);
+    std::shared_ptr<AnimalCard>pickAt(int, int );
+    bool win(std::string& animal);
+    
 	int getNumPlayers();
 	Player *getPlayer(string); //gets player by name
 	Player *getPlayer(int); //gets player by index (in array)
 	string createPlayer(string); //creates player
     void print();
-    int getAnimalCount(char);
+
+    Table& operator+=(std::shared_ptr<ActionCard>);
+    Table& operator-=(std::shared_ptr<ActionCard>);
+    friend ostream & operator <<(ostream& , const Table&);
     
 };
 
