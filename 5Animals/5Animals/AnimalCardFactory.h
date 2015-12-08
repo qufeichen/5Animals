@@ -29,7 +29,7 @@ private:
 public:
 	AnimalCardFactory();
     ~AnimalCardFactory();
-    Deck<AnimalCard> createDeck();
+    Deck<AnimalCard> createDeck(); // done in constructor
     AnimalCardFactory* animalFactory;
 	static AnimalCardFactory* getFactory();
 	Deck<AnimalCard> &getDeck();

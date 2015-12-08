@@ -35,6 +35,7 @@ int main( int argc, char *args[] ) {
     cout<<"Welcome to 5Animals!"<<endl<<"Would you like to start a new game, or load a previous game? Enter 0 for new game, and any other number to load a previous game."<<endl;
     int newOrSave;
     cin>>newOrSave;
+    bool startNewGame = true;
     
     //declare variables
     bool playerHasWon = false;
@@ -43,7 +44,43 @@ int main( int argc, char *args[] ) {
     int numPlayers;
     AnimalCardFactory *factory;
     
-    
+    if(newOrSave != 0){
+        startNewGame = false;
+        
+        ifstream infile;
+        infile.open(".../5Animals.txt");
+        
+        //check for error
+        if(infile.fail()){
+            cerr << "There was an error reading from file";
+            //TODO: what to do here? give option to start new game?
+            startNewGame = true;
+        }
+        
+        infile >> numPlayers;
+        
+        //table
+        Table board = Table(numPlayers);
+        
+        //implement this in table
+        //infile >> board;
+        
+        infile.close();
+        /* variables to save
+         int numPlayers;
+         Hand currentHand;
+         
+         Table tableArray (cards that have been played and position)
+         
+         AnimalCardFactory (deck with cards left)
+         Player vector
+         Player (name, secret animal, hand, cards in hand)
+         Startstack( cards in startstack)
+         
+         */
+        
+
+    }
 
         //start a new game
         
@@ -109,18 +146,9 @@ int main( int argc, char *args[] ) {
                 }
             
             //table
+            outfile<< board;
             
-            //save animal counts:
-            
-            //save tableArray (contains pointers)
-            //save occupied (int array)
-            
-            //save pointer to startstack
-            
-            //deck (vector)
-            
-            
-            
+            //TODO: deck
             
             
             outfile.close();
