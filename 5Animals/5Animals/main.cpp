@@ -14,7 +14,6 @@
 #include "ActionCard.h"
 #include "StartCard.h"
 #include "StartStack.h"
-#include "Joker.h"
 #include "Deck.h"
 #include "Table.h"
 #include "Hand.h"
@@ -99,9 +98,9 @@ int main( int argc, char *args[] ) {
         Table board = Table(numPlayers);
         
         //create deck
-    
+        //Deck::template deck<AnimalCard> = factory->getDeck();
         Deck<AnimalCard> deck = factory->getDeck();
-        
+    
         //create players
         string name;
         for(int i=0;i<numPlayers;i++){
@@ -114,9 +113,12 @@ int main( int argc, char *args[] ) {
         //draw three cards per player
         for(int i = 0; i<numPlayers; i++){
             //TODO: fix error here (Linker error)
-            deck.draw();
-            deck.draw();
-            deck.draw();
+            //deck.template draw<AnimalCard>();
+            //deck.template draw<AnimalCard>();
+            //deck::template draw<AnimalCard>();
+            deck.draw(); //seems to work, but causes linker error during build
+            
+
         }
   //  }
   
@@ -215,7 +217,7 @@ int main( int argc, char *args[] ) {
                 
                 //dynamic cast - will return null pointer if casting fails
                 shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
-                if( cardToPlay != NULL){
+                if( cardToPlay != nullptr){
                     
                     //get card
                     //shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);

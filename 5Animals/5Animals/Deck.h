@@ -21,8 +21,15 @@ template <class T>
 class Deck : public std::vector<std::shared_ptr<T>>{
 	
 public:
-	std::shared_ptr<T> draw();
+    inline std::shared_ptr<T> draw(){
+        shared_ptr<T> temp;
+        //pop last element and return it
+        temp = this->back();
+        //remove last element from deck
+        this->pop_back();
+        return temp;
+    }
 
 };
-
+#include "Deck.cpp"
 #endif
