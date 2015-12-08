@@ -6,7 +6,6 @@
 //Due Date: December 9th, 2015
 
 #include <string>
-#include <string>
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -76,9 +75,9 @@ public:
         } else {
             card.orientation = Orientation::DOWN;
         }
-        string eo;
+        int eo;
         in >> eo;
-        if(eo == "EVEN"){
+        if(eo == 0){
             card.evenOdd = EvenOdd::EVEN;
             card.next = EvenOdd::ODD;
         } else {

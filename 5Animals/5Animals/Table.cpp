@@ -333,7 +333,7 @@ string Table::createPlayer(string name){
 		secretAnimal = "Deer";
 		break;
 	}
-	players.push_back( Player(name, secretAnimal) );
+	players.push_back( Player(name, secretAnimal, currentNumPlayers) );
 	++currentNumPlayers;
 	return "player created successfully";
     
@@ -390,6 +390,7 @@ ostream & operator <<(ostream& out , const Table& table){
             if(table.occupied[i][j] == 0){
                 out<< 0;
             } else {
+                out << 1;
                 out<< table.tableArray[i][j];
             }
         }
@@ -398,4 +399,41 @@ ostream & operator <<(ostream& out , const Table& table){
     
     return out;
     
+}
+
+istream & operator >>(istream& in, Table& table){
+    //TODO: implement
+    in >> table.bearCount;
+    in >> table.deerCount;
+    in >> table.hareCount;
+    in >> table.mooseCount;
+    in >> table.wolfCount;
+    in >> table.d_maxNumPlayers;
+    in >> table.currentNumPlayers;
+    
+    for (int i = 0; i<table.d_maxNumPlayers; i++){
+        Player temp("","",i);
+        in >> temp;
+        table.players.push_back(temp);
+    }
+    
+    //TODO: Finish implementing this
+    //int *secretCardIndex
+    
+    //std::shared_ptr<StartCard> start;
+    
+    int x;
+    for(int i = 0; i < 103; i++){
+        for(int j = 0; j < 103; j++){
+            cin>>x;
+            table.occupied[i][j] = x;
+            if(x == 1){
+                //shared_ptr<AnimalCard> card( new AnimalCard(' ', Orientation::UP, EvenOdd::EVEN) );
+                //in >> card ;
+                //table.tableArray[i][j] = card;
+            }
+        }
+    }
+    
+    return in;
 }

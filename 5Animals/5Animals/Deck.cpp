@@ -22,3 +22,4 @@ template<class T> std::shared_ptr<T> Deck<T>::draw(){
     return temp;
 
 }
+

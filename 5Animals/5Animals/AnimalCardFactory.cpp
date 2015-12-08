@@ -11,16 +11,13 @@
 #include <vector>
 #include "AnimalCard.h"
 #include "AnimalCardFactory.h"
-#include "NoSplit.h"
-#include "TwoSplit.h"
-#include "ThreeSplit.h"
-#include "FourSplit.h"
 #include "Joker.h"
 #include "BearAction.h"
 #include "DeerAction.h"
 #include "HareAction.h"
 #include "MooseAction.h"
 #include "WolfAction.h"
+#include "Deck.h"
 
 AnimalCardFactory::AnimalCardFactory(){
     

@@ -14,18 +14,10 @@
 #include "ActionCard.h"
 #include "StartCard.h"
 #include "StartStack.h"
-#include "NoSplit.h"
-#include "TwoSplit.h"
-#include "FourSplit.h"
-#include "ThreeSplit.h"
-#include "BearAction.h"
-#include "DeerAction.h"
-#include "MooseAction.h"
 #include "Joker.h"
 #include "Deck.h"
 #include "Table.h"
 #include "Hand.h"
-#include "Game.h"
 #include "AnimalCardFactory.h"
 
 using namespace std;
@@ -42,8 +34,9 @@ int main( int argc, char *args[] ) {
     string winner;
     Hand currentHand;
     int numPlayers;
-    AnimalCardFactory *factory;
-    
+    AnimalCardFactory *factory = new AnimalCardFactory();
+
+    //load from file
     if(newOrSave != 0){
         startNewGame = false;
         
@@ -53,11 +46,17 @@ int main( int argc, char *args[] ) {
         //check for error
         if(infile.fail()){
             cerr << "There was an error reading from file";
-            //TODO: what to do here? give option to start new game?
+            //no file found, start new game
             startNewGame = true;
-        }
+            
+        } else {
         
-        infile >> numPlayers;
+            infile >> numPlayers;
+//        
+//        if(isAction == true)
+//        infile >> ActionCard c;
+//        else
+//        infile >> AnimalCard c;
         
         //table
         Table board = Table(numPlayers);
@@ -78,12 +77,14 @@ int main( int argc, char *args[] ) {
          Startstack( cards in startstack)
          
          */
+        }
         
 
     }
 
         //start a new game
-        
+    
+    //if(startNewGame){
         //enter number of players
         cout<<"Please enter the number of players:"<<endl;
         cin>> numPlayers;
@@ -98,7 +99,7 @@ int main( int argc, char *args[] ) {
         Table board = Table(numPlayers);
         
         //create deck
-        factory->getFactory();
+    
         Deck<AnimalCard> deck = factory->getDeck();
         
         //create players
@@ -112,17 +113,12 @@ int main( int argc, char *args[] ) {
         
         //draw three cards per player
         for(int i = 0; i<numPlayers; i++){
-            //TODO: fix error here
-            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
-            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
-            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
-            
+            //TODO: fix error here (Linker error)
+            deck.draw();
+            deck.draw();
             deck.draw();
         }
-    
-    
-        //TODO: implement load from file here
-    
+  //  }
   
     while(!playerHasWon){
         
@@ -206,11 +202,23 @@ int main( int argc, char *args[] ) {
             //if placing an action card
             if( row == 52 && col == 52){
                 
-                //TODO: How to check if card is an action card?
-                if(true){
+                //Should use exceptions to check for null pointer?
+//                try{
+//                    shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
+//                    if( cardToPlay == nullptr ){
+//                        throw "exception";
+//                    }
+//                } catch (exception e){
+//                    cout<<"You cannot place a non-action card on the startstack. Please start your turn again.";
+//                    i--;
+//                }
+                
+                //dynamic cast - will return null pointer if casting fails
+                shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
+                if( cardToPlay != NULL){
                     
                     //get card
-                    shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
+                    //shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
                     //remove card from hand
                     currentHand -= currentHand[card];
                     
@@ -228,8 +236,8 @@ int main( int argc, char *args[] ) {
                         cardToPlay->perform(board, board.getPlayer(i), qr);
                     }
 
-                
                 }
+                
                 //if not an action card
                 else {
                     
@@ -259,7 +267,7 @@ int main( int argc, char *args[] ) {
                     //let player play turn again
                     cout<<"Restart your turn.";
                     i--;
-                    break;
+                    
                 } else {
                     
                     //draw additional cards

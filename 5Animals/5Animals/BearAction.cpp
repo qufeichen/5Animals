@@ -5,7 +5,6 @@
 //Robert Luo -
 //Due Date: December 9th, 2015
 
-#include "ActionCard.h"
 #include "BearAction.h"
 #include "QueryResult.h"
 #include "Table.h"

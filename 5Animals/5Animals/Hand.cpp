@@ -7,9 +7,9 @@
 
 #include <memory>
 #include <ostream>
-#include "Hand.h"
 #include <algorithm>
 #include <vector>
+#include "Hand.h"
 
 using namespace std;
 
@@ -73,18 +73,6 @@ int Hand::noCards(){
     
 }
 
-ostream& operator <<(ostream &out, const Hand& handGiven){
-    
-    out<<handGiven.numOfCards;
-    list<shared_ptr<AnimalCard>>::const_iterator it;
-    for(it = handGiven.cardsInHand.begin(); it != handGiven.cardsInHand.end(); it++){
-        out<<(*it);
-    }
-
-	return out;
-
-}
-
 void Hand::print(){
     
     //print index
@@ -106,5 +94,32 @@ void Hand::print(){
          cout<<"  ";
     }
     cout<<endl;
+    
+}
+
+ostream& operator <<(ostream &out, const Hand& handGiven){
+    
+    out<<handGiven.numOfCards;
+    list<shared_ptr<AnimalCard>>::const_iterator it;
+    for(it = handGiven.cardsInHand.begin(); it != handGiven.cardsInHand.end(); it++){
+        out<<(*it);
+    }
+    
+    return out;
+    
+}
+
+istream & operator >>(istream &in, Hand& hand){
+    //TODO: implement
+    
+//    in >> hand.numOfCards;
+//    for(int i = 0; i<hand.numOfCards; i++){
+//        std::shared_ptr<AnimalCard> nos1( new AnimalCard() );
+//
+////        cin >> card;
+////        
+//    
+//    }
+    return in;
     
 }

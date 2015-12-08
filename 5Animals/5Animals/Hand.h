@@ -9,10 +9,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <memory>
-#include "AnimalCard.h"
 #include <list>
 #include <iostream>
 #include <algorithm>
+#include "AnimalCard.h"
 
 #ifndef HAND_H
 #define HAND_H
@@ -31,7 +31,7 @@ public:
 	std::shared_ptr<AnimalCard> operator[](int);
 	int noCards();
 	friend ostream & operator <<(ostream &out, const Hand&);
-    //friend istream & operator >>(istream &in, Hand&)
+    friend istream & operator >>(istream &in, Hand&);
     void print();
 
 };

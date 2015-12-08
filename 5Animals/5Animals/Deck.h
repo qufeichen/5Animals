@@ -9,8 +9,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
-#include "AnimalCard.h"
 #include <memory>
+#include "AnimalCard.h"
 
 #ifndef DECK_H
 #define DECK_H

@@ -14,8 +14,6 @@
 #include "StartCard.h"
 #include "StartStack.h"
 #include "Player.h"
-//#include "AnimalCard.h"
-//#include "ActionCard.h"
 
 class AnimalCard;
 class ActionCard;
@@ -74,6 +72,7 @@ public:
     Table& operator+=(std::shared_ptr<ActionCard>);
     Table& operator-=(std::shared_ptr<ActionCard>);
     friend ostream & operator <<(ostream& , const Table&);
+    friend istream & operator >>(istream& , Table&);
     
 };
 

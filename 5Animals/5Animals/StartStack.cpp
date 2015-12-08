@@ -10,9 +10,9 @@
 #include <cstdlib>
 #include <iostream>
 #include <memory>
+#include <deque>
 #include "StartStack.h"
 #include "StartCard.h"
-#include <deque>
 
 StartStack::StartStack(){
     

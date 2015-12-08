@@ -19,10 +19,12 @@ class Player {
 private:
 	string d_name;
 	string d_secretAnimal;
+    int d_id;
 	Hand playerHand;
+
     
 public:
-	Player(string, string);
+	Player(string, string, int);
     string swapSecretAnimal(string&);
 	string getSecretAnimal();
 	string getName();
@@ -31,6 +33,7 @@ public:
     void swapHands(Player&);
 	void print();
 	friend ostream & operator <<(ostream &out, const Player&);
+    friend istream & operator >>(istream &in, Player&);
 	void swapHands(Player*);
 
 };

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-Player::Player(string name, string s_Animal): d_name(name), playerHand(){
+Player::Player(string name, string s_Animal, int id): d_name(name), playerHand(), d_id(id){
     
 	d_secretAnimal = s_Animal;
     
@@ -60,9 +60,16 @@ ostream &operator <<(ostream &out, const Player& player){
     
     out << player.d_name;
     out << player.d_secretAnimal;
+    out << player.d_id;
     out << player.playerHand;
     
     return out;
+}
+
+istream & operator >>(istream &in, Player&){
+    //TODO: implement
+    
+    return in;
 }
 
 void Player::swapHands(Player &player){
