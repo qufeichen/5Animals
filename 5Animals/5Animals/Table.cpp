@@ -10,9 +10,10 @@
 #include "Player.h"
 #include "StartStack.h"
 
-Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), occupied{}{
+Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), stack(new StartStack()), occupied{}{
 	
     //only contains start card
+    
 	tableArray[52][52] = stack;
     occupied[52][52] = 1;
     
@@ -410,9 +411,11 @@ void Table::print(){
     }
     cout<<endl;
     
+    
     for (int i=upperLeftRow; i<lowerRightRow+1; i++){
         cout<<i<<" ";
-        for (int j=0; j<103; j++){
+        
+        for (int j=upperLeftCol; j<lowerRightCol; j++){
             if(occupied[i][j] == 1){
                 tableArray[i][j]->printRow(EvenOdd::EVEN);
                 cout<<" ";
@@ -421,7 +424,9 @@ void Table::print(){
                 cout<<" ";
             }
         }
-        for (int k=upperLeftRow; k<lowerRightRow+1; k++){
+        cout<<endl;
+        cout<<"   ";
+        for (int k=upperLeftCol; k<lowerRightCol; k++){
             if(occupied[i][k] == 1){
                 tableArray[i][k]->printRow(EvenOdd::ODD);
                 cout<<" ";

@@ -38,8 +38,9 @@ public:
 	void setRow(EvenOdd);
 	EvenOdd getRow();
 	void printRow( EvenOdd );
-    virtual char getAnimal(int, int);
+    char getAnimal(int, int);
     char getTopAnimal();
+    void printRow( ostream &, EvenOdd );
 
 	//Need to print object???
     

@@ -57,7 +57,5 @@ void StartCard::printRow(EvenOdd eo){
     
     cout << cardMatrix[0][0];
     cout << cardMatrix[0][1];
-    cout << cardMatrix[1][0];
-    cout << cardMatrix[1][1];
     
 }

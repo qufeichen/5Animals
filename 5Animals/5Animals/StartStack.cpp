@@ -77,6 +77,13 @@ EvenOdd StartStack::getRow(){
 void StartStack::printRow(EvenOdd eo){
     
     stack.back()->printRow( eo );
+    
+}
+
+void StartStack::printRow( ostream &, EvenOdd eo ){
+    
+     stack.back()->printRow( eo );
+    
 }
 
 char StartStack::getAnimal(int, int){
@@ -86,5 +93,7 @@ char StartStack::getAnimal(int, int){
 }
 
 char StartStack::getTopAnimal(){
+    
     return topAnimal;
+    
 }
