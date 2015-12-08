@@ -113,6 +113,8 @@ int main( int argc, char *args[] ) {
             //board.getPlayer(i)->getHand() += factory->getDeck().draw();
             
             //print hand
+            cout<<"Here is your hand:"<<endl;
+            currentHand.print();
             
             cout<<"Please choose a card to play:?"<<endl;
             int card;
@@ -144,7 +146,7 @@ int main( int argc, char *args[] ) {
             //if placing an action card
             if( row == 52 && col == 52){
                 
-                //TODO: check if card is an action card
+                //TODO: How to check if card is an action card?
                 if(true){
                     
                     //get card
@@ -190,7 +192,27 @@ int main( int argc, char *args[] ) {
                  currentHand -= currentHand[card];
                 
                 //place card on board
-                board.addAt(cardToPlay, row, col);
+                int numMatches = board.addAt(cardToPlay, row, col);
+                
+                if(numMatches == 0){
+                    //card not placed successfully on table, error is thrown
+                    //let player play turn again
+                    cout<<"Restart your turn.";
+                    i--;
+                    break;
+                } else {
+                    
+                    //draw additional cards
+                    cout<<"Since your card made "<<numMatches<<" matches, you will draw "<<numMatches<<" additional cards.";
+                    for(int i=0; i<numMatches; i++){
+                        shared_ptr<AnimalCard> cardDrawn = deck.draw();
+                        currentHand += cardDrawn;
+                    }
+                    //print new hand
+                    cout<<"Your new hand:"<<endl;
+                    currentHand.print();
+                    
+                }
                 
             }
             

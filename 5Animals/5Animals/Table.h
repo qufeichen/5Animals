@@ -47,6 +47,11 @@ private:
     vector<Player> players;
     int currentNumPlayers;
     int *secretCardIndex;
+//    //TODO:for printing table
+//    int upperLeftRow;
+//    int upperLeftCol;
+//    int lowerRightRow;
+//    int lowerRightCol;
     
     //methods to update animal count
     void addToAnimalCount(std::shared_ptr<AnimalCard>); //count number of animal and incremenents
@@ -55,7 +60,7 @@ private:
 public:
 	Table(int);
 	int addAt(std::shared_ptr<AnimalCard>, int, int);
-    bool checkNeighbours(shared_ptr<AnimalCard>, int, int);
+    int checkNeighbours(shared_ptr<AnimalCard>, int, int);
 	Table& operator+=(std::shared_ptr<ActionCard>);
 	Table& operator-=(std::shared_ptr<ActionCard>);
 	std::shared_ptr<AnimalCard>pickAt(int, int );

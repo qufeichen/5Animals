@@ -35,7 +35,8 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 		return 0;
 	}
     //check if atleast one neightbour matches
-    if(!checkNeighbours(newCard, row, col)){
+    int numMatches = checkNeighbours(newCard, row, col);
+    if (numMatches == 0){
         cout<<"error: cannot place card here, no matching neighbours"<<endl;
         return 0;
 
@@ -46,66 +47,58 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
     
     addToAnimalCount(newCard);
 	
-    return 1;
+    return numMatches;
     
     //TODO: implement in main
-    //if return is 0, throw error
+    //if return is 0, throw error,
 }
 
-bool Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
+int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
     
-    bool hasMatch = false;
+    int matches = 0;
     
     if( row > 0) {
         if((card->getAnimal(0, 0) == tableArray[row-1][col]->getAnimal(1, 0)) || (tableArray[row-1][col]->getAnimal(1, 0) == 'j' ) ){
             //check top left
-            hasMatch = true;
-            return hasMatch;
+            matches++;
         } else if( (card->getAnimal(0, 1) == tableArray[row-1][col]->getAnimal(1, 1) ) || (tableArray[row-1][col]->getAnimal(1, 1) == 'j' )){
             //check top right
-            hasMatch = true;
-            return hasMatch;
+            matches++;
         }
     }
     
     if( row < 103) {
         if( (card->getAnimal(1, 0) == tableArray[row+1][col]->getAnimal(0, 0)) || (tableArray[row+1][col]->getAnimal(0, 0) == 'j' ) ){
             //check bottom left
-            hasMatch = true;
-            return hasMatch;
+            matches++;
         } else if( (card->getAnimal(1, 1) == tableArray[row+1][col]->getAnimal(0, 1)) || (tableArray[row+1][col]->getAnimal(0, 1) == 'j' )){
             //check bottom right
-            hasMatch = true;
-            return hasMatch;
+            matches++;
         }
     }
     
     if( col > 0) {
         if( (card->getAnimal(0, 0) == tableArray[row][col-1]->getAnimal(0, 1)) || (tableArray[row][col-1]->getAnimal(0, 1) == 'j' )){
             //check top left
-            hasMatch = true;
-            return hasMatch;
+            matches++;
         } else if( (card->getAnimal(1, 0) == tableArray[row][col-1]->getAnimal(1, 1)) || (tableArray[row][col-1]->getAnimal(1, 1) == 'j' )){
             //check bottom left
-            hasMatch = true;
-            return hasMatch;
+            matches++;
         }
     }
     
     if(col<103) {
         if( (card->getAnimal(0, 1) == tableArray[row][col+1]->getAnimal(0, 0)) || (tableArray[row][col+1]->getAnimal(0, 0) == 'j' )){
             //check top right
-            hasMatch = true;
-            return hasMatch;
+            matches++;
     
         } else if( (card->getAnimal(1, 1) == tableArray[row][col+1]->getAnimal(1, 0)) || (tableArray[row][col+1]->getAnimal(1, 0) == 'j' )){
             //check bottom right
-            hasMatch = true;
-            return hasMatch;
+            matches++;
         }
     }
     
-       return hasMatch;
+       return matches;
     
 }
        
