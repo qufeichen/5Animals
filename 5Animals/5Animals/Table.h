@@ -46,10 +46,10 @@ private:
     int currentNumPlayers;
     int *secretCardIndex;
 //    //TODO:for printing table (keep track of size of table)
-//    int upperLeftRow;
-//    int upperLeftCol;
-//    int lowerRightRow;
-//    int lowerRightCol;
+    int upperLeftRow;
+    int upperLeftCol;
+    int lowerRightRow;
+    int lowerRightCol;
     
     //methods to update animal count
     void addToAnimalCount(std::shared_ptr<AnimalCard>);

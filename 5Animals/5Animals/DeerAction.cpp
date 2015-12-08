@@ -18,8 +18,14 @@ DeerAction::DeerAction(){
     
     cardMatrix[0][0] = 'D';
     cardMatrix[0][1] = 'D';
-    cardMatrix[1][0] = 'A';
-    cardMatrix[1][1] = 'A';
+    cardMatrix[1][0] = 'D';
+    cardMatrix[1][1] = 'D';
+    
+}
+
+char DeerAction::getAnimal(){
+    
+    return 'd';
     
 }
 

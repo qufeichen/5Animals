@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Table.h"
 #include "Player.h"
+#include "StartStack.h"
 
 Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), occupied{}{
 	
@@ -22,6 +23,13 @@ Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0
 		secretCardIndex[i] = i+1;
 	}
 	random_shuffle(&secretCardIndex[0], &secretCardIndex[numPlayers-1]); //shuffle index
+    //TODO: this is not shuffling :(
+    
+    //set limits of table to display
+    upperLeftRow = 51;
+    upperLeftCol = 51;
+    lowerRightRow = 53;
+    lowerRightCol = 53;
 
 }
 
@@ -46,6 +54,18 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
     occupied[row][col] = 1;
     
     addToAnimalCount(newCard);
+    
+    //change limits of table to display
+    if((upperLeftRow != 0) && (row == upperLeftRow)){
+        upperLeftRow = row-1;
+    } else if((lowerRightRow != 103) && (row == lowerRightRow)){
+        lowerRightRow = row-1;
+    }
+    if((upperLeftCol != 0) && (row == upperLeftCol)){
+        upperLeftCol = row-1;
+    } else if((lowerRightCol != 103) && (row == lowerRightCol)){
+        lowerRightCol = row-1;
+    }
 	
     return numMatches;
     
@@ -101,8 +121,6 @@ int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
        return matches;
     
 }
-       
-
 
 std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
     
@@ -146,6 +164,50 @@ Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){
 }
 
 Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
+    
+    //add to top of stack
+    
+    //change animal count
+    char remove = stack->getTopAnimal();
+    switch (remove) {
+        case 'b':
+            bearCount--;
+            break;
+        case 'd':
+            deerCount--;
+            break;
+        case 'h':
+            hareCount--;
+            break;
+        case 'm':
+            mooseCount--;
+            break;
+        case 'w':
+            wolfCount--;
+            break;
+        default:
+            break;
+    }
+    char newcardAnimal = newCard->getAnimal();
+    switch (newcardAnimal) {
+        case 'b':
+            bearCount++;
+            break;
+        case 'd':
+            deerCount++;
+            break;
+        case 'h':
+            hareCount++;
+            break;
+        case 'm':
+            mooseCount++;
+            break;
+        case 'w':
+            wolfCount++;
+            break;
+        default:
+            break;
+    }
     
     *stack-=newCard;
     return *this;
@@ -341,7 +403,15 @@ string Table::createPlayer(string name){
 
 void Table::print(){
     
-    for (int i=0; i<103; i++){
+    //print index:
+    cout<<"  ";
+    for( int i = upperLeftCol; i<lowerRightCol+1; i++){
+        cout<<i<<"  ";
+    }
+    cout<<endl;
+    
+    for (int i=upperLeftRow; i<lowerRightRow+1; i++){
+        cout<<i<<" ";
         for (int j=0; j<103; j++){
             if(occupied[i][j] == 1){
                 tableArray[i][j]->printRow(EvenOdd::EVEN);
@@ -351,7 +421,7 @@ void Table::print(){
                 cout<<" ";
             }
         }
-        for (int k=0; k<103; k++){
+        for (int k=upperLeftRow; k<lowerRightRow+1; k++){
             if(occupied[i][k] == 1){
                 tableArray[i][k]->printRow(EvenOdd::ODD);
                 cout<<" ";

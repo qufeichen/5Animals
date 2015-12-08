@@ -28,6 +28,7 @@ public:
     void perform(Table &, Player* , QueryResult);
     string action;
     void printRow(EvenOdd);
+    char getAnimal();
 
 };
 

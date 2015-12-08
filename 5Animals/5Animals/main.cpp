@@ -23,7 +23,7 @@ using namespace std;
 
 int main( int argc, char *args[] ) {
     
-    cout<<"Welcome to 5Animals!"<<endl<<"Would you like to start a new game, or load a previous game? Enter 0 for new game, and any other number to load a previous game."<<endl;
+    cout<<"Welcome to 5Animals!"<<endl<<endl<<"Would you like to start a new game, or load a previous game?"<< endl <<"Enter 0 for a new game, and any other number to load a previous game."<<endl;
     int newOrSave;
     cin>>newOrSave;
     bool startNewGame = true;
@@ -44,7 +44,7 @@ int main( int argc, char *args[] ) {
         
         //check for error
         if(infile.fail()){
-            cerr << "There was an error reading from file";
+            cerr << "There was an error reading from file. You do not have a game saved!"<<endl;
             //no file found, start new game
             startNewGame = true;
             
@@ -85,6 +85,7 @@ int main( int argc, char *args[] ) {
     
     //if(startNewGame){
         //enter number of players
+        cout<<"You are starting a new game!"<<endl;
         cout<<"Please enter the number of players:"<<endl;
         cin>> numPlayers;
         
@@ -108,16 +109,15 @@ int main( int argc, char *args[] ) {
             cin>>name;
             board.createPlayer(name);
             cout<<"Your secret animal is "+board.getPlayer(i)->getSecretAnimal()<<endl;
+            cout<<endl;
         }
         
         //draw three cards per player
         for(int i = 0; i<numPlayers; i++){
-            //TODO: fix error here (Linker error)
-            //deck.template draw<AnimalCard>();
-            //deck.template draw<AnimalCard>();
+            deck.draw();
+            deck.draw();
+            deck.draw();
             //deck::template draw<AnimalCard>();
-            deck.draw(); //seems to work, but causes linker error during build
-            
 
         }
   //  }
@@ -165,11 +165,9 @@ int main( int argc, char *args[] ) {
             board.print();
             
             //draw card for player
-            //TODO: fix error here
             currentHand = board.getPlayer(i)->getHand();
             currentHand += deck.draw();
-            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
-            
+
             //print hand
             cout<<"Here is your hand:"<<endl;
             currentHand.print();

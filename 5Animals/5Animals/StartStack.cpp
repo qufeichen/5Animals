@@ -19,6 +19,7 @@ StartStack::StartStack(){
     std::shared_ptr<StartCard> newStart( new StartCard() );
     this->start = newStart;
     stack.push_back(start);
+    topAnimal = 'c';
 
 }
 
@@ -35,6 +36,7 @@ StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
     
 	//bottom is front
 	stack.push_front(card);
+    topAnimal = card->getAnimal();
 	return *this;
     //execute action elsewhere
     //no access to table
@@ -74,27 +76,15 @@ EvenOdd StartStack::getRow(){
 
 void StartStack::printRow(EvenOdd eo){
     
-	if(eo == EVEN){
-		for(int i=0; i< 2; i++){
-
-			cout << cardMatrix[0][i] << "first row" << endl;	
-		}
-	}
-	else if(eo == ODD){
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[1][i] << "second row"  << endl;	
-		}
-	}else{
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[0][i] << "default" << endl;	
-
-		}
-	}
-    
+    stack.back()->printRow( eo );
 }
 
 char StartStack::getAnimal(int, int){
     
-    return 's';
+    return topAnimal;
     
+}
+
+char StartStack::getTopAnimal(){
+    return topAnimal;
 }

@@ -18,8 +18,15 @@ MooseAction::MooseAction(){
     
     cardMatrix[0][0] = 'M';
     cardMatrix[0][1] = 'M';
-    cardMatrix[1][0] = 'A';
-    cardMatrix[1][1] = 'A';
+    cardMatrix[1][0] = 'M';
+    cardMatrix[1][1] = 'M';
+    
+}
+
+char MooseAction::getAnimal(){
+    
+    return 'm';
+    
 }
 
 void MooseAction::printRow(EvenOdd e){

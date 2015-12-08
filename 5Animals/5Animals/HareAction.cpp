@@ -19,8 +19,14 @@ HareAction::HareAction(){
     
     cardMatrix[0][0] = 'H';
     cardMatrix[0][1] = 'H';
-    cardMatrix[1][0] = 'A';
-    cardMatrix[1][1] = 'A';
+    cardMatrix[1][0] = 'H';
+    cardMatrix[1][1] = 'H';
+    
+}
+
+char HareAction::getAnimal(){
+    
+    return 'h';
     
 }
 

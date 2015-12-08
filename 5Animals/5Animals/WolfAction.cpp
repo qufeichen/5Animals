@@ -19,8 +19,14 @@ WolfAction::WolfAction(){
     
     cardMatrix[0][0] = 'W';
     cardMatrix[0][1] = 'W';
-    cardMatrix[1][0] = 'A';
-    cardMatrix[1][1] = 'A';
+    cardMatrix[1][0] = 'W';
+    cardMatrix[1][1] = 'W';
+    
+}
+
+char WolfAction::getAnimal(){
+    
+    return 'w';
     
 }
 

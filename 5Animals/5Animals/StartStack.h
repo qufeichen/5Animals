@@ -27,6 +27,7 @@ private:
 	EvenOdd evenOdd;
 	EvenOdd next;
 	char cardMatrix[2][2];
+    char topAnimal;
 
 public:
 	StartStack();
@@ -38,6 +39,7 @@ public:
 	EvenOdd getRow();
 	void printRow( EvenOdd );
     virtual char getAnimal(int, int);
+    char getTopAnimal();
 
 	//Need to print object???
     

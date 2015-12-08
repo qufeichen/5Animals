@@ -55,21 +55,9 @@ EvenOdd StartCard::getRow(){
 
 void StartCard::printRow(EvenOdd eo){
     
-	if(eo == EVEN){
-		for(int i=0; i< 2; i++){
-
-			cout << cardMatrix[0][i] << "first row" << endl;	
-		}
-	}
-	else if(eo == ODD){
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[1][i] << "second row"  << endl;	
-		}
-	}else{
-		for(int i=0; i< 2; i++){
-			cout<< cardMatrix[0][i] << "default" << endl;	
-
-		}
-	}
+    cout << cardMatrix[0][0];
+    cout << cardMatrix[0][1];
+    cout << cardMatrix[1][0];
+    cout << cardMatrix[1][1];
     
 }

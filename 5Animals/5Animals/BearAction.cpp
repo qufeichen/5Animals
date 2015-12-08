@@ -19,8 +19,14 @@ BearAction::BearAction(){
     
     cardMatrix[0][0] = 'B';
     cardMatrix[0][1] = 'B';
-    cardMatrix[1][0] = 'A';
-    cardMatrix[1][1] = 'A';
+    cardMatrix[1][0] = 'B';
+    cardMatrix[1][1] = 'B';
+    
+}
+
+char BearAction::getAnimal(){
+    
+    return 'b';
     
 }
 

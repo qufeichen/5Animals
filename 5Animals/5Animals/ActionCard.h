@@ -21,6 +21,7 @@ class ActionCard:public StartCard{
 public:
     virtual QueryResult query() = 0;
     virtual void perform( Table&, Player*, QueryResult) = 0;
+    virtual char getAnimal() = 0;
     
 };
 
