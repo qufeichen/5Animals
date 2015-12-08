@@ -175,6 +175,7 @@ AnimalCardFactory::AnimalCardFactory(){
     char fs15[2][2] = { {'h','m'},{'w','b'} };
     std::shared_ptr<AnimalCard> fours15( new FourSplit(fs15, Orientation::UP, EvenOdd::EVEN) );
     deck.push_back(fours15);
+    
     //joker
     std::shared_ptr<AnimalCard>joker(new Joker());
     deck.push_back(joker);
@@ -213,6 +214,7 @@ AnimalCardFactory::AnimalCardFactory(){
     
     
     //TODO: shuffle cards here? or in Table? 
+    std::random_shuffle(deck.begin(), deck.end());
     
 }
 
