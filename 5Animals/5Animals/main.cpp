@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "AnimalCard.h"
 #include "ActionCard.h"
@@ -31,71 +32,109 @@ using namespace std;
 
 int main( int argc, char *args[] ) {
     
-    //IF NEW GAME:
-    //enter number of players
-    cout<<"Please enter the number of players:"<<endl;
-    int numPlayers;
-    cin>> numPlayers;
+    cout<<"Welcome to 5Animals!"<<endl<<"Would you like to start a new game, or load a previous game? Enter 0 for new game, and any other number to load a previous game."<<endl;
+    int newOrSave;
+    cin>>newOrSave;
     
-    //check that number of players is valid (between 1 and 5 inclusive)
-    while( ! ((1<numPlayers) && (numPlayers<6)) )
-    {   cout<<"Invalid input! Please enter a number between 2 and 5 (inclusive):"<<endl;
-        cin>> numPlayers;
-    }
-    
-    //create game
-    Table board = Table(numPlayers);
-    
-    //create deck
-    AnimalCardFactory *factory;
-    factory->getFactory();
-    Deck<AnimalCard> deck = factory->getDeck();
-    
-    //create players
-    string name;
-    for(int i=0;i<numPlayers;i++){
-        cout<<"Please enter player "<<(i+1)<<"'s name:"<<endl;
-        cin>>name;
-        board.createPlayer(name);
-        cout<<"Your secret animal is "+board.getPlayer(i)->getSecretAnimal()<<endl;
-    }
-    
-    //draw three cards per player
-    for(int i = 0; i<numPlayers; i++){
-        //TODO: fix error here
-        //board.getPlayer(i)->getHand() += factory->getDeck().draw();
-        //board.getPlayer(i)->getHand() += factory->getDeck().draw();
-        //board.getPlayer(i)->getHand() += factory->getDeck().draw();
-        
-       deck.draw();
-    }
-    
-    //OR
-    //LOAD FROM FILE
-    //TODO: implement load from file
-    
-    //Algorithm from project
-    //
-    //    While no Player has won
-    //    if pause save game to file and exit
-    //      For each Player
-    //        Display Table
-    //        Player draws top card from Deck Display Player
-    //        do
-    //            Ask Player input to choose card Play a card
-    //            Place card in Table
-    //            while card is not placed legally
-    //                if ActionCard was played and added on the bottom, perform the action for all players
-    //                    check if the player has won
-    //                        // Note player may win even at another player's turn end
-    //
-    
+    //declare variables
     bool playerHasWon = false;
     string winner;
     Hand currentHand;
+    int numPlayers;
+    AnimalCardFactory *factory;
+    
+    
+
+        //start a new game
+        
+        //enter number of players
+        cout<<"Please enter the number of players:"<<endl;
+        cin>> numPlayers;
+        
+        //check that number of players is valid (between 1 and 5 inclusive)
+        while( ! ((1<numPlayers) && (numPlayers<6)) )
+        {   cout<<"Invalid input! Please enter a number between 2 and 5 (inclusive):"<<endl;
+            cin>> numPlayers;
+        }
+        
+        //create game
+        Table board = Table(numPlayers);
+        
+        //create deck
+        factory->getFactory();
+        Deck<AnimalCard> deck = factory->getDeck();
+        
+        //create players
+        string name;
+        for(int i=0;i<numPlayers;i++){
+            cout<<"Please enter player "<<(i+1)<<"'s name:"<<endl;
+            cin>>name;
+            board.createPlayer(name);
+            cout<<"Your secret animal is "+board.getPlayer(i)->getSecretAnimal()<<endl;
+        }
+        
+        //draw three cards per player
+        for(int i = 0; i<numPlayers; i++){
+            //TODO: fix error here
+            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
+            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
+            //board.getPlayer(i)->getHand() += factory->getDeck().draw();
+            
+            deck.draw();
+        }
+    
+    
+  
     while(!playerHasWon){
         
-        //TODO: prompt to save game
+        //prompt to save game
+        //TODO: should we give save option every time a player starts a turn?
+        cout<<"Would you like to save the game now? Enter 0 for yes, and any other number for no: ";
+        int save;
+        cin>>save;
+        
+        if(save == 0){
+            //TODO: save to file
+            
+            ofstream outfile;
+            outfile.open(".../5Animals.txt");
+            
+            outfile << numPlayers << endl;
+            
+            //save players (name, secret animal, hand)
+            for(int i = 0; i<numPlayers; i++){
+                
+                outfile << board.getPlayer(i)->getName()<<endl;
+                outfile << board.getPlayer(i)->getSecretAnimal()<<endl;
+                outfile << board.getPlayer(i)->getHand();
+                 
+                }
+            
+            //table
+            
+            //save animal counts:
+            outfile << board.getAnimalCount('b');
+            outfile << board.getAnimalCount('d');
+            outfile << board.getAnimalCount('h');
+            outfile << board.getAnimalCount('m');
+            outfile << board.getAnimalCount('w');
+            
+            //save tableArray (contains pointers)
+            //save occupied (int array)
+            
+            //save pointer to startstack
+            
+            //deck (vector)
+            
+            
+            
+            
+            
+            outfile.close();
+            //end program
+            exit(1);
+        }
+        
         
         //loop for each player
         for( int i = 0; i<numPlayers; i++) {
@@ -226,11 +265,28 @@ int main( int argc, char *args[] ) {
                     winner = board.getPlayer(x)->getName();
                 }
             }
+            
         }
         
     }
     
     cout<<"Congratulations "+winner<<", you have won the game!"<<endl;
+    
+    //Algorithm from project
+    //
+    //    While no Player has won
+    //    if pause save game to file and exit
+    //      For each Player
+    //        Display Table
+    //        Player draws top card from Deck Display Player
+    //        do
+    //            Ask Player input to choose card Play a card
+    //            Place card in Table
+    //            while card is not placed legally
+    //                if ActionCard was played and added on the bottom, perform the action for all players
+    //                    check if the player has won
+    //                        // Note player may win even at another player's turn end
+    //
     
     
     /*
