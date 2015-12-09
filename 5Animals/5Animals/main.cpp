@@ -23,7 +23,10 @@ using namespace std;
 
 int main( int argc, char *args[] ) {
     
-    cout<<"Welcome to 5Animals!"<<endl<<endl<<"Would you like to start a new game, or load a previous game?"<< endl <<"Enter 0 for a new game, and any other number to load a previous game."<<endl;
+    cout<<"Welcome to 5Animals!"<<endl<<endl;
+    cout<<"Would you like to start a new game, or load a previous game?"<< endl;
+    cout<<"Enter 1 for a new game, or any other number to load a previous game."<<endl;
+    
     int newOrSave;
     cin>>newOrSave;
     bool startNewGame = true;
@@ -33,10 +36,9 @@ int main( int argc, char *args[] ) {
     string winner;
     Hand *currentHand;
     int numPlayers;
-    AnimalCardFactory *factory = new AnimalCardFactory();
 
     //load from file
-    if(newOrSave != 0){
+    if(newOrSave != 1){
         startNewGame = false;
         
         ifstream infile;
@@ -84,6 +86,7 @@ int main( int argc, char *args[] ) {
         //start a new game
     
     //if(startNewGame){
+    
         //enter number of players
         cout<<"You are starting a new game!"<<endl;
         cout<<"Please enter the number of players:"<<endl;
@@ -99,7 +102,7 @@ int main( int argc, char *args[] ) {
         Table board = Table(numPlayers);
         
         //create deck
-        //Deck::template deck<AnimalCard> = factory->getDeck();
+        AnimalCardFactory *factory = new AnimalCardFactory();
         Deck<AnimalCard> deck = factory->getDeck();
     
         //create players
@@ -173,8 +176,9 @@ int main( int argc, char *args[] ) {
             //print hand
             cout<<"Here is your hand:"<<endl;
             currentHand->print();
+            cout<<endl;
             
-            cout<<"Please choose a card to play:?"<<endl;
+            cout<<"Please choose a card to play:"<<endl;
             int card;
             cin>>card;
             while (card<0 || card > board.getPlayer(i)->getHand()->noCards()-1){
@@ -196,7 +200,7 @@ int main( int argc, char *args[] ) {
             cout<<"Enter a column: ";
             cin>>col;
             while (col<0 || col > 102){
-                cout<<"Thats not a valid row! Please choose a column position on the board:";
+                cout<<"Thats not a valid column! Please choose a column position on the board:";
                 cin>>col;
             }
             cout<<endl;
@@ -250,7 +254,7 @@ int main( int argc, char *args[] ) {
                     //return to start of loop so player can enter another location to place card?
                     cout<<"Please start your turn again."<<endl;
                     i--;
-                    //should an exception be called here?
+                    break;
                 }
             
             } else {
@@ -270,19 +274,21 @@ int main( int argc, char *args[] ) {
                     //let player play turn again
                     cout<<"Restart your turn.";
                     i--;
+                    break;
                     
                 } else {
                     
                     //draw additional cards
-                    cout<<"Since your card made "<<numMatches<<" matches, you will draw "<<numMatches<<" additional cards.";
+                    cout<<"Since your card made "<<numMatches<<" match(es), you will draw "<<numMatches<<" additional cards.";
                     for(int i=0; i<numMatches; i++){
                         shared_ptr<AnimalCard> cardDrawn = deck.draw();
                         currentHand->operator+=(cardDrawn);
                         
-                    }
+                }
                     //print new hand
                     cout<<"Your new hand:"<<endl;
                     currentHand->print();
+                    cout<<endl;
                     
                 }
                 
@@ -305,115 +311,6 @@ int main( int argc, char *args[] ) {
     
     cout<<"Congratulations "+winner<<", you have won the game!"<<endl;
     
-    //Algorithm from project
-    //
-    //    While no Player has won
-    //    if pause save game to file and exit
-    //      For each Player
-    //        Display Table
-    //        Player draws top card from Deck Display Player
-    //        do
-    //            Ask Player input to choose card Play a card
-    //            Place card in Table
-    //            while card is not placed legally
-    //                if ActionCard was played and added on the bottom, perform the action for all players
-    //                    check if the player has won
-    //                        // Note player may win even at another player's turn end
-    //
-    
-    
-    /*
-     TODO: FIX THIS:
-     Full of errors
-     will not build/compile
-     
-     
-     if (narg > 1) {
-     // open file and check for errors
-     ifstream ifs; // associated with file
-     ifs >> deck;
-     ifs >> tab;
-     ifs >> noPlayers;
-     players = new Player*[noPlayers];
-     for ( int pl=0; pl<noPlayers; ++pl ) {
-     players[pl] = new Player();
-     ifs >> players[pl]; // will load hand of player
-     }
-     } else {
-     AnimalCardFactory* factory = AnimalCardFactory::get();
-     deck = factory->getDeck();
-     cout << "Number of Players?" << endl;
-     cin >> noPlayers;
-     players = new Player*[noPlayers];
-     Hand  = deck.getHand();
-     for ( int pl=0; pl<noPlayers; ++pl ) {
-     cout << "Name of player " << pl << "?" << endl;
-     std::string name;
-     cin >> name;
-     players[pl] = new Player(name);
-     for (int i=0; i<3; ++i ) {
-     players[pl].hd += deck.draw();
-     }
-     }
-     }
-     
-     bool won{false};
-     
-     while (!won) {
-     for ( int pl=0; pl<noPlayers; ++pl ) {
-     cout << tab;
-     players[pl] += deck.draw();
-     cout << players[pl];
-     bool next = true;
-     do {
-     int cardNo;
-     cout << "Which card to play? (0 to "
-     << players[pl].hd.noCards() << ")? ";
-     cin >> cardNo;
-     std::shared_ptr<AnimalCard> ac = players[pl].hd[cardNo];
-     players[pl].hd -= ac;
-     // try downcasting to action card
-     std::shared_ptr<ActionCard> action =
-     dynamic_pointer_cast<ActionCard>(ac);
-     if ( action != nullptr ) {
-     // on success
-     cout << "Top (1) or bottom (0) of start stack? " << endl;
-     int tmp;
-     cin >> tmp;
-     if (tmp>0)
-	    tab += action;
-     else {
-	    tab -= action;
-	    // Perform action
-	    QueryResult q = action.query();
-	    action.perfom( tab, players, q );
-     }
-     } else {
-     int row, col;
-     cout << "Where should the card go? (row column)" << endl;
-     cin >> row >> col;
-     int extraCard = tab.addAt( ac, row, col );
-     if ( extraCard == 0 ) {
-	    // illegal card
-	    next = false;
-     } else {
-	    for ( int c=1;c<extraCard;++c ) {
-     players[pl] += deck.draw();
-	    }
-     }
-     }
-     if ( next ) {
-     for ( int pl=0; pl<noPlayers; ++pl ) {
-	    tab.win( players[pl].getSecretAnimal() );
-     }
-     }
-     }
-     }
-     
-     }
-     
-     
-     */
     return 0;
     
 }

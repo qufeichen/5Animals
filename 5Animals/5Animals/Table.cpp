@@ -218,29 +218,22 @@ Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
 void Table::addToAnimalCount(std::shared_ptr<AnimalCard> card){
         
     //get all unique animals from card
-    char unique[4] = {};
-    int index = 0;
-    bool exists;
-        
-    for (int i = 0; i<2; i++){
-        for(int j = 0; j<2; j++){
-            exists = false;
-                
-            for(int k=0; k<4; k++) {
-                if(card->getAnimal(i, j) == unique[k]){
-                    exists = true;
-                    break;
-                }
-                if(exists == false){
-                    unique[index] = card->getAnimal(i, j);
-                    index++;
-                }
-            }
-                
-        }
+    vector<char> unique;
+    
+    if( find(unique.begin(), unique.end(), card->getAnimal(0, 0)) == unique.end() ){
+        unique.push_back(card->getAnimal(0, 0));
+    }
+    if( find(unique.begin(), unique.end(), card->getAnimal(0, 1)) == unique.end() ){
+        unique.push_back(card->getAnimal(0, 1));
+    }
+    if( find(unique.begin(), unique.end(), card->getAnimal(1, 0)) == unique.end() ){
+        unique.push_back(card->getAnimal(1, 0));
+    }
+    if( find(unique.begin(), unique.end(), card->getAnimal(1, 1)) == unique.end() ){
+        unique.push_back(card->getAnimal(1, 1));
     }
         
-    for(int l = 0; l<index; l++){
+    for(int l = 0; l<unique.size(); l++){
         switch (unique[l]) {
             case 'b':
                 bearCount++;
@@ -267,29 +260,22 @@ void Table::addToAnimalCount(std::shared_ptr<AnimalCard> card){
 void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
     
     //get all unique animals from card
-    char unique[4] = {};
-    int index = 0;
-    bool exists;
+    vector<char> unique;
     
-    for (int i = 0; i<2; i++){
-        for(int j = 0; j<2; j++){
-            exists = false;
-            
-            for(int k=0; k<4; k++) {
-                if(card->getAnimal(i, j) == unique[k]){
-                    exists = true;
-                    break;
-                }
-                if(exists == false){
-                    unique[index] = card->getAnimal(i, j);
-                    index++;
-                }
-            }
-            
-        }
+    if( find(unique.begin(), unique.end(), card->getAnimal(0, 0)) == unique.end() ){
+        unique.push_back(card->getAnimal(0, 0));
+    }
+    if( find(unique.begin(), unique.end(), card->getAnimal(0, 1)) == unique.end() ){
+        unique.push_back(card->getAnimal(0, 1));
+    }
+    if( find(unique.begin(), unique.end(), card->getAnimal(1, 0)) == unique.end() ){
+        unique.push_back(card->getAnimal(1, 0));
+    }
+    if( find(unique.begin(), unique.end(), card->getAnimal(1, 1)) == unique.end() ){
+        unique.push_back(card->getAnimal(1, 1));
     }
     
-    for(int l = 0; l<index; l++){
+    for(int l = 0; l<unique.size(); l++){
         switch (unique[l]) {
             case 'b':
                 bearCount--;
@@ -315,7 +301,7 @@ void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
 
 bool Table::win(std::string& animal){
     
-	bool win = true;
+	bool win = false;
     
     if( animal.compare("Bear")==0 ){
         if(bearCount >=12){
