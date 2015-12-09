@@ -10,7 +10,7 @@
 #include "Player.h"
 #include "StartStack.h"
 
-Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), stack(new StartStack()), occupied{}{
+Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), stack(new StartStack()), occupied(){
 	
     //only contains start card
     
