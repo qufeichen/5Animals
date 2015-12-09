@@ -9,6 +9,11 @@
 #include "Table.h"
 #include "Player.h"
 #include "StartStack.h"
+#include "NoSplit.h"
+#include "TwoSplit.h"
+#include "ThreeSplit.h"
+#include "FourSplit.h"
+#include "Joker.h"
 
 Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), stack(new StartStack()), occupied(){
 	
@@ -443,11 +448,8 @@ ostream & operator <<(ostream& out , const Table& table){
     for (int x = 0; x < table.d_maxNumPlayers; x++){
         out << table.players[x];
     }
-    //TODO: Finish implementing this
-    //int *secretCardIndex; -> don't need to save?
-    
-    //std::shared_ptr<StartCard> start;
-    //TODO: implement ostream operator in Startstack?
+
+    out << table.stack;
     
     for(int i = 0; i < 103; i++){
         for(int j = 0; j < 103; j++){
@@ -455,6 +457,7 @@ ostream & operator <<(ostream& out , const Table& table){
                 out<< 0;
             } else {
                 out << 1;
+                out<< table.tableArray[i][j]->type;
                 out<< table.tableArray[i][j];
             }
         }
@@ -466,7 +469,7 @@ ostream & operator <<(ostream& out , const Table& table){
 }
 
 istream & operator >>(istream& in, Table& table){
-    //TODO: implement
+
     in >> table.bearCount;
     in >> table.deerCount;
     in >> table.hareCount;
@@ -481,10 +484,8 @@ istream & operator >>(istream& in, Table& table){
         table.players.push_back(temp);
     }
     
-    //TODO: Finish implementing this
-    //int *secretCardIndex
+    in >> table.stack;
     
-    //std::shared_ptr<StartCard> start;
     
     int x;
     for(int i = 0; i < 103; i++){
@@ -492,9 +493,27 @@ istream & operator >>(istream& in, Table& table){
             cin>>x;
             table.occupied[i][j] = x;
             if(x == 1){
-                //shared_ptr<AnimalCard> card( new AnimalCard(' ', Orientation::UP, EvenOdd::EVEN) );
-                //in >> card ;
-                //table.tableArray[i][j] = card;
+                int typeOfCard;
+                in >> typeOfCard;
+                std::shared_ptr<AnimalCard> card;
+                
+                if(typeOfCard == 0){
+                    std::shared_ptr<AnimalCard> card(new Joker());
+                } else if (typeOfCard == 1){
+                    std::shared_ptr<AnimalCard> card( new NoSplit('b', Orientation::UP, EvenOdd::EVEN) );
+                } else if (typeOfCard == 2){
+                    char tws1[2][2] = { {'b','b'},{'d','d'} };
+                    std::shared_ptr<AnimalCard> card( new TwoSplit(tws1, Orientation::UP, EvenOdd::EVEN) );
+                } else if (typeOfCard == 3){
+                    char ths1[2][2] = { {'b','b'},{'d','h'} };
+                    std::shared_ptr<AnimalCard> card( new ThreeSplit(ths1, Orientation::UP, EvenOdd::EVEN) );
+                } else {
+                    char fs1[2][2] = { {'b','d'},{'h','m'} };
+                    std::shared_ptr<AnimalCard> card( new FourSplit(fs1, Orientation::UP, EvenOdd::EVEN) );
+                }
+                
+                in >> card ;
+                table.tableArray[i][j] = card;
             }
         }
     }

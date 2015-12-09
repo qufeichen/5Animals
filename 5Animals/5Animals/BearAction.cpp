@@ -15,7 +15,7 @@
 
 using namespace std;
 
-BearAction::BearAction(){
+BearAction::BearAction():type(5){
     
     cardMatrix[0][0] = 'B';
     cardMatrix[0][1] = 'B';

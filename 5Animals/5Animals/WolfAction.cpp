@@ -15,7 +15,7 @@
 
 using namespace std;
 
-WolfAction::WolfAction(){
+WolfAction::WolfAction(): type(9){
     
     cardMatrix[0][0] = 'W';
     cardMatrix[0][1] = 'W';

@@ -23,6 +23,7 @@ private:
     char animal;
     
 public:
+    int type;
 	NoSplit(char, Orientation, EvenOdd);
 	NoSplit();
 	void setOrientation(Orientation);

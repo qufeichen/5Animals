@@ -12,7 +12,7 @@
 
 using namespace std;
 
-FourSplit::FourSplit(char a[2][2], Orientation o, EvenOdd e){
+FourSplit::FourSplit(char a[2][2], Orientation o, EvenOdd e): type(4){
     
     for (int i=0; i<2; i++){
         for(int j=0; j<2; j++){

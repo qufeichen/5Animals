@@ -24,6 +24,7 @@ private:
     char topLeft, topRight, bottomLeft, bottomRight;
 
 public:
+    int type;
     FourSplit( char[2][2], Orientation, EvenOdd);
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);

@@ -23,8 +23,8 @@ private:
 	char cardMatrix[2][2];
     char j;
     
-    
 public:
+    int type;
 	Joker();
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);

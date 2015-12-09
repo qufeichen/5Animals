@@ -23,6 +23,7 @@ private:
     char topLeft, topRight, bottomLeft, bottomRight;
     
 public:
+    int type;
     ThreeSplit(char[2][2], Orientation o, EvenOdd e);
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);

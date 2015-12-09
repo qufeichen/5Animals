@@ -24,6 +24,7 @@ private:
     char cardMatrix[2][2];
     
 public:
+    int type;
     MooseAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);

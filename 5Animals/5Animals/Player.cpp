@@ -66,8 +66,12 @@ ostream &operator <<(ostream &out, const Player& player){
     return out;
 }
 
-istream & operator >>(istream &in, Player&){
-    //TODO: implement
+istream & operator >>(istream &in, Player& player){
+    
+    in >> player.d_name;
+    in >> player.d_secretAnimal;
+    in >> player.d_id;
+    in >> *player.playerHand;
     
     return in;
 }

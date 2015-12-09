@@ -12,7 +12,7 @@
 
 using namespace std;
 
-ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e){
+ThreeSplit::ThreeSplit(char a[2][2], Orientation o, EvenOdd e): type(3){
     
     for (int i=0; i<2; i++){
         for(int j=0; j<2; j++){

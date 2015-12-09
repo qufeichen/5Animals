@@ -55,31 +55,26 @@ int main( int argc, char *args[] ) {
         } else {
         
             infile >> numPlayers;
-//        
-//        if(isAction == true)
-//        infile >> ActionCard c;
-//        else
-//        infile >> AnimalCard c;
-        
-        //table
-        Table board = Table(numPlayers);
-        
-        //implement this in table
-        //infile >> board;
+            
+            Table board = Table(numPlayers);
+            infile >> board;
+            
+            for(int i = 0; i<numPlayers; i++){
+                Player *p = board.getPlayer(i);
+                infile >> *p;
+            }
+            
+            Deck <AnimalCard> deck;
+            int decksize = 0;
+            infile >> decksize;
+            for(int i = 0; i<decksize; i++){
+                shared_ptr<AnimalCard> card;
+                infile >> card;
+                deck.push_back(card);
+            }
         
         infile.close();
-        /* variables to save
-         int numPlayers;
-         Hand currentHand;
-         
-         Table tableArray (cards that have been played and position)
-         
-         AnimalCardFactory (deck with cards left)
-         Player vector
-         Player (name, secret animal, hand, cards in hand)
-         Startstack( cards in startstack)
-         
-         */
+            
         }
         
 
@@ -283,9 +278,16 @@ int main( int argc, char *args[] ) {
                 }
             }
             
+            if(deck.size() ==0){
+                cout<<"There are no more cards in the deck!"<<endl;
+                cout<<"Since no player has achieved 12 matches on the table, this game end on a tie."<<endl;
+                cout<<"Thank you for playing! Goodbye!"<<endl;
+                exit(1);
+            }
+            
             //prompt to save game
             //TODO: should we give save option every time a player starts a turn?
-            cout<<"Would you like to save the game now?"<<endl;
+            cout<<"Would you like to save and exit the game now?"<<endl;
             cout<<"Enter 1 for yes, or any other number for no: ";
             int save;
             cin>>save;
@@ -298,22 +300,23 @@ int main( int argc, char *args[] ) {
                 
                 outfile << numPlayers << endl;
                 
+                //save table
+                outfile<< board;
+                
                 //save players
                 for(int i = 0; i<numPlayers; i++){
                     outfile << board.getPlayer(i);
                 }
                 
-                //table
-                outfile<< board;
-                
-                //TODO: deck
-				//I dont think we need to get deck because it is abstract class
-				//It also exists in table
-
-                
+                //save deck
+                outfile << deck.size();
+                for(int i = 0; i<deck.size(); i++){
+                    outfile << deck.draw();
+                }
                 
                 outfile.close();
                 //end program
+    
                 exit(1);
             }
 
@@ -323,6 +326,7 @@ int main( int argc, char *args[] ) {
     }
     
     cout<<"Congratulations "+winner<<", you have won the game!"<<endl;
+    cout<<"Thank you for playing! Goodbye!"<<endl;
     
     return 0;
     

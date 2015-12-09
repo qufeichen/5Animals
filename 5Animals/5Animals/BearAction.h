@@ -23,6 +23,7 @@ private:
     char cardMatrix[2][2];
     
 public:
+    int type;
     BearAction();
     QueryResult query();
     void perform(Table &, Player* , QueryResult);

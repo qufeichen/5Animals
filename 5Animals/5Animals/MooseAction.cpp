@@ -14,7 +14,7 @@
 
 using namespace std;
 
-MooseAction::MooseAction(){
+MooseAction::MooseAction(): type(8){
     
     cardMatrix[0][0] = 'M';
     cardMatrix[0][1] = 'M';

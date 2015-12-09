@@ -97,3 +97,27 @@ char StartStack::getTopAnimal(){
     return topAnimal;
     
 }
+
+ostream & operator <<(ostream &out, const shared_ptr<StartStack> stack){
+    
+    out << stack->topAnimal;
+    out << stack->cardMatrix[0][0];
+    out << stack->cardMatrix[0][1];
+    out << stack->cardMatrix[1][0];
+    out << stack->cardMatrix[1][1];
+    
+    return out;
+    
+}
+
+istream & operator >>(istream &in, shared_ptr<StartStack> stack){
+    
+    in >> stack->topAnimal;
+    in >> stack->cardMatrix[0][0];
+    in >> stack->cardMatrix[0][1];
+    in >> stack->cardMatrix[1][0];
+    in >> stack->cardMatrix[1][1];
+    
+    return in;
+    
+}

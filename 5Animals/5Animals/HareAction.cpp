@@ -15,7 +15,7 @@
 
 using namespace std;
 
-HareAction::HareAction(){
+HareAction::HareAction(): type(7){
     
     cardMatrix[0][0] = 'H';
     cardMatrix[0][1] = 'H';

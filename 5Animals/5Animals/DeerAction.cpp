@@ -14,7 +14,7 @@
 
 using namespace std;
 
-DeerAction::DeerAction(){
+DeerAction::DeerAction(): type(6){
     
     cardMatrix[0][0] = 'D';
     cardMatrix[0][1] = 'D';

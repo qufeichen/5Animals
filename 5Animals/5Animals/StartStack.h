@@ -42,7 +42,8 @@ public:
     char getTopAnimal();
     void printRow( ostream &, EvenOdd );
 
-	//Need to print object???
+    friend ostream & operator <<(ostream &out, const shared_ptr<StartStack>);
+    friend istream & operator >>(istream &in, shared_ptr<StartStack>);
     
 };
 

@@ -211,6 +211,7 @@ AnimalCardFactory::AnimalCardFactory(){
     
     
     //shuffle deck
+    
     std::random_shuffle(deck.begin(), deck.end());
     
 }
