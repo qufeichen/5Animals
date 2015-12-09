@@ -78,42 +78,42 @@ int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
     
     int matches = 0;
     
-    if( row > 0) {
-        if((card->getAnimal(0, 0) == tableArray[row-1][col]->getAnimal(1, 0)) || (tableArray[row-1][col]->getAnimal(1, 0) == 'j' ) ){
+    if( (row > 0) && (occupied[row-1][col] != 0) ) {
+        if((card->getAnimal(0, 0) == tableArray[row-1][col]->getAnimal(1, 0)) || (tableArray[row-1][col]->getAnimal(1, 0) == 'j' ) || (tableArray[row-1][col]->getAnimal(1, 0) == 'c' ) ){
             //check top left
             matches++;
-        } else if( (card->getAnimal(0, 1) == tableArray[row-1][col]->getAnimal(1, 1) ) || (tableArray[row-1][col]->getAnimal(1, 1) == 'j' )){
+        } else if( (card->getAnimal(0, 1) == tableArray[row-1][col]->getAnimal(1, 1) ) || (tableArray[row-1][col]->getAnimal(1, 1) == 'j' ) || (tableArray[row-1][col]->getAnimal(1, 1) == 'c' )){
             //check top right
             matches++;
         }
     }
     
-    if( row < 103) {
-        if( (card->getAnimal(1, 0) == tableArray[row+1][col]->getAnimal(0, 0)) || (tableArray[row+1][col]->getAnimal(0, 0) == 'j' ) ){
+    if( (row < 103) && (occupied[row+1][col] != 0)) {
+        if( (card->getAnimal(1, 0) == tableArray[row+1][col]->getAnimal(0, 0)) || (tableArray[row+1][col]->getAnimal(0, 0) == 'j' ) || (tableArray[row+1][col]->getAnimal(0, 0) == 'c' )){
             //check bottom left
             matches++;
-        } else if( (card->getAnimal(1, 1) == tableArray[row+1][col]->getAnimal(0, 1)) || (tableArray[row+1][col]->getAnimal(0, 1) == 'j' )){
+        } else if( (card->getAnimal(1, 1) == tableArray[row+1][col]->getAnimal(0, 1)) || (tableArray[row+1][col]->getAnimal(0, 1) == 'j' ) || (tableArray[row+1][col]->getAnimal(0, 1) == 'c' )){
             //check bottom right
             matches++;
         }
     }
     
-    if( col > 0) {
-        if( (card->getAnimal(0, 0) == tableArray[row][col-1]->getAnimal(0, 1)) || (tableArray[row][col-1]->getAnimal(0, 1) == 'j' )){
+    if( (col > 0) && (occupied[row][col-1] != 0)) {
+        if( (card->getAnimal(0, 0) == tableArray[row][col-1]->getAnimal(0, 1)) || (tableArray[row][col-1]->getAnimal(0, 1) == 'j' ) || (tableArray[row][col-1]->getAnimal(0, 1) == 'c' )){
             //check top left
             matches++;
-        } else if( (card->getAnimal(1, 0) == tableArray[row][col-1]->getAnimal(1, 1)) || (tableArray[row][col-1]->getAnimal(1, 1) == 'j' )){
+        } else if( (card->getAnimal(1, 0) == tableArray[row][col-1]->getAnimal(1, 1)) || (tableArray[row][col-1]->getAnimal(1, 1) == 'j' ) || (tableArray[row][col-1]->getAnimal(1, 1) == 'c' )){
             //check bottom left
             matches++;
         }
     }
     
-    if(col<103) {
-        if( (card->getAnimal(0, 1) == tableArray[row][col+1]->getAnimal(0, 0)) || (tableArray[row][col+1]->getAnimal(0, 0) == 'j' )){
+    if((col<103) && (occupied[row][col+1] != 0)) {
+        if( (card->getAnimal(0, 1) == tableArray[row][col+1]->getAnimal(0, 0)) || (tableArray[row][col+1]->getAnimal(0, 0) == 'j' ) || (tableArray[row][col+1]->getAnimal(0, 0) == 'c' )){
             //check top right
             matches++;
     
-        } else if( (card->getAnimal(1, 1) == tableArray[row][col+1]->getAnimal(1, 0)) || (tableArray[row][col+1]->getAnimal(1, 0) == 'j' )){
+        } else if( (card->getAnimal(1, 1) == tableArray[row][col+1]->getAnimal(1, 0)) || (tableArray[row][col+1]->getAnimal(1, 0) == 'j' ) | (tableArray[row][col+1]->getAnimal(1, 0) == 'c' )){
             //check bottom right
             matches++;
         }
