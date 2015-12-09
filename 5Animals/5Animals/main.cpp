@@ -128,37 +128,6 @@ int main( int argc, char *args[] ) {
   
     while(!playerHasWon){
         
-        //prompt to save game
-        //TODO: should we give save option every time a player starts a turn?
-        cout<<"Would you like to save the game now? Enter 0 for yes, and any other number for no: ";
-        int save;
-        cin>>save;
-        
-        if(save == 0){
-            //TODO: save to file
-            
-            ofstream outfile;
-            outfile.open(".../5Animals.txt");
-            
-            outfile << numPlayers << endl;
-            
-            //save players
-            for(int i = 0; i<numPlayers; i++){
-                outfile << board.getPlayer(i);
-                }
-            
-            //table
-            outfile<< board;
-            
-            //TODO: deck
-            
-            
-            outfile.close();
-            //end program
-            exit(1);
-        }
-        
-        
         //loop for each player
         for( int i = 0; i<numPlayers; i++) {
             
@@ -167,9 +136,11 @@ int main( int argc, char *args[] ) {
             cout<<endl;
             //display table
             cout<<"Game Board:"<<endl;
+            cout<<endl;
             board.print();
             
             //draw card for player
+            cout<<"You draw a card from the deck!"<<endl;
             currentHand = board.getPlayer(i)->getHand();
             currentHand->operator+=(deck.draw());
 
@@ -205,7 +176,7 @@ int main( int argc, char *args[] ) {
             }
             cout<<endl;
             
-            //if placing an action card
+            //if placing an on the stack
             if( row == 52 && col == 52){
                 
                 //Should use exceptions to check for null pointer?
@@ -230,7 +201,8 @@ int main( int argc, char *args[] ) {
                     currentHand->operator-=(currentHand->operator[](card));
                     
                     int top;
-                    cout<<"Are you placing the card on top of the stack? Press 1 for yes, and any other key for no"<<endl;
+                    cout<<"Are you placing the card on top of the stack?"<<endl;
+                    cout<<"Press 1 for yes, and any other number for no: "<<endl;
                     cin>>top;
                     
                     if(top == 1){
@@ -253,12 +225,17 @@ int main( int argc, char *args[] ) {
                     //TODO:
                     //return to start of loop so player can enter another location to place card?
                     cout<<"Please start your turn again."<<endl;
-                    i--;
                     break;
                 }
             
             } else {
-                //if not an action card
+                //if not placing on the stack
+                
+                if(shared_ptr<ActionCard> cardToPlay = dynamic_pointer_cast<ActionCard>(currentHand->operator[](card))){
+                    cout<<"You can only place action cards on the StartStack!"<<endl;
+                    cout<<"Start your turn over again."<<endl;
+                    break;
+                }
                 
                 //get card
                 shared_ptr<AnimalCard> cardToPlay = currentHand->operator[](card);
@@ -273,13 +250,12 @@ int main( int argc, char *args[] ) {
                     //card not placed successfully on table, error is thrown
                     //let player play turn again
                     cout<<"Restart your turn.";
-                    i--;
                     break;
                     
                 } else {
                     
                     //draw additional cards
-                    cout<<"Since your card made "<<numMatches<<" match(es), you will draw "<<numMatches<<" additional cards.";
+                    cout<<"Since your card made "<<numMatches<<" match(es), you will draw "<<numMatches<<" additional cards."<<endl;
                     for(int i=0; i<numMatches; i++){
                         shared_ptr<AnimalCard> cardDrawn = deck.draw();
                         currentHand->operator+=(cardDrawn);
@@ -304,6 +280,38 @@ int main( int argc, char *args[] ) {
                     winner = board.getPlayer(x)->getName();
                 }
             }
+            
+            //prompt to save game
+            //TODO: should we give save option every time a player starts a turn?
+            cout<<"Would you like to save the game now?"<<endl;
+            cout<<"Enter 1 for yes, or any other number for no: ";
+            int save;
+            cin>>save;
+            
+            if(save == 1){
+                //TODO: save to file
+                
+                ofstream outfile;
+                outfile.open(".../5Animals.txt");
+                
+                outfile << numPlayers << endl;
+                
+                //save players
+                for(int i = 0; i<numPlayers; i++){
+                    outfile << board.getPlayer(i);
+                }
+                
+                //table
+                outfile<< board;
+                
+                //TODO: deck
+                
+                
+                outfile.close();
+                //end program
+                exit(1);
+            }
+
             
         }
         

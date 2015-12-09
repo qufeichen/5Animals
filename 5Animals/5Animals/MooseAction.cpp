@@ -64,4 +64,7 @@ void MooseAction::perform(Table & table, Player* player, QueryResult qr){
     }
 	table.getPlayer(0)->swapSecretAnimal( tempAni );
     
+    cout<<"Your new secret animal is "<<player->getSecretAnimal()<<endl;
+    cout<<endl;
+    
 }

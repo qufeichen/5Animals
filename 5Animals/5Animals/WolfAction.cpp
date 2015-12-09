@@ -45,8 +45,8 @@ void WolfAction::printRow(EvenOdd e){
 
 QueryResult WolfAction::query(){
     
-	cout << " The Wolf action allows you to pick up a card from a table and place it in your hand" << endl;
-	cout << "Choose a the index of the card you want to pick up" << endl;
+	cout << " The Wolf action allows you to pick up a card from a table and place it in your hand." << endl;
+	cout << "Choose a the index of the card you want to pick up!" << endl;
 	string row;
 	string col;
 	cout<< "enter the row of the card you want to pick up"<<endl;
@@ -63,5 +63,9 @@ void WolfAction::perform(Table &table, Player *player , QueryResult qr){
 
     Hand *currentHand = player->getHand();
     currentHand->operator+=(table.pickAt(qr.getPosition(0),qr.getPosition(1)));
+    
+    cout<<"Here is your new hand: "<<endl;
+    player->getHand()->print();
+    cout<<endl;
     
 }

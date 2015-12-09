@@ -51,14 +51,14 @@ QueryResult HareAction::query(){
 	int aCol;
 	int bRow;
 	int bCol;
-    cout<< "Choose a card to move"<<endl;
-    cout<< "Enter the row index of the card you want to move"<<endl;
+    cout<< "Choose a card to move!"<<endl;
+    cout<< "Enter the row index of the card you want to move:"<<endl;
     cin>>aRow;
-    cout<< "Enter the column index of the card you want to move"<<endl;
+    cout<< "Enter the column index of the card you want to move:"<<endl;
     cin>>aCol;
-    cout<< "Enter the row index of position you want to move the card to"<<endl;
+    cout<< "Enter the row index of position you want to move the card to:"<<endl;
     cin>>bRow;
-    cout<< "Enter the column index of position you want to move the card to"<<endl;
+    cout<< "Enter the column index of position you want to move the card to:"<<endl;
     cin>>bCol;
 
     QueryResult qr = QueryResult("", 4);
@@ -75,6 +75,15 @@ QueryResult HareAction::query(){
 void HareAction::perform(Table & table, Player* player , QueryResult qr){
 
 	shared_ptr<AnimalCard> card = table.pickAt(qr.getPosition(0),qr.getPosition(1));
+    if(card == 0){
+        cout<<"Error is picking card from table."<<endl;
+        return;
+    }
 	table.addAt(card, qr.getPosition(2), qr.getPosition(3) );
+    
+    cout<<"The card has been moved successfully!"<<endl;
+    cout<<"Here is the modified table: "<<endl;
+    table.print();
+    cout<<endl;
     
 }

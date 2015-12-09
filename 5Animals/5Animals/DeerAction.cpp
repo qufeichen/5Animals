@@ -44,9 +44,9 @@ void DeerAction::printRow(EvenOdd e){
 
 QueryResult DeerAction::query(){
 
-    cout<<" The Deer Action allows a player to select another player to trade goals with" << endl;
+    cout<<" The Deer Action allows a player to select another player to trade goals with " << endl;
 
-    cout<< "Choose a player to switch goals with";
+    cout<< "Choose a player to switch goals with:"<<endl;;
     std::string userIn;
     cin>>userIn;
 
@@ -61,6 +61,10 @@ void DeerAction::perform(Table & table, Player* player, QueryResult qr){
 
     player->swapSecretAnimal(animal1);
     table.getPlayer(qr.getPlayerName())->swapSecretAnimal(animal2);
-    //TODO: swap methods return old method. should we print this?
+    
+    cout<<"Your new secret animal is "<<player->getSecretAnimal()<<endl;
+    cout<<endl;
+    cout<<qr.getPlayerName()<<"'s new secret animal is "<<animal2<<endl;
+    cout<<endl;
     
 }

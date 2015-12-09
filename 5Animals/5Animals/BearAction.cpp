@@ -47,7 +47,7 @@ QueryResult BearAction::query(){
 
     cout<<" The Bear Action is allows a player to select another player to switch hands" << endl;
     
-    cout<< "Choose a player to switch hands with";
+    cout<< "Choose a player to switch hands with: "<<endl;
     std::string switchName;
     cin>>switchName;
 
@@ -68,5 +68,14 @@ void BearAction::perform(Table &table, Player* player , QueryResult qr){
     
     player->setHand(otherPlayerHand);
     otherPlayer->setHand(currentHand);
+    cout<<endl;
+    
+    cout<<"Your new hand:"<<endl;
+    player->getHand()->print();
+    cout<<endl;
+    
+    cout<<qr.getPlayerName()<<"'s new hand:"<<endl;
+    otherPlayer->getHand()->print();
+    cout<<endl;
 
 }

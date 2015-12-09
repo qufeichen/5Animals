@@ -40,13 +40,13 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
     //check if position is empty
 	if(occupied[row][col] != 0)
 	{
-		cout<<"error: this index is already occupied"<<endl;
+		cout<<"Error: this index is already occupied"<<endl;
 		return 0;
 	}
     //check if atleast one neightbour matches
     int numMatches = checkNeighbours(newCard, row, col);
     if (numMatches == 0){
-        cout<<"error: cannot place card here, no matching neighbours"<<endl;
+        cout<<"Error: cannot place card here, no matching neighbours"<<endl;
         return 0;
 
     }
@@ -60,12 +60,12 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
     if((upperLeftRow != 0) && (row == upperLeftRow)){
         upperLeftRow = row-1;
     } else if((lowerRightRow != 103) && (row == lowerRightRow)){
-        lowerRightRow = row-1;
+        lowerRightRow = row+1;
     }
-    if((upperLeftCol != 0) && (row == upperLeftCol)){
-        upperLeftCol = row-1;
-    } else if((lowerRightCol != 103) && (row == lowerRightCol)){
-        lowerRightCol = row-1;
+    if((upperLeftCol != 0) && (col == upperLeftCol)){
+        upperLeftCol = col-1;
+    } else if((lowerRightCol != 103) && (col == lowerRightCol)){
+        lowerRightCol = col+1;
     }
 	
     return numMatches;
@@ -131,7 +131,7 @@ std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
 	//remove from the table
 	try{
         
-		if(row == 52 && col == 52)
+		if((row == 52 && col == 52) || (occupied[row][col] == 0))
 		{
 			throw runtime_error("Illegal Pick");
 		}
@@ -209,6 +209,8 @@ Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
         default:
             break;
     }
+    
+    
     
     *stack-=newCard;
     return *this;
@@ -391,10 +393,11 @@ string Table::createPlayer(string name){
 void Table::print(){
     
     //print index:
-    cout<<"  ";
+    cout<<"   ";
     for( int i = upperLeftCol; i<lowerRightCol+1; i++){
         cout<<i<<"  ";
     }
+    cout<<endl;
     cout<<endl;
     
     
@@ -404,10 +407,10 @@ void Table::print(){
         for (int j=upperLeftCol; j<lowerRightCol; j++){
             if(occupied[i][j] == 1){
                 tableArray[i][j]->printRow(EvenOdd::EVEN);
-                cout<<" ";
+                cout<<"  ";
             } else {
                 cout<<"  ";
-                cout<<" ";
+                cout<<"  ";
             }
         }
         cout<<endl;
@@ -415,10 +418,10 @@ void Table::print(){
         for (int k=upperLeftCol; k<lowerRightCol; k++){
             if(occupied[i][k] == 1){
                 tableArray[i][k]->printRow(EvenOdd::ODD);
-                cout<<" ";
+                cout<<"  ";
             } else {
                 cout<<"  ";
-                cout<<" ";
+                cout<<"  ";
             }
         }
         cout<<endl;
