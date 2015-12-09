@@ -2,7 +2,7 @@
 //CSI2372 Final Project
 //Professor Jochen Lang
 //Qufei Chen - 6771326
-//Robert Luo -
+//Haoyuan Luo - 6838050
 //Due Date: December 9th, 2015
 
 #include <iostream>
@@ -235,7 +235,7 @@ void Table::addToAnimalCount(std::shared_ptr<AnimalCard> card){
         unique.push_back(card->getAnimal(1, 1));
     }
         
-    for(int l = 0; l<unique.size(); l++){
+    for(size_t l = 0; l<unique.size(); l++){
         switch (unique[l]) {
             case 'b':
                 bearCount++;
@@ -277,7 +277,7 @@ void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
         unique.push_back(card->getAnimal(1, 1));
     }
     
-    for(int l = 0; l<unique.size(); l++){
+    for(size_t l = 0; l<unique.size(); l++){
         switch (unique[l]) {
             case 'b':
                 bearCount--;

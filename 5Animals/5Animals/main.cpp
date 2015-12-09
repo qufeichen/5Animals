@@ -2,7 +2,7 @@
 //CSI2372 Final Project
 //Professor Jochen Lang
 //Qufei Chen - 6771326
-//Robert Luo -
+//Haoyuan Luo - 6838050
 //Due Date: December 9th, 2015
 
 #include <iostream>
@@ -43,6 +43,8 @@ int main( int argc, char *args[] ) {
         
         ifstream infile;
         infile.open(".../5Animals.txt");
+
+		//read files in start game
         
         //check for error
         if(infile.fail()){
@@ -305,6 +307,9 @@ int main( int argc, char *args[] ) {
                 outfile<< board;
                 
                 //TODO: deck
+				//I dont think we need to get deck because it is abstract class
+				//It also exists in table
+
                 
                 
                 outfile.close();
