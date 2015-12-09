@@ -12,6 +12,7 @@
 #include <list>
 #include <iostream>
 #include <algorithm>
+#include <vector>
 #include "AnimalCard.h"
 
 #ifndef HAND_H
@@ -22,7 +23,7 @@ class Hand{
     
 private:
 	int numOfCards;
-	std::list<std::shared_ptr<AnimalCard>> cardsInHand;
+	std::vector<std::shared_ptr<AnimalCard>> cardsInHand;
     
 public:
 	Hand();

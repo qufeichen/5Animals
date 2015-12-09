@@ -179,8 +179,6 @@ int main( int argc, char *args[] ) {
             cin>>card;
             while (card<0 || card > board.getPlayer(i)->getHand()->noCards()-1){
                 cout<<"Thats not a valid card! Please choose a card from you hand:"<<endl;
-                //TEST
-                cout<<"numCards in hand: "<<board.getPlayer(i)->getHand()->noCards()<<endl;
                 cin>>card;
             }
             
@@ -262,7 +260,7 @@ int main( int argc, char *args[] ) {
                 shared_ptr<AnimalCard> cardToPlay = currentHand->operator[](card);
                 
                 //remove card from hand
-                currentHand->operator-=(currentHand->operator[](card));
+                currentHand->operator-=(cardToPlay);
                 
                 //place card on board
                 int numMatches = board.addAt(cardToPlay, row, col);

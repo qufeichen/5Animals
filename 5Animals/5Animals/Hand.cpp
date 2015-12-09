@@ -21,49 +21,33 @@ Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
 
     numOfCards = numOfCards+1;
 	cardsInHand.push_back(newCard);
-    //TEST
-    cout <<"card has been added to hand";
 	return *this;
+    
 
 }
 
 
 Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
     
-	try
-    {
-			numOfCards--;
-			//remove if equal to newCard
-			cardsInHand.remove(newCard);
-	}
-	catch (exception)
-    {
-		cout << "card does not exist" << "\n";
-	}
-	return *this;
+    if( find(cardsInHand.begin(), cardsInHand.end(), newCard) != cardsInHand.end() ){
+        cardsInHand.erase(find(cardsInHand.begin(), cardsInHand.end(), newCard));
+    }
+    
+    numOfCards--;
+    return *this;
     
 }
 
 std::shared_ptr<AnimalCard> Hand::operator[](int index){
     
 	std::shared_ptr<AnimalCard> temp;
-	try
-    {
-		if(index > numOfCards)
-        {
-            throw std::runtime_error("Missing Card");
-		}
-			--numOfCards;
-			//get card if equal to index
-			std::list<std::shared_ptr<AnimalCard>>::iterator it;
-			std::advance(it, index);
-			temp = *it;
-	}
-	catch (exception& e)
-    {
-		cout << "card does not exist in index" << "\n";
-	}
+    
+    if((index < numOfCards) && (index>=0)){
+        temp = cardsInHand[index];
+    }
+    
 	return temp;
+    //returns null if index is out of scope
 	
 }
 
@@ -75,23 +59,19 @@ int Hand::noCards(){
 
 void Hand::print(){
     
-    cout<<"numOfCards: "<<numOfCards<<endl;
     //print index
     for (int i = 0; i<numOfCards; i++){
         cout<<i<<"   ";
     }
     cout<<endl;
     
-    //print cards in hand -> use an iterator
-    list<shared_ptr<AnimalCard>>::iterator it;
-    
-    for(it=cardsInHand.begin(); it!=cardsInHand.end(); it++){
-        (*it)->printRow(EvenOdd::EVEN);
+    for(int i = 0; i<numOfCards; i++){
+        cardsInHand[i]->printRow(EvenOdd::EVEN);
         cout<<"  ";
     }
     cout<<endl;
-    for(it=cardsInHand.begin(); it!=cardsInHand.end(); it++){
-        (*it)->printRow(EvenOdd::ODD);
+    for(int i = 0; i<numOfCards; i++){
+        cardsInHand[i]->printRow(EvenOdd::ODD);
          cout<<"  ";
     }
     cout<<endl;
@@ -102,8 +82,8 @@ ostream& operator <<(ostream &out, const Hand& handGiven){
     
     out<<handGiven.numOfCards;
     list<shared_ptr<AnimalCard>>::const_iterator it;
-    for(it = handGiven.cardsInHand.begin(); it != handGiven.cardsInHand.end(); it++){
-        out<<(*it);
+    for(int i = 0; i<handGiven.numOfCards; i++){
+        out<<handGiven.cardsInHand[i];
     }
     
     return out;
