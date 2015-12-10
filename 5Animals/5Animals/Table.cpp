@@ -520,21 +520,25 @@ istream & operator >>(istream& in, Table& table){
                 std::shared_ptr<AnimalCard> card;
                 
                 if(typeOfCard == 0){
-                    std::shared_ptr<AnimalCard> card(new Joker());
+                   Joker *c = new Joker();
+                    card.reset(c);
                 } else if (typeOfCard == 1){
-                    std::shared_ptr<AnimalCard> card( new NoSplit('b', Orientation::UP, EvenOdd::EVEN) );
+                    NoSplit *c = new NoSplit('b', Orientation::UP, EvenOdd::EVEN);
+                    card.reset(c);
                 } else if (typeOfCard == 2){
                     char tws1[2][2] = { {'b','b'},{'d','d'} };
-                    std::shared_ptr<AnimalCard> card( new TwoSplit(tws1, Orientation::UP, EvenOdd::EVEN) );
+                    TwoSplit *c = new TwoSplit(tws1, Orientation::UP, EvenOdd::EVEN);
+                    card.reset(c);
                 } else if (typeOfCard == 3){
                     char ths1[2][2] = { {'b','b'},{'d','h'} };
-                    std::shared_ptr<AnimalCard> card( new ThreeSplit(ths1, Orientation::UP, EvenOdd::EVEN) );
+                    ThreeSplit *c = new ThreeSplit(ths1, Orientation::UP, EvenOdd::EVEN);
+                    card.reset(c);
                 } else {
                     char fs1[2][2] = { {'b','d'},{'h','m'} };
-                    std::shared_ptr<AnimalCard> card( new FourSplit(fs1, Orientation::UP, EvenOdd::EVEN) );
+                    FourSplit *c = new FourSplit(fs1, Orientation::UP, EvenOdd::EVEN);
+                    card.reset(c);
                 }
-                
-                in >> card ;
+                in >> *card ;
                 table.tableArray[i][j] = card;
             }
         }

@@ -73,13 +73,8 @@ int main( int argc, char *args[] ) {
             infile >> *board;
             
             //retrieve deck
-            int decksize = 0;
-            infile >> decksize;
-            for(int i = 0; i<decksize; i++){
-                shared_ptr<AnimalCard> card;
-                infile >> card;
-                deck.push_back(card);
-            }
+            infile >> deck;
+           
         
         infile.close();
             
@@ -329,10 +324,7 @@ int main( int argc, char *args[] ) {
                 outfile<< board;
                 
                 //save deck
-                outfile << deck.size();
-                for(int i = 0; i<deck.size(); i++){
-                    outfile << deck.draw();
-                }
+                outfile << deck;
                 
                 outfile.close();
                 

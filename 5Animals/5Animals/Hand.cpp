@@ -129,49 +129,44 @@ istream & operator >>(istream &in, Hand& hand){
         int typeOfCard;
         in >> typeOfCard;
         
+        std::shared_ptr<AnimalCard> card;
+        
         if(typeOfCard == 0){
-            std::shared_ptr<AnimalCard>joker(new Joker());
-            in >> joker;
-            hand.operator+=(joker);
+            Joker *c = new Joker();
+            card.reset(c);
         } else if (typeOfCard == 1){
-            std::shared_ptr<AnimalCard> nos1( new NoSplit('b', Orientation::UP, EvenOdd::EVEN) );
-            in>> nos1;
-            hand.operator+=(nos1);
+            NoSplit *c = new NoSplit('b', Orientation::UP, EvenOdd::EVEN);
+            card.reset(c);
         } else if (typeOfCard == 2){
             char tws1[2][2] = { {'b','b'},{'d','d'} };
-            std::shared_ptr<AnimalCard> twos1( new TwoSplit(tws1, Orientation::UP, EvenOdd::EVEN) );
-            in >> twos1;
-            hand.operator+=(twos1);
+            TwoSplit *c = new TwoSplit(tws1, Orientation::UP, EvenOdd::EVEN);
+            card.reset(c);
         } else if (typeOfCard == 3){
             char ths1[2][2] = { {'b','b'},{'d','h'} };
-            std::shared_ptr<AnimalCard> threes1( new ThreeSplit(ths1, Orientation::UP, EvenOdd::EVEN) );
-            in >> threes1;
-            hand.operator+=(threes1);
-        } else if (typeOfCard == 4){
+            ThreeSplit *c = new ThreeSplit(ths1, Orientation::UP, EvenOdd::EVEN);
+            card.reset(c);
+        } else if(typeOfCard == 4){
             char fs1[2][2] = { {'b','d'},{'h','m'} };
-            std::shared_ptr<AnimalCard> fours1( new FourSplit(fs1, Orientation::UP, EvenOdd::EVEN) );
-            in>> fours1;
-            hand.operator+=(fours1);
+            FourSplit *c = new FourSplit(fs1, Orientation::UP, EvenOdd::EVEN);
+            card.reset(c);
         } else if(typeOfCard == 5){
-            std::shared_ptr<ActionCard> ba1( new BearAction() );
-            in>>ba1;
-            hand.operator+=(ba1);
+            BearAction *c = new BearAction();
+            card.reset(c);
         } else if(typeOfCard == 6){
-            std::shared_ptr<ActionCard> da1( new DeerAction() );
-            in>>da1;
-            hand.operator+=(da1);
+            DeerAction *c = new DeerAction();
+            card.reset(c);
         } else if( typeOfCard == 7) {
-            std::shared_ptr<ActionCard> ha1( new HareAction() );
-            in>>ha1;
-            hand.operator+=(ha1);
+            HareAction *c = new HareAction();
+            card.reset(c);
         } else if( typeOfCard == 8){
-            std::shared_ptr<ActionCard> ma1( new MooseAction() );
-            in>>ma1;
-            hand.operator+=(ma1);
+            MooseAction *c = new MooseAction();
+            card.reset(c);
         } else if (typeOfCard == 9){
-            std::shared_ptr<ActionCard> wa3( new WolfAction() );
-            hand.operator+=(wa3);
+            WolfAction *c = new WolfAction();
+            card.reset(c);
         }
+        in >> *card ;
+        hand.operator+=(card);
     }
     
     return in;
