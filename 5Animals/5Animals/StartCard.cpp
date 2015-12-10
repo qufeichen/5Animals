@@ -16,7 +16,6 @@ StartCard::StartCard(){
     
 	for(int i = 0 ; i < 2; i++){
 		for(int j = 0; j < 2; j++){
-
 			cardMatrix[i][j] = 'c';
 		}
 	}
@@ -26,24 +25,13 @@ StartCard::StartCard(){
 void StartCard::setOrientation(Orientation o){
     
 	orientation = o;
-	for(int i = 0; i < 2; i++){
-		for(int j = 0; j<2; j++){
-			cardMatrix[i][j] = 'c';
-		}
-	}
     
 }
 
 void StartCard::setRow(EvenOdd eo){
     
+    //orientation does not matter for startcard;
 	evenOdd = eo;
-	if(eo == EVEN){
-		next = ODD;
-	}else if(eo == ODD){
-		next = EVEN;
-	}else{
-		next = DEFAULT;
-	}
     
 }
 

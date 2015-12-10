@@ -16,22 +16,20 @@
 #include "Joker.h"
 
 Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0), bearCount(0), deerCount(0), hareCount(0), mooseCount(0), wolfCount(0), stack(new StartStack()), occupied(){
-	
-    //only contains start card
     
 	tableArray[52][52] = stack;
     occupied[52][52] = 1;
     
-    //index for selecting secret cards
+    //index for selecting secret animals
     secretCardIndex = new int[numPlayers];
 	for(int i = 0; i<numPlayers; ++i)
 	{ 
 		secretCardIndex[i] = i+1;
 	}
 	random_shuffle(&secretCardIndex[0], &secretCardIndex[numPlayers-1]); //shuffle index
-    //TODO: this is not shuffling :(
     
     //set limits of table to display
+    //will display all cards in table + one empty row and col
     upperLeftRow = 51;
     upperLeftCol = 51;
     lowerRightRow = 53;
@@ -41,14 +39,14 @@ Table::Table (int numPlayers) : d_maxNumPlayers(numPlayers), currentNumPlayers(0
 
 int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
     
-	//check if able to put in card
-    //check if position is empty
+    //check if position on table is empty
 	if(occupied[row][col] != 0)
 	{
 		cout<<"Error: this index is already occupied"<<endl;
 		return 0;
 	}
-    //check if atleast one neightbour matches
+    
+    //check if atleast one neighbour matches
     int numMatches = checkNeighbours(newCard, row, col);
     if (numMatches == 0){
         cout<<"Error: cannot place card here, no matching neighbours"<<endl;
@@ -56,9 +54,11 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 
     }
 
+    //add card to table
 	tableArray[row][col] = newCard;
     occupied[row][col] = 1;
     
+    //update animal count
     addToAnimalCount(newCard);
     
     //change limits of table to display
@@ -75,8 +75,6 @@ int Table::addAt(std::shared_ptr<AnimalCard> newCard, int row, int col){
 	
     return numMatches;
     
-    //TODO: implement in main
-    //if return is 0, throw error,
 }
 
 int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
@@ -84,10 +82,10 @@ int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
     int matches = 0;
     
     if( (row > 0) && (occupied[row-1][col] != 0) ) {
-        if((card->getAnimal(0, 0) == tableArray[row-1][col]->getAnimal(1, 0)) || (tableArray[row-1][col]->getAnimal(1, 0) == 'j' ) || (tableArray[row-1][col]->getAnimal(1, 0) == 'c' ) ){
+        if((card->getAnimal(0, 0) == tableArray[row-1][col]->getAnimal(1, 0)) || (tableArray[row-1][col]->getAnimal(1, 0) == 'j' ) || (tableArray[row-1][col]->getAnimal(0, 0) == 'c' ) ){
             //check top left
             matches++;
-        } else if( (card->getAnimal(0, 1) == tableArray[row-1][col]->getAnimal(1, 1) ) || (tableArray[row-1][col]->getAnimal(1, 1) == 'j' ) || (tableArray[row-1][col]->getAnimal(1, 1) == 'c' )){
+        } else if( (card->getAnimal(0, 1) == tableArray[row-1][col]->getAnimal(1, 1) ) || (tableArray[row-1][col]->getAnimal(1, 1) == 'j' ) || (tableArray[row-1][col]->getAnimal(0, 0) == 'c' )){
             //check top right
             matches++;
         }
@@ -97,17 +95,17 @@ int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
         if( (card->getAnimal(1, 0) == tableArray[row+1][col]->getAnimal(0, 0)) || (tableArray[row+1][col]->getAnimal(0, 0) == 'j' ) || (tableArray[row+1][col]->getAnimal(0, 0) == 'c' )){
             //check bottom left
             matches++;
-        } else if( (card->getAnimal(1, 1) == tableArray[row+1][col]->getAnimal(0, 1)) || (tableArray[row+1][col]->getAnimal(0, 1) == 'j' ) || (tableArray[row+1][col]->getAnimal(0, 1) == 'c' )){
+        } else if( (card->getAnimal(1, 1) == tableArray[row+1][col]->getAnimal(0, 1)) || (tableArray[row+1][col]->getAnimal(0, 1) == 'j' ) || (tableArray[row+1][col]->getAnimal(0, 0) == 'c' )){
             //check bottom right
             matches++;
         }
     }
     
     if( (col > 0) && (occupied[row][col-1] != 0)) {
-        if( (card->getAnimal(0, 0) == tableArray[row][col-1]->getAnimal(0, 1)) || (tableArray[row][col-1]->getAnimal(0, 1) == 'j' ) || (tableArray[row][col-1]->getAnimal(0, 1) == 'c' )){
+        if( (card->getAnimal(0, 0) == tableArray[row][col-1]->getAnimal(0, 1)) || (tableArray[row][col-1]->getAnimal(0, 1) == 'j' ) || (tableArray[row][col-1]->getAnimal(0, 0) == 'c' )){
             //check top left
             matches++;
-        } else if( (card->getAnimal(1, 0) == tableArray[row][col-1]->getAnimal(1, 1)) || (tableArray[row][col-1]->getAnimal(1, 1) == 'j' ) || (tableArray[row][col-1]->getAnimal(1, 1) == 'c' )){
+        } else if( (card->getAnimal(1, 0) == tableArray[row][col-1]->getAnimal(1, 1)) || (tableArray[row][col-1]->getAnimal(1, 1) == 'j' ) || (tableArray[row][col-1]->getAnimal(0, 0) == 'c' )){
             //check bottom left
             matches++;
         }
@@ -118,7 +116,7 @@ int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
             //check top right
             matches++;
     
-        } else if( (card->getAnimal(1, 1) == tableArray[row][col+1]->getAnimal(1, 0)) || (tableArray[row][col+1]->getAnimal(1, 0) == 'j' ) | (tableArray[row][col+1]->getAnimal(1, 0) == 'c' )){
+        } else if( (card->getAnimal(1, 1) == tableArray[row][col+1]->getAnimal(1, 0)) || (tableArray[row][col+1]->getAnimal(1, 0) == 'j' ) | (tableArray[row][col+1]->getAnimal(0, 0) == 'c' )){
             //check bottom right
             matches++;
         }
@@ -131,9 +129,8 @@ int Table::checkNeighbours(shared_ptr<AnimalCard> card, int row, int col){
 std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
     
 	std::shared_ptr<AnimalCard> pickedCard = 0;
-    //returns 0;
     
-	//remove from the table
+	//remove card from the table
 	try{
         
 		if((row == 52 && col == 52) || (occupied[row][col] == 0))
@@ -147,78 +144,18 @@ std::shared_ptr<AnimalCard> Table::pickAt(int row, int col){
 			//delete element in table
 			tableArray[row][col] = NULL;
             occupied[row][col] = 0;
+            
 		}
-	}
-	catch(exception& e){
+	} catch(exception& e){
 		cout << "Illegal Pick";
-        //TODO: how to return nothing
 	}
     
     if(pickedCard != 0){
+        //update animal count
         removeFromAnimalCount(pickedCard);
     }
+    
 	return pickedCard;
-    
-}
-
-Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){
-    
-    *stack+=newCard;
-    //get type for newCard see what kind of animal it is
-    return *this;
-    
-}
-
-Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
-    
-    //add to top of stack
-    
-    //change animal count
-    char remove = stack->getTopAnimal();
-    switch (remove) {
-        case 'b':
-            bearCount--;
-            break;
-        case 'd':
-            deerCount--;
-            break;
-        case 'h':
-            hareCount--;
-            break;
-        case 'm':
-            mooseCount--;
-            break;
-        case 'w':
-            wolfCount--;
-            break;
-        default:
-            break;
-    }
-    char newcardAnimal = newCard->getAnimal();
-    switch (newcardAnimal) {
-        case 'b':
-            bearCount++;
-            break;
-        case 'd':
-            deerCount++;
-            break;
-        case 'h':
-            hareCount++;
-            break;
-        case 'm':
-            mooseCount++;
-            break;
-        case 'w':
-            wolfCount++;
-            break;
-        default:
-            break;
-    }
-    
-    
-    
-    *stack-=newCard;
-    return *this;
     
 }
 
@@ -227,6 +164,7 @@ void Table::addToAnimalCount(std::shared_ptr<AnimalCard> card){
     //get all unique animals from card
     vector<char> unique;
     
+    //if animal does not yet exist in vector, add to vector
     if( find(unique.begin(), unique.end(), card->getAnimal(0, 0)) == unique.end() ){
         unique.push_back(card->getAnimal(0, 0));
     }
@@ -239,7 +177,8 @@ void Table::addToAnimalCount(std::shared_ptr<AnimalCard> card){
     if( find(unique.begin(), unique.end(), card->getAnimal(1, 1)) == unique.end() ){
         unique.push_back(card->getAnimal(1, 1));
     }
-        
+    
+    //for all elements in vector, increment animal count
     for(size_t l = 0; l<unique.size(); l++){
         switch (unique[l]) {
             case 'b':
@@ -269,6 +208,7 @@ void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
     //get all unique animals from card
     vector<char> unique;
     
+    //if animal does not yet exist in vector, add to vector
     if( find(unique.begin(), unique.end(), card->getAnimal(0, 0)) == unique.end() ){
         unique.push_back(card->getAnimal(0, 0));
     }
@@ -282,6 +222,7 @@ void Table::removeFromAnimalCount(std::shared_ptr<AnimalCard> card){
         unique.push_back(card->getAnimal(1, 1));
     }
     
+    //for all elements in vector, decrement animal count
     for(size_t l = 0; l<unique.size(); l++){
         switch (unique[l]) {
             case 'b':
@@ -310,6 +251,7 @@ bool Table::win(std::string& animal){
     
 	bool win = false;
     
+    //check is any animal count has reached 12
     if( animal.compare("Bear")==0 ){
         if(bearCount >=12){
             win = true;
@@ -371,7 +313,8 @@ string Table::createPlayer(string name){
 
 	string secretAnimal;
     
-	switch(secretCardIndex[currentNumPlayers]) //assign secret animal
+    //assign each player a secret animal according to the shuffled index
+	switch(secretCardIndex[currentNumPlayers])
 	{
 	case 1 :
 		secretAnimal = "Bear";
@@ -389,15 +332,17 @@ string Table::createPlayer(string name){
 		secretAnimal = "Deer";
 		break;
 	}
+    
 	players.push_back( Player(name, secretAnimal, currentNumPlayers) );
 	++currentNumPlayers;
+    
 	return "player created successfully";
     
 }
 
 void Table::print(){
     
-    //print index:
+    //print column index:
     cout<<"   ";
     for( int i = upperLeftCol; i<lowerRightCol+1; i++){
         cout<<i<<"  ";
@@ -407,8 +352,11 @@ void Table::print(){
     
     
     for (int i=upperLeftRow; i<lowerRightRow+1; i++){
+        
+        //print row index
         cout<<i<<" ";
         
+        //print first row of card
         for (int j=upperLeftCol; j<lowerRightCol; j++){
             if(occupied[i][j] == 1){
                 tableArray[i][j]->printRow(EvenOdd::EVEN);
@@ -420,6 +368,7 @@ void Table::print(){
         }
         cout<<endl;
         cout<<"   ";
+        //prints second row of card
         for (int k=upperLeftCol; k<lowerRightCol; k++){
             if(occupied[i][k] == 1){
                 tableArray[i][k]->printRow(EvenOdd::ODD);
@@ -435,7 +384,72 @@ void Table::print(){
     
 }
 
+Table& Table::operator+=(std::shared_ptr<ActionCard> newCard){
+    
+    //add card to startstack (bottom of startstack, animal count does not change)
+    *stack+=newCard;
+    return *this;
+    
+}
+
+Table& Table::operator-=(std::shared_ptr<ActionCard> newCard){
+    
+    //add card to top of startstack
+    
+    //remove animal count of the current card on top of startstack
+    char remove = stack->getTopAnimal();
+    switch (remove) {
+        case 'b':
+            bearCount--;
+            break;
+        case 'd':
+            deerCount--;
+            break;
+        case 'h':
+            hareCount--;
+            break;
+        case 'm':
+            mooseCount--;
+            break;
+        case 'w':
+            wolfCount--;
+            break;
+        default:
+            break;
+    }
+    //add animal count of new card added to top of startstack
+    char newcardAnimal = newCard->getAnimal();
+    switch (newcardAnimal) {
+        case 'b':
+            bearCount++;
+            break;
+        case 'd':
+            deerCount++;
+            break;
+        case 'h':
+            hareCount++;
+            break;
+        case 'm':
+            mooseCount++;
+            break;
+        case 'w':
+            wolfCount++;
+            break;
+        default:
+            break;
+    }
+    
+    //add card to top of startstack
+    *stack-=newCard;
+    
+    return *this;
+    
+}
+
+
 ostream & operator <<(ostream& out , const Table& table){
+    
+    //write table to file
     
     out << table.bearCount;
     out << table.deerCount;
@@ -443,6 +457,7 @@ ostream & operator <<(ostream& out , const Table& table){
     out << table.mooseCount;
     out << table.wolfCount;
     
+    //save player info to file
     out << table.d_maxNumPlayers;
     out << table.currentNumPlayers;
     for (int x = 0; x < table.d_maxNumPlayers; x++){
@@ -451,18 +466,20 @@ ostream & operator <<(ostream& out , const Table& table){
 
     out << table.stack;
     
+    //save current cards on gameboard
     for(int i = 0; i < 103; i++){
         for(int j = 0; j < 103; j++){
             if(table.occupied[i][j] == 0){
                 out<< 0;
             } else {
                 out << 1;
+                //type used to record what type of card was saved
+                //used when retrieving info from file
                 out<< table.tableArray[i][j]->type;
                 out<< table.tableArray[i][j];
             }
         }
     }
-    
     
     return out;
     
@@ -470,6 +487,8 @@ ostream & operator <<(ostream& out , const Table& table){
 
 istream & operator >>(istream& in, Table& table){
 
+    //retrieve previous game info from file
+    
     in >> table.bearCount;
     in >> table.deerCount;
     in >> table.hareCount;
@@ -478,6 +497,7 @@ istream & operator >>(istream& in, Table& table){
     in >> table.d_maxNumPlayers;
     in >> table.currentNumPlayers;
     
+    //get player info and recreate players
     for (int i = 0; i<table.d_maxNumPlayers; i++){
         Player temp("","",i);
         in >> temp;
@@ -486,13 +506,15 @@ istream & operator >>(istream& in, Table& table){
     
     in >> table.stack;
     
-    
+    //recreate board
     int x;
     for(int i = 0; i < 103; i++){
         for(int j = 0; j < 103; j++){
             cin>>x;
             table.occupied[i][j] = x;
             if(x == 1){
+                
+                //typeOfCard used to determine what type of card was saved
                 int typeOfCard;
                 in >> typeOfCard;
                 std::shared_ptr<AnimalCard> card;
@@ -519,4 +541,5 @@ istream & operator >>(istream& in, Table& table){
     }
     
     return in;
+    
 }

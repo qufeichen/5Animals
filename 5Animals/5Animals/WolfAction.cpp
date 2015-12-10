@@ -61,9 +61,12 @@ QueryResult WolfAction::query(){
 
 void WolfAction::perform(Table &table, Player *player , QueryResult qr){
 
+    //get player hand
     Hand *currentHand = player->getHand();
+    //pick card from table and add to hand
     currentHand->operator+=(table.pickAt(qr.getPosition(0),qr.getPosition(1)));
     
+    //print resulting hand
     cout<<"Here is your new hand: "<<endl;
     player->getHand()->print();
     cout<<endl;

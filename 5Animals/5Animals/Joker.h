@@ -31,7 +31,6 @@ public:
 	int show();
 	EvenOdd getRow();
 	void printRow( EvenOdd );
-	//virtual friend Idiom<<(obj const& lhs, obj const& rhs);
 
 };
 

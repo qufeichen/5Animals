@@ -17,14 +17,12 @@ using namespace std;
 class QueryResult{
 
 private:
-    //variable:
     string d_playerName;
 	int *d_cardLocation;
 	int d_arrayLength;
 	int index;
 
 public:
-    //constructor
     QueryResult(string, int);
 	void addToArray(int);
 	string getPlayerName();

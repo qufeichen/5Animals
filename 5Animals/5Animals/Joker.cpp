@@ -11,6 +11,7 @@
 #include <iostream>
 
 using namespace std;
+
 NoSplit::NoSplit(){
 
 }
@@ -19,7 +20,9 @@ Joker::Joker(): type(0){
     
 	for(int i = 0 ; i < 2; i++){
 		for(int j = 0; j < 2; j++){
+            
 			cardMatrix[i][j] = 'j';
+            
 		}
 	}
     
@@ -38,11 +41,12 @@ void Joker::setOrientation(Orientation o){
 void Joker::setRow(EvenOdd eo){
     
 	evenOdd = eo;
-	if(eo == EVEN){
+    
+	if (eo == EVEN){
 		next = ODD;
-	}else if(eo == ODD){
+	} else if (eo == ODD){
 		next = EVEN;
-	}else{
+	} else {
 		next = DEFAULT;
 	}
     
@@ -56,11 +60,10 @@ EvenOdd Joker::getRow(){
 
 void Joker::printRow(EvenOdd e){
     
-    if(e == EVEN){
+    if (e == EVEN){
         cout << j;
         cout << j;
-    }
-    else if(e == ODD){
+    } else if (e == ODD){
         cout<< j;
         cout<< j;
     }

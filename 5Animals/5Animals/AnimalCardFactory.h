@@ -27,13 +27,11 @@ private:
 	Deck <AnimalCard> deck;
 
 public:
+    AnimalCardFactory* animalFactory;
 	AnimalCardFactory();
     ~AnimalCardFactory();
-    Deck<AnimalCard> createDeck(); // done in constructor
-    AnimalCardFactory* animalFactory;
 	static AnimalCardFactory* getFactory();
 	Deck<AnimalCard> &getDeck();
-    //Deck<std::shared_ptr<AnimalCard> > getDeck();
     
 };
 

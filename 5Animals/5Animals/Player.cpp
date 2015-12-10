@@ -51,29 +51,33 @@ Hand* Player::getHand(){
 
 void Player::print(){
     
-	//call print function of hand
+	//prints secret animal of player
 	cout<<"The secret animal is: " << d_secretAnimal << endl;
     
 }
 
 ostream &operator <<(ostream &out, const Player& player){
     
+    //writes player to file
     out << player.d_name;
     out << player.d_secretAnimal;
     out << player.d_id;
     out << player.playerHand;
     
     return out;
+    
 }
 
 istream & operator >>(istream &in, Player& player){
     
+    //retrieves player info from file
     in >> player.d_name;
     in >> player.d_secretAnimal;
     in >> player.d_id;
     in >> *player.playerHand;
     
     return in;
+    
 }
 
 void Player::swapHands(Player &player){

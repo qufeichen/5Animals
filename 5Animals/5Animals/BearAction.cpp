@@ -57,19 +57,18 @@ QueryResult BearAction::query(){
 }
 
 void BearAction::perform(Table &table, Player* player , QueryResult qr){
-
-//    Hand h = player->getHand();
-//    player->setHand(table.getPlayer(qr.getPlayerName())->getHand());
-//    table.getPlayer(qr.getPlayerName())->setHand(h);
-//    
+  
+    //get hands of both players
     Hand *currentHand = player->getHand();
     Player *otherPlayer = table.getPlayer(qr.getPlayerName());
     Hand *otherPlayerHand = otherPlayer->getHand();
     
+    //swap hands
     player->setHand(otherPlayerHand);
     otherPlayer->setHand(currentHand);
     cout<<endl;
     
+    //print new hands for both players
     cout<<"Your new hand:"<<endl;
     player->getHand()->print();
     cout<<endl;

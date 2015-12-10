@@ -25,27 +25,30 @@ class ActionCard;
 class Table{
     
 private:
-	//array of pointers to animal cards, and array to track which positions are taken
-	std::shared_ptr<AnimalCard> tableArray[103][103] ;
+	//array of pointers to animal cards
+    std::shared_ptr<AnimalCard> tableArray[103][103] ;
+    //array that records which positions on table are occupied
     int occupied[103][103];
 	
-	//stack in middle of graph
+    //startstack
 	std::shared_ptr<StartStack> stack;
 
-	//Number of Each Animal card
+	//Count of each animal card on table
 	int bearCount;	
 	int deerCount;
 	int hareCount;
 	int mooseCount;
 	int wolfCount;
 
-    //Create 4 players (or however many are playing)
     //players
     int d_maxNumPlayers;
     vector<Player> players;
     int currentNumPlayers;
+    
+    //used to assign secret animals to players
     int *secretCardIndex;
-//    //TODO:for printing table (keep track of size of table)
+
+    //variables to keep track of table size
     int upperLeftRow;
     int upperLeftCol;
     int lowerRightRow;
@@ -57,12 +60,12 @@ private:
 
 public:
 	Table(int);
-    
 	int addAt(std::shared_ptr<AnimalCard>, int, int);
     int checkNeighbours(shared_ptr<AnimalCard>, int, int);
     std::shared_ptr<AnimalCard>pickAt(int, int );
     bool win(std::string& animal);
     
+    //player methods
 	int getNumPlayers();
 	Player *getPlayer(string); //gets player by name
 	Player *getPlayer(int); //gets player by index (in array)

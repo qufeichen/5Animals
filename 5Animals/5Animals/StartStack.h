@@ -22,7 +22,7 @@ private:
 	std::deque<shared_ptr<StartCard>> stack;
     std::shared_ptr<StartCard> start;
 
-	//values for the card on top
+	//values for card on top of stack
 	Orientation orientation;
 	EvenOdd evenOdd;
 	EvenOdd next;
@@ -31,8 +31,6 @@ private:
 
 public:
 	StartStack();
-	StartStack& operator+=(std::shared_ptr<ActionCard>);
-	StartStack& operator-=(std::shared_ptr<ActionCard>);
 	std::shared_ptr<StartCard> getStartCard();
 	void setOrientation(Orientation);
 	void setRow(EvenOdd);
@@ -42,6 +40,8 @@ public:
     char getTopAnimal();
     void printRow( ostream &, EvenOdd );
 
+    StartStack& operator+=(std::shared_ptr<ActionCard>);
+    StartStack& operator-=(std::shared_ptr<ActionCard>);
     friend ostream & operator <<(ostream &out, const shared_ptr<StartStack>);
     friend istream & operator >>(istream &in, shared_ptr<StartStack>);
     

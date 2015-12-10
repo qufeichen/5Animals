@@ -23,26 +23,6 @@ StartStack::StartStack(){
 
 }
 
-StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
-    
-    stack.push_back(card);
-	return *this;
-    //execute action elsewhere
-    //no access to table
-    
-}
-
-StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
-    
-	//bottom is front
-	stack.push_front(card);
-    topAnimal = card->getAnimal();
-	return *this;
-    //execute action elsewhere
-    //no access to table
-    
-}
-
 std::shared_ptr<StartCard> StartStack::getStartCard(){
     
 	return start;
@@ -58,6 +38,7 @@ void StartStack::setOrientation(Orientation o){
 void StartStack::setRow(EvenOdd eo){
     
 	evenOdd = eo;
+    
 	if(eo == EVEN){
 		next = ODD;
 	}else if(eo == ODD){
@@ -86,7 +67,7 @@ void StartStack::printRow( ostream &, EvenOdd eo ){
     
 }
 
-char StartStack::getAnimal(int, int){
+char StartStack::getAnimal(int x, int y){
     
     return topAnimal;
     
@@ -98,8 +79,27 @@ char StartStack::getTopAnimal(){
     
 }
 
+StartStack& StartStack::operator+=(std::shared_ptr<ActionCard> card){
+    
+    //top of stack is back
+    stack.push_back(card);
+    return *this;
+    
+}
+
+StartStack& StartStack::operator-=(std::shared_ptr<ActionCard> card){
+    
+    //bottom of stack is front
+    stack.push_front(card);
+    topAnimal = card->getAnimal();
+    return *this;
+    
+}
+
 ostream & operator <<(ostream &out, const shared_ptr<StartStack> stack){
     
+    //writes stack to file
+    //only need record the animal on top of the startstack
     out << stack->topAnimal;
     out << stack->cardMatrix[0][0];
     out << stack->cardMatrix[0][1];
@@ -112,6 +112,7 @@ ostream & operator <<(ostream &out, const shared_ptr<StartStack> stack){
 
 istream & operator >>(istream &in, shared_ptr<StartStack> stack){
     
+    //retrieves startstack info from file
     in >> stack->topAnimal;
     in >> stack->cardMatrix[0][0];
     in >> stack->cardMatrix[0][1];

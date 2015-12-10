@@ -23,78 +23,44 @@ NoSplit::NoSplit(char animal, Orientation o, EvenOdd e): type(1){
     
     setOrientation(o);
     setRow(e);
+    
 }
 
 
 void NoSplit::setOrientation(Orientation o){
     
 	orientation = o;
+    
+    //flip does not matter
     animal = cardMatrix[0][0];
-	//flip does not matter
     
 }
 
 void NoSplit::setRow(EvenOdd eo){
     
+    //orientation does not matter for NoSplit cards
 	evenOdd = eo;
-	if(eo == EVEN){
-		next = ODD;
-	}else if(eo == ODD){
-		next = EVEN;
-	}else{
-		next = DEFAULT;
-	}
     
 }
 
 EvenOdd NoSplit::getRow(){
     
+    //all elements of cardMatrix are the same
 	return next;
     
 }
 
-//void NoSplit::printRow( EvenOdd eo){
-//	if(eo == EVEN){
-//		for(int i=0; i< 2; i++){
-//			cout << cardMatrix[0][i] << "first row" << endl;	
-//		}
-//	}
-//	else if(eo == ODD){
-//		for(int i=0; i< 2; i++){
-//			cout<< cardMatrix[1][i] << "second row"  << endl;	
-//		}
-//	}else{
-//		for(int i=0; i< 2; i++){
-//			cout<< cardMatrix[0][i] << "default" << endl;	
-//
-//		}
-//	}
-//}
-
 void NoSplit::printRow(ostream& out, EvenOdd eo){
     
-	if(eo == EVEN){
-		for(int i=0; i< 2; i++){	
-			out << cardMatrix[0][i] << "first row";	
-		}
-	}
-	else if(eo == ODD){
-		for(int i=0; i< 2; i++){	
-			out << cardMatrix[1][i] << "second row";	
-		}
-	}else{
-		for(int i=0; i< 2; i++){	
-			out<< cardMatrix[0][i] << "default";
-		}
-	}
-	cout <<"\n";
+    out << animal;
+    out << animal;
     
 }
 
 void NoSplit::printRow(EvenOdd e){
     
-        cout << animal;
-        cout << animal;
+    cout << animal;
+    cout << animal;
     
 }
 
@@ -103,14 +69,3 @@ char NoSplit::getAnimal(int row, int col){
     return cardMatrix[row][col];
     
 }
-
-//ostream &operator <<(ostream &out, const NoSplit& noSplitCard){
-//	for(int i = 0; i < 2; i++){
-//		for(int j = 0; j<2; j++){
-//			out << noSplitCard.cardMatrix[i][j];
-//			cout << "test!!";
-//		}
-//		cout << "\n";
-//	}
-//	return out;
-//}

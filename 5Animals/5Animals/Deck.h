@@ -22,13 +22,17 @@ class Deck : public std::vector<std::shared_ptr<T>>{
 	
 public:
     inline std::shared_ptr<T> draw(){
+        
         shared_ptr<T> temp;
-        //pop last element and return it
+        
+        //get last element in deck
         temp = this->back();
+        
         //remove last element from deck
         this->pop_back();
         
         return temp;
+        
     }
 
 };

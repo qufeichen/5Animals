@@ -52,16 +52,20 @@ QueryResult DeerAction::query(){
 
     QueryResult qr = QueryResult(userIn, 0);
     return qr;
+    
 }
 
 void DeerAction::perform(Table & table, Player* player, QueryResult qr){
 	
+    //get secret animals of both players
     string animal1 = table.getPlayer( qr.getPlayerName() )->getSecretAnimal();
     string animal2 = player->getSecretAnimal();
 
+    //swap secret animals
     player->swapSecretAnimal(animal1);
     table.getPlayer(qr.getPlayerName())->swapSecretAnimal(animal2);
     
+    //print result
     cout<<"Your new secret animal is "<<player->getSecretAnimal()<<endl;
     cout<<endl;
     cout<<qr.getPlayerName()<<"'s new secret animal is "<<animal2<<endl;

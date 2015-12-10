@@ -32,39 +32,47 @@ int main( int argc, char *args[] ) {
     bool startNewGame = true;
     
     //declare variables
+    
+    //variables used to check for winner
     bool playerHasWon = false;
     string winner;
+    
+    //game variables
     Hand *currentHand;
-    int numPlayers;
+    int numPlayers = 0;
+    Table *board = 0;
+    Deck<AnimalCard> deck;
 
-    //load from file
+
+    //load game
+
+    //player chooses to load a game from file
     if(newOrSave != 1){
+        
         startNewGame = false;
         
+        //read files in start game
         ifstream infile;
         infile.open(".../5Animals.txt");
-
-		//read files in start game
         
-        //check for error
+        //check if a saved game exists
         if(infile.fail()){
+            
             cerr << "There was an error reading from file. You do not have a game saved!"<<endl;
-            //no file found, start new game
+            //no saved game found, start new game
             startNewGame = true;
+            infile.close();
             
         } else {
-        
+            
+            //save number of players
             infile >> numPlayers;
             
-            Table board = Table(numPlayers);
-            infile >> board;
+            //create gameboard, and retrieve information from saved game
+            board = new Table(numPlayers);
+            infile >> *board;
             
-            for(int i = 0; i<numPlayers; i++){
-                Player *p = board.getPlayer(i);
-                infile >> *p;
-            }
-            
-            Deck <AnimalCard> deck;
+            //retrieve deck
             int decksize = 0;
             infile >> decksize;
             for(int i = 0; i<decksize; i++){
@@ -77,12 +85,13 @@ int main( int argc, char *args[] ) {
             
         }
         
-
     }
 
-        //start a new game
     
-    //if(startNewGame){
+    //new game
+    
+    //if player choses to start a new game, or if player does not have a game saved
+    if(startNewGame){
     
         //enter number of players
         cout<<"You are starting a new game!"<<endl;
@@ -91,54 +100,64 @@ int main( int argc, char *args[] ) {
         
         //check that number of players is valid (between 1 and 5 inclusive)
         while( ! ((1<numPlayers) && (numPlayers<6)) )
-        {   cout<<"Invalid input! Please enter a number between 2 and 5 (inclusive):"<<endl;
+        {
+            cout<<"Invalid input! Please enter a number between 2 and 5 (inclusive):"<<endl;
             cin>> numPlayers;
+            
         }
         
-        //create game
-        Table board = Table(numPlayers);
+        //create gameboard
+        board = new Table(numPlayers);
         
         //create deck
         AnimalCardFactory *factory = new AnimalCardFactory();
-        Deck<AnimalCard> deck = factory->getDeck();
+        deck = factory->getDeck();
     
         //create players
         string name;
         for(int i=0;i<numPlayers;i++){
+            
             cout<<"Please enter player "<<(i+1)<<"'s name:"<<endl;
             cin>>name;
-            board.createPlayer(name);
-            cout<<"Your secret animal is "+board.getPlayer(i)->getSecretAnimal()<<endl;
+            board->createPlayer(name);
+            cout<<"Your secret animal is "+board->getPlayer(i)->getSecretAnimal()<<endl;
             cout<<endl;
+            
         }
     
         //draw three cards per player
         Hand *tempHand;
         for(int i = 0; i<numPlayers; i++){
-            tempHand = board.getPlayer(i)->getHand();
+            
+            tempHand = board->getPlayer(i)->getHand();
             tempHand->operator+=(deck.draw());
             tempHand->operator+=(deck.draw());
             tempHand->operator+=(deck.draw());
 
         }
-  //  }
+    }
   
+    
+    
+    //play the game
+    
     while(!playerHasWon){
         
         //loop for each player
         for( int i = 0; i<numPlayers; i++) {
             
             cout<<endl<<"====================================="<<endl;
-            cout<<"Player "+board.getPlayer(i)->getName()+"'s turn: "<<endl;
+            cout<<"Player "+board->getPlayer(i)->getName()+"'s turn: "<<endl;
             cout<<endl;
-            //display table
+            
+            //display gameboard
             cout<<"Game Board:"<<endl;
             cout<<endl;
-            board.print();
+            board->print();
             
-            //draw card for player
+            //draw a card for player
             cout<<"You draw a card from the deck!"<<endl;
-            currentHand = board.getPlayer(i)->getHand();
+            currentHand = board->getPlayer(i)->getHand();
             currentHand->operator+=(deck.draw());
 
             //print hand
@@ -146,14 +165,17 @@ int main( int argc, char *args[] ) {
             currentHand->print();
             cout<<endl;
             
+            //player chooses a card
             cout<<"Please choose a card to play:"<<endl;
             int card;
             cin>>card;
-            while (card<0 || card > board.getPlayer(i)->getHand()->noCards()-1){
+            //ensure that a valid card is chosen from hand
+            while (card<0 || card > board->getPlayer(i)->getHand()->noCards()-1){
                 cout<<"Thats not a valid card! Please choose a card from you hand:"<<endl;
                 cin>>card;
             }
             
+            //player choses position to play card
             cout<<"Please choose a position on the board to play the card:"<<endl;
             int row;
             int col;
@@ -173,28 +195,14 @@ int main( int argc, char *args[] ) {
             }
             cout<<endl;
             
-            //if placing an on the stack
+            //if placing card on the stack
             if( row == 52 && col == 52){
-                
-                //Should use exceptions to check for null pointer?
-//                try{
-//                    shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
-//                    if( cardToPlay == nullptr ){
-//                        throw "exception";
-//                    }
-//                } catch (exception e){
-//                    cout<<"You cannot place a non-action card on the startstack. Please start your turn again.";
-//                    i--;
-//                }
-                
-                //dynamic cast - will return null pointer if casting fails
                
+                //check if card is an action card
                 shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand->operator[](card));
+                
                 if( cardToPlay != nullptr){
                     
-                    //get card
-                    //shared_ptr<ActionCard> cardToPlay =  dynamic_pointer_cast<ActionCard>(currentHand[card]);
-                    //remove card from hand
                     currentHand->operator-=(currentHand->operator[](card));
                     
                     int top;
@@ -204,34 +212,38 @@ int main( int argc, char *args[] ) {
                     
                     if(top == 1){
                 
-                        board += cardToPlay;
+                        board->operator+=(cardToPlay);
+                        
                     } else {
+                        
                         //perform action
-                        board -= cardToPlay;
+                        board->operator-=(cardToPlay);
                         QueryResult qr = cardToPlay->query();
-                        cardToPlay->perform(board, board.getPlayer(i), qr);
+                        cardToPlay->perform(*board, board->getPlayer(i), qr);
+                        
                     }
 
                 }
                 
-                //if not an action card
+                //if card is not an action card
                 else {
                     
-                    //You cannot place a non-action card on the stack
                     cout<<"You cannot place a non-action card on the stack"<<endl;
-                    //TODO:
-                    //return to start of loop so player can enter another location to place card?
                     cout<<"Please start your turn again."<<endl;
                     break;
+                    
                 }
             
-            } else {
-                //if not placing on the stack
                 
+            //if not placing on the stack
+            } else {
+                
+                //check that card is not an action card
                 if(shared_ptr<ActionCard> cardToPlay = dynamic_pointer_cast<ActionCard>(currentHand->operator[](card))){
                     cout<<"You can only place action cards on the StartStack!"<<endl;
                     cout<<"Start your turn over again."<<endl;
                     break;
+                    
                 }
                 
                 //get card
@@ -241,11 +253,11 @@ int main( int argc, char *args[] ) {
                 currentHand->operator-=(cardToPlay);
                 
                 //place card on board
-                int numMatches = board.addAt(cardToPlay, row, col);
+                //returns 0 if there are no matches, and card cannot be placed at this spot
+                int numMatches = board->addAt(cardToPlay, row, col);
                 
                 if(numMatches == 0){
-                    //card not placed successfully on table, error is thrown
-                    //let player play turn again
+
                     cout<<"Restart your turn.";
                     break;
                     
@@ -254,11 +266,13 @@ int main( int argc, char *args[] ) {
                     //draw additional cards
                     cout<<"Since your card made "<<numMatches<<" match(es), you will draw "<<numMatches<<" additional cards."<<endl;
                     for(int i=0; i<numMatches; i++){
+                        
                         shared_ptr<AnimalCard> cardDrawn = deck.draw();
                         currentHand->operator+=(cardDrawn);
                         
-                }
-                    //print new hand
+                    }
+                    
+                    //print new hand after additional cards are drawn
                     cout<<"Your new hand:"<<endl;
                     currentHand->print();
                     cout<<endl;
@@ -267,46 +281,52 @@ int main( int argc, char *args[] ) {
                 
             }
             
-            //check if player has won (check ALL PLAYERS)
+            // end of player turn
+            
+            
+            //check if a player has won (checks ALL PLAYERS)
             string secretAni;
+            
             for(int x = 0; x<numPlayers; x++){
-                secretAni = board.getPlayer(x)->getSecretAnimal();
-                playerHasWon = board.win(secretAni);
-                //get name of winner
+                
+                secretAni = board->getPlayer(x)->getSecretAnimal();
+                playerHasWon = board->win(secretAni);
+                
                 if(playerHasWon){
-                    winner = board.getPlayer(x)->getName();
+                    
+                    //get name of winner
+                    winner = board->getPlayer(x)->getName();
+                    
                 }
+                
             }
             
+            //check if there are still cards remaining in deck
             if(deck.size() ==0){
+                
                 cout<<"There are no more cards in the deck!"<<endl;
                 cout<<"Since no player has achieved 12 matches on the table, this game end on a tie."<<endl;
                 cout<<"Thank you for playing! Goodbye!"<<endl;
                 exit(1);
+                
             }
             
             //prompt to save game
-            //TODO: should we give save option every time a player starts a turn?
             cout<<"Would you like to save and exit the game now?"<<endl;
             cout<<"Enter 1 for yes, or any other number for no: ";
             int save;
             cin>>save;
             
             if(save == 1){
-                //TODO: save to file
                 
                 ofstream outfile;
                 outfile.open(".../5Animals.txt");
                 
+                //save number of players
                 outfile << numPlayers << endl;
                 
                 //save table
                 outfile<< board;
-                
-                //save players
-                for(int i = 0; i<numPlayers; i++){
-                    outfile << board.getPlayer(i);
-                }
                 
                 //save deck
                 outfile << deck.size();
@@ -315,15 +335,23 @@ int main( int argc, char *args[] ) {
                 }
                 
                 outfile.close();
-                //end program
-    
+                
+                //end program after save
+                cout<<"Thank you for playing!"<<endl;
+                cout<<"Goodbye!"<<endl;
+                
                 exit(1);
             }
-
             
         }
         
+        //if no player has won:
+        //player number is incremented, and the next the next player goes
+        
     }
+    
+    
+    // player wins, breaks out of game loop
     
     cout<<"Congratulations "+winner<<", you have won the game!"<<endl;
     cout<<"Thank you for playing! Goodbye!"<<endl;

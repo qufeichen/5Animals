@@ -14,6 +14,7 @@
 
 using namespace std;
 
+
 enum EvenOdd {
     
     EVEN,
@@ -38,12 +39,10 @@ private:
     EvenOdd next;
     char cardMatrix[2][2];
     char topLeft, topRight, bottomLeft, bottomRight;
-    //use for reading from file
 
 public:
-
+    
     int type;
-	//should functions be optional?
 	virtual void setOrientation(Orientation)=0;
 	virtual void setRow(EvenOdd)=0;
 	virtual EvenOdd getRow()=0;
@@ -51,7 +50,10 @@ public:
     virtual char getAnimal(int, int)=0;
 	virtual void printRow(EvenOdd )=0;
     
+    
     inline friend ostream & operator <<(ostream &out, const shared_ptr<AnimalCard> card){
+        
+        // write animal cards to file
         
         out << card->orientation << endl;
         out << card->evenOdd << endl;
@@ -69,6 +71,8 @@ public:
     }
     
     inline friend istream & operator >>(istream &in, shared_ptr<AnimalCard> card){
+        
+        //retrieve animal card information from file
         
         string o;
         in >> o;
@@ -97,6 +101,7 @@ public:
         in >> card->bottomRight;
         
         return in;
+        
     }
 
 };

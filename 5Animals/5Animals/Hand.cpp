@@ -27,27 +27,6 @@ Hand::Hand():numOfCards(0){
     
 }
 
-Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
-
-    numOfCards = numOfCards+1;
-	cardsInHand.push_back(newCard);
-	return *this;
-    
-
-}
-
-
-Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
-    
-    if( find(cardsInHand.begin(), cardsInHand.end(), newCard) != cardsInHand.end() ){
-        cardsInHand.erase(find(cardsInHand.begin(), cardsInHand.end(), newCard));
-    }
-    
-    numOfCards--;
-    return *this;
-    
-}
-
 std::shared_ptr<AnimalCard> Hand::operator[](int index){
     
 	std::shared_ptr<AnimalCard> temp;
@@ -55,9 +34,8 @@ std::shared_ptr<AnimalCard> Hand::operator[](int index){
     if((index < numOfCards) && (index>=0)){
         temp = cardsInHand[index];
     }
-    
+
 	return temp;
-    //returns null if index is out of scope
 	
 }
 
@@ -75,11 +53,14 @@ void Hand::print(){
     }
     cout<<endl;
     
+    //print first row of hand
     for(int i = 0; i<numOfCards; i++){
         cardsInHand[i]->printRow(EvenOdd::EVEN);
         cout<<"  ";
     }
     cout<<endl;
+    
+    //print second row of hand
     for(int i = 0; i<numOfCards; i++){
         cardsInHand[i]->printRow(EvenOdd::ODD);
          cout<<"  ";
@@ -88,13 +69,49 @@ void Hand::print(){
     
 }
 
+Hand& Hand::operator+=(std::shared_ptr<AnimalCard> newCard){
+    
+    //add card to hand
+    
+    numOfCards = numOfCards+1;
+    cardsInHand.push_back(newCard);
+    
+    return *this;
+    
+    
+}
+
+
+Hand& Hand::operator-=(std::shared_ptr<AnimalCard>newCard){
+    
+    //remove card from hand
+    
+    //find card in hand
+    if( find(cardsInHand.begin(), cardsInHand.end(), newCard) != cardsInHand.end() ){
+        cardsInHand.erase(find(cardsInHand.begin(), cardsInHand.end(), newCard));
+    }
+    
+    //update count
+    numOfCards--;
+    
+    return *this;
+    
+}
+
 ostream& operator <<(ostream &out, const Hand& handGiven){
     
+    //write hand to file
+    
     out<<handGiven.numOfCards;
+    
     list<shared_ptr<AnimalCard>>::const_iterator it;
     for(int i = 0; i<handGiven.numOfCards; i++){
+        
+        //type used to identify what kind of card is being saved
+        //used when retriving hand from file
         out << handGiven.cardsInHand[i]->type;
         out << handGiven.cardsInHand[i];
+        
      }
     
     return out;
@@ -103,9 +120,12 @@ ostream& operator <<(ostream &out, const Hand& handGiven){
 
 istream & operator >>(istream &in, Hand& hand){
     
+    //retrieve hand from file
+    
     in >> hand.numOfCards;
     for(int i = 0; i<hand.numOfCards; i++){
         
+        //typeOfCard used to determine what type of card was saved
         int typeOfCard;
         in >> typeOfCard;
         

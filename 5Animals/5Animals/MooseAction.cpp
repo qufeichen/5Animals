@@ -55,6 +55,7 @@ QueryResult MooseAction::query(){
 
 void MooseAction::perform(Table & table, Player* player, QueryResult qr){
 	
+    //rotate secret animals of all players
 	string tempAni = table.getPlayer(table.getNumPlayers())->getSecretAnimal();
 	for(int i = table.getNumPlayers(); i>0; i--)
 	{
@@ -64,6 +65,7 @@ void MooseAction::perform(Table & table, Player* player, QueryResult qr){
     }
 	table.getPlayer(0)->swapSecretAnimal( tempAni );
     
+    //print new secret animal of current player
     cout<<"Your new secret animal is "<<player->getSecretAnimal()<<endl;
     cout<<endl;
     

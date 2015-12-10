@@ -34,6 +34,7 @@ AnimalCardFactory::AnimalCardFactory(){
     deck.push_back(nos4);
     std::shared_ptr<AnimalCard> nos5( new NoSplit('w', Orientation::UP, EvenOdd::EVEN) );
     deck.push_back(nos5);
+    
     //two splits
     char tws1[2][2] = { {'b','b'},{'d','d'} };
     std::shared_ptr<AnimalCard> twos1( new TwoSplit(tws1, Orientation::UP, EvenOdd::EVEN) );
@@ -65,6 +66,7 @@ AnimalCardFactory::AnimalCardFactory(){
     char tws10[2][2] = { {'m','m'},{'w','w'} };
     std::shared_ptr<AnimalCard> twos10( new TwoSplit(tws10, Orientation::UP, EvenOdd::EVEN) );
     deck.push_back(twos10);
+    
     //three splits
     char ths1[2][2] = { {'b','b'},{'d','h'} };
     std::shared_ptr<AnimalCard> threes1( new ThreeSplit(ths1, Orientation::UP, EvenOdd::EVEN) );
@@ -126,6 +128,7 @@ AnimalCardFactory::AnimalCardFactory(){
     char ths20[2][2] = { {'w','w'},{'d','b'} };
     std::shared_ptr<AnimalCard> threes20( new ThreeSplit(ths20, Orientation::UP, EvenOdd::EVEN) );
     deck.push_back(threes20);
+    
     //four split
     char fs1[2][2] = { {'b','d'},{'h','m'} };
     std::shared_ptr<AnimalCard> fours1( new FourSplit(fs1, Orientation::UP, EvenOdd::EVEN) );
@@ -209,31 +212,27 @@ AnimalCardFactory::AnimalCardFactory(){
     std::shared_ptr<ActionCard> wa3( new WolfAction() );
     deck.push_back(wa3);
     
-    
     //shuffle deck
-    
     std::random_shuffle(deck.begin(), deck.end());
     
 }
 
 Deck<AnimalCard> &AnimalCardFactory::getDeck(){
+    
     return deck;
     
 }
 
 AnimalCardFactory::~AnimalCardFactory(){
+    
     delete animalFactory;
+    
 }
 
 AnimalCardFactory* AnimalCardFactory::getFactory(){
+    
     static AnimalCardFactory animalFactory;
     return &animalFactory;
     
 }
-
-//
-//Deck<std::shared_ptr<AnimalCard> > AnimalCardFactory::getDeck(){
-//
-//}
-
 

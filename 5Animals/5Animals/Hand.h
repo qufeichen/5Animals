@@ -27,13 +27,14 @@ private:
     
 public:
 	Hand();
-	Hand& operator+=(std::shared_ptr<AnimalCard>);
-	Hand& operator-=(std::shared_ptr<AnimalCard>);
 	std::shared_ptr<AnimalCard> operator[](int);
 	int noCards();
+    void print();
+    
+    Hand& operator+=(std::shared_ptr<AnimalCard>);
+    Hand& operator-=(std::shared_ptr<AnimalCard>);
 	friend ostream & operator <<(ostream &out, const Hand&);
     friend istream & operator >>(istream &in, Hand&);
-    void print();
 
 };
 
